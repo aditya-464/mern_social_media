@@ -7,7 +7,8 @@ import helmet from "helmet";
 import morgan from 'morgan'
 import path from "path";
 import { fileURLToPath } from "url";
-import {register} from "./controllers/auth.js"
+import router from "./routes/auth.js";
+
 
 // Configurations
 const __filename = fileURLToPath(import.meta.url);
@@ -37,20 +38,22 @@ const storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
-const upload = multer({storage});
+const upload = multer({ storage });
 
 // Routes with files
-app.post("/auth/register", upload.single("picture"), register);
+// app.post("/auth/setupaccount", upload.single("picture"), setupAccount);
+app.use("/auth", router);
+
 
 // Connection with Database
 const DB = process.env.MONGO_URL;
-mongoose.connect(DB).then(()=>{
+mongoose.connect(DB).then(() => {
     console.log("Connection with database is Successful!");
-}).catch((err)=>{
+}).catch((err) => {
     console.log("Connection with database Failed!", err);
 });
 
 const PORT = process.env.PORT || 3400;
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on PORT :  ${PORT}`);
 })
