@@ -7,7 +7,10 @@ import helmet from "helmet";
 import morgan from 'morgan'
 import path from "path";
 import { fileURLToPath } from "url";
-import router from "./routes/auth.js";
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+import postRoutes from "./routes/post.js";
+import { verifyToken } from "./middlewares/auth.js";
 
 
 // Configurations
@@ -35,14 +38,21 @@ const storage = multer.diskStorage({
         cb(null, "public/assets");
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname);
+        cb(null, `${file.originalname}+${Date.now()}`);
     }
 });
 const upload = multer({ storage });
 
 // Routes with files
 // app.post("/auth/setupaccount", upload.single("picture"), setupAccount);
-app.use("/auth", router);
+app.use("/auth", authRoutes);
+
+// Routes
+app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
+
+// Routes with files
+app.use("/posts", verifyToken, upload.single("picture"));
 
 
 // Connection with Database

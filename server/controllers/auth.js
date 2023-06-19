@@ -29,7 +29,7 @@ export const login = async (req, res) => {
     try {
         const { username, password } = req.body;
         if (!username || !password) {
-            return res.status(400).json({ message: "Enter all fileds!" });
+            return res.status(400).json({ message: "Enter all fields!" });
         }
         const user = User.findOne({ username: username });
         if (!user) {
