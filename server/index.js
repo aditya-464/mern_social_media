@@ -11,6 +11,7 @@ import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/post.js";
 import { verifyToken } from "./middlewares/auth.js";
+import { createPost } from "./controllers/post.js";
 
 
 // Configurations
@@ -52,7 +53,7 @@ app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
 // Routes with files
-app.use("/posts", verifyToken, upload.single("picture"));
+app.use("/posts", verifyToken, upload.single("picture"), createPost);
 
 
 // Connection with Database
