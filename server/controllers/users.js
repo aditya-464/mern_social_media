@@ -3,7 +3,7 @@ import User from "../models/user.js";
 // Get User Details
 export const getUser = async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id } = req.params;
         const user = await User.findById(id);
         res.status(200).json(user);
     } catch (error) {
@@ -14,7 +14,7 @@ export const getUser = async (req, res) => {
 // Get User Friends
 export const getUserFriends = async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id } = req.params;
         const user = await User.findById(id);
 
         const friends = await Promise.all(
@@ -34,7 +34,7 @@ export const getUserFriends = async (req, res) => {
 // Update User Friends
 export const addRemoveFriend = async (req, res) => {
     try {
-        const { id, friendId } = req.body;
+        const { id, friendId } = req.params;
         const user = await User.findById(id);
         const friend = await User.findById(friendId);
 

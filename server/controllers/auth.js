@@ -51,6 +51,6 @@ export const login = async (req, res) => {
 
 
 // Setup account deatails
-// export const setupAccount = async()=>{
-
+// export const setupAccount = async(req, res)=>{
+    
 // }
