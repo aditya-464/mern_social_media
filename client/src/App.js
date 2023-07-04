@@ -1,7 +1,9 @@
+import {RegisterPage} from "./pages/RegisterPage.jsx"
+
 function App() {
   return (
     <>
-    <div className="krishna">Hare Krishna!</div>
+    <RegisterPage></RegisterPage>
     </>
   );
 }
