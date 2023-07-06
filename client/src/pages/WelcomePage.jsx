@@ -52,8 +52,8 @@ export const WelcomePage = () => {
               marginTop={"10%"}
               justifyContent={"space-around"}
               alignItems={"center"}>
-              <EmptyButton name="log in" fs="h5" pd="2rem"></EmptyButton>
-              <FillButton name="sign up" fs="h5" pd="2.1rem"></FillButton>
+              <EmptyButton name="log in" fs="h5" pd="2rem" width="40%"></EmptyButton>
+              <FillButton name="sign up" fs="h5" pd="2.1rem" width="40%"></FillButton>
             </Flex>
           </Box>
         </Box>
