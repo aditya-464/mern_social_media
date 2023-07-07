@@ -1,6 +1,6 @@
 import { SignupForm } from 'components/SignupForm'
 import React from 'react'
-import loginPageImage from "../assets/login-register.webp"
+import image1 from "../assets/login-signup-page.webp"
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
 
 export const SignupPage = () => {
@@ -12,11 +12,11 @@ export const SignupPage = () => {
         bgColor={"primaryLight"}>
         <Box className="login-image-container"
           width={"40%"}
-          height={"100%"}
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}>
-          <Img src={loginPageImage}>
+          height={"100%"}>
+          <Img src={image1}
+            width={"100%"}
+            height={"100%"}
+            objectFit={"cover"}>
           </Img>
         </Box>
         <Box className="login-text-container"

@@ -1,22 +1,22 @@
 import React from 'react'
-import loginPageImage from "../assets/login-register.webp"
+import image1 from "../assets/login-signup-page.webp"
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
 import { LoginForm } from 'components/LoginForm'
 
 export const LoginPage = () => {
   return (
     <>
-        <Flex className="login-page-container"
+      <Flex className="login-page-container"
         maxWidth={"100vw"}
         height={"100vh"}
         bgColor={"primaryLight"}>
         <Box className="login-image-container"
           width={"40%"}
-          height={"100%"}
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}>
-          <Img src={loginPageImage}>
+          height={"100%"}>
+          <Img src={image1}
+            width={"100%"}
+            height={"100%"}
+            objectFit={"cover"}>
           </Img>
         </Box>
         <Box className="login-text-container"
@@ -27,7 +27,7 @@ export const LoginPage = () => {
             width={"70%"}
             margin={"auto"}
             marginTop={"15%"}
-            >
+          >
             <Box className='welcome-text'
               textAlign={"center"}>
               <Text
@@ -35,7 +35,7 @@ export const LoginPage = () => {
                 fontWeight={600}
                 letterSpacing={"3px"}
                 marginBottom={"1%"}
-                >
+              >
                 Log In
               </Text>
 
