@@ -11,10 +11,10 @@ html{
   scroll-behavior: smooth;
 }
 
-.signup-link{
+.signup-link, .login-link{
   color: #DB005B;
 }
 
-.signup-link:hover{
+.signup-link:hover, .login-link:hover{
   text-decoration: underline;
 }

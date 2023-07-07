@@ -80,7 +80,7 @@ export const LoginForm = (props) => {
                     resetForm,
                 }) => (
 
-                    <form style={{ width: props.width, padding: "1rem", margin: "auto", color: "primaryDark" }} onSubmit={handleSubmit}>
+                    <form style={{ width: props.width, padding: "1rem", margin: "auto", color: "primaryDark", textAlign: "center" }} onSubmit={handleSubmit}>
                         <FormControl
                             marginBottom={"1rem"}
                             isInvalid={errors.email && touched.email}>
@@ -141,7 +141,8 @@ export const LoginForm = (props) => {
                         <Text
                             color={"primaryDark"}
                             fontSize={"h6"}
-                            marginTop={"5%"}>
+                            marginTop={"5%"}
+                            display={"inline-block"}>
                             Don't have an account? <span className='signup-link'><NavLink to="/signup" > Sign Up</NavLink></span>
                         </Text>
                     </form>
