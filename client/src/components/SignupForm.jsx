@@ -25,8 +25,18 @@ export const SignupForm = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const signup = async(values, onSubmitProps) =>{
+    const signup = async (values, onSubmitProps) => {
+        const signupResponse = await fetch("http://127.0.0.1:3300/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(values)
+        });
 
+        if (signupResponse.status === 201) {
+            const signupData = await signupResponse.json();
+        }
     };
 
     const handleFormSubmit = async (values, onSubmitProps) => {
@@ -49,7 +59,53 @@ export const SignupForm = (props) => {
                     resetForm,
                 }) => (
 
-                    <form style={{ width: props.width, padding: "1rem", margin: "auto", color: "primaryDark", border:"2px solid red", textAlign:"center" }} onSubmit={handleSubmit}>
+                    <form style={{ width: props.width, padding: "1rem", margin: "auto", color: "primaryDark", textAlign: "center" }} onSubmit={handleSubmit}>
+                        <FormControl
+                            marginBottom={"1rem"}
+                            isInvalid={errors.fullname && touched.fullname}>
+                            <FormLabel
+                                fontSize={"h4"}
+                                letterSpacing={"1px"}
+                                marginBottom={"2%"}>
+                                Full Name
+                            </FormLabel>
+                            <Input
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                value={values.fullname}
+                                name='fullname'
+                                fontSize={"h6"}
+                                padding={"1rem 0.5rem"}
+                                height={"5%"}
+                                outline={"1px solid #DB005B"}
+                                _focus={{
+                                    outline: "1px solid blue"
+                                }}></Input>
+                            <FormErrorMessage fontSize={"larger"}>{errors.fullname}</FormErrorMessage>
+                        </FormControl>
+                        <FormControl
+                            marginBottom={"1rem"}
+                            isInvalid={errors.username && touched.username}>
+                            <FormLabel
+                                fontSize={"h4"}
+                                letterSpacing={"1px"}
+                                marginBottom={"2%"}>
+                                Username
+                            </FormLabel>
+                            <Input
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                value={values.username}
+                                name='username'
+                                fontSize={"h6"}
+                                padding={"1rem 0.5rem"}
+                                height={"5%"}
+                                outline={"1px solid #DB005B"}
+                                _focus={{
+                                    outline: "1px solid blue"
+                                }}></Input>
+                            <FormErrorMessage fontSize={"larger"}>{errors.username}</FormErrorMessage>
+                        </FormControl>
                         <FormControl
                             marginBottom={"1rem"}
                             isInvalid={errors.email && touched.email}>
