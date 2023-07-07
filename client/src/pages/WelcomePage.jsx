@@ -3,6 +3,7 @@ import React from 'react'
 import welcomePageImage from "../assets/welcome-page.webp"
 import { FillButton } from 'components/FillButton'
 import { EmptyButton } from 'components/EmptyButton'
+import { NavLink } from 'react-router-dom'
 
 export const WelcomePage = () => {
   return (
@@ -52,8 +53,12 @@ export const WelcomePage = () => {
               marginTop={"10%"}
               justifyContent={"space-around"}
               alignItems={"center"}>
-              <EmptyButton name="log in" fs="h5" pd="2rem 0" width="40%"></EmptyButton>
-              <FillButton name="sign up" fs="h5" pd="2.1rem 0" width="40%"></FillButton>
+              <NavLink to="/login" style={{ display: "inline-block", width: "40%" }}>
+                <EmptyButton name="log in" fs="h5" pd="2rem 0" width="100%"></EmptyButton>
+              </NavLink>
+              <NavLink to="/signup" style={{ display: "inline-block", width: "40%" }}>
+                <FillButton name="sign up" fs="h5" pd="2.2rem 0" width="100%"></FillButton>
+              </NavLink>
             </Flex>
           </Box>
         </Box>
