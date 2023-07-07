@@ -15,8 +15,8 @@ export const EmptyButton = (props) => {
                 fontWeight={"semibold"}
                 padding={pd}
                 color={"primaryDark"}
-                _hover={{ opacity: "0.8", borderRadius: "4px" }}
-                _active={{ opacity: "0.8", borderRadius: "4px" }}
+                _hover={{ opacity: "0.7", borderRadius: "4px" }}
+                _active={{ opacity: "0.7", borderRadius: "4px" }}
                 letterSpacing={"1.5px"}
                 textTransform={"uppercase"}>
                 {name}

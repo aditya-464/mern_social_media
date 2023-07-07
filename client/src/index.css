@@ -8,8 +8,5 @@
 html{
   font-size: 62.5%;
   font-family: 'Nanum Gothic', sans-serif;
-}
-
-.krishna{
-  font-size: 4rem;
+  scroll-behavior: smooth;
 }

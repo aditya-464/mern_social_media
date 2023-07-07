@@ -8,7 +8,7 @@ export const LoginPage = () => {
   return (
     <>
         <Flex className="login-page-container"
-        width={"100vw"}
+        maxWidth={"100vw"}
         height={"100vh"}
         bgColor={"primaryLight"}>
         <Box className="login-image-container"
@@ -35,7 +35,7 @@ export const LoginPage = () => {
                 fontSize={"h2"}
                 fontWeight={600}
                 letterSpacing={"3px"}
-                marginBottom={"3%"}
+                marginBottom={"1%"}
                 >
                 Log In
               </Text>

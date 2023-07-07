@@ -8,7 +8,7 @@ export const WelcomePage = () => {
   return (
     <>
       <Flex className="welcome-container"
-        width={"100vw"}
+        maxWidth={"100vw"}
         height={"100vh"}
         bgColor={"primaryLight"}>
         <Box className="welcome-image-container"
@@ -52,8 +52,8 @@ export const WelcomePage = () => {
               marginTop={"10%"}
               justifyContent={"space-around"}
               alignItems={"center"}>
-              <EmptyButton name="log in" fs="h5" pd="2rem" width="40%"></EmptyButton>
-              <FillButton name="sign up" fs="h5" pd="2.1rem" width="40%"></FillButton>
+              <EmptyButton name="log in" fs="h5" pd="2rem 0" width="40%"></EmptyButton>
+              <FillButton name="sign up" fs="h5" pd="2.1rem 0" width="40%"></FillButton>
             </Flex>
           </Box>
         </Box>
