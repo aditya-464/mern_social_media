@@ -2,7 +2,6 @@ import React from 'react'
 import loginPageImage from "../assets/login-register.webp"
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
 import { LoginForm } from 'components/LoginForm'
-import { FillButton } from 'components/FillButton'
 
 export const LoginPage = () => {
   return (
@@ -40,7 +39,7 @@ export const LoginPage = () => {
                 Log In
               </Text>
 
-              <LoginForm width="50%"></LoginForm>
+              <LoginForm width="55%"></LoginForm>
 
             </Box>
 

@@ -5,15 +5,11 @@ import User from '../models/user.js';
 // Register User
 export const register = async (req, res) => {
     try {
-        const { fullname, username ,email, password } = req.body;
+        const { fullname, email, password } = req.body;
 
         const emailPresent = await User.findOne({email : email});
         if(emailPresent){
             return res.status(400).json({message : "Email already registered"});
-        }
-        const usernamePresent = await User.findOne({username : username});
-        if(usernamePresent){
-            return res.status(400).json({message : "Username already registered"});
         }
 
         // Hashing password
@@ -22,7 +18,7 @@ export const register = async (req, res) => {
 
         // Creating and saving user
         const newUser = new User({
-            fullname, username , email, password: hashedPassword, picturePath: "picturePath", friends: [], location: "location", bio: "bio", occupation: "occupation", profileViews: 10, impressions: 10
+            fullname, username : "dummyUsername" , email, password: hashedPassword, picturePath: "picturePath", friends: [], location: "location", bio: "bio", occupation: "occupation", profileViews: 10, impressions: 10
         });
         const savedNewUser = await newUser.save();
 

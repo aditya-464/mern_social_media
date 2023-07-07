@@ -80,7 +80,7 @@ export const LoginForm = (props) => {
                             marginBottom={"1rem"}
                             isInvalid={errors.email && touched.email}>
                             <FormLabel
-                                fontSize={"h4"}
+                                fontSize={"h5"}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Email
@@ -103,7 +103,7 @@ export const LoginForm = (props) => {
                             marginBottom={"10%"}
                             isInvalid={errors.password && touched.password}>
                             <FormLabel
-                                fontSize={"h4"}
+                                fontSize={"h5"}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Password

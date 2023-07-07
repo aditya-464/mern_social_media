@@ -1,4 +1,4 @@
-import { FormControl, FormErrorMessage, FormLabel, Input, Text } from '@chakra-ui/react'
+import { FormControl, FormErrorMessage, FormLabel, Input, Text, Flex } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { FillButton } from './FillButton'
 import { Formik } from "formik";
@@ -9,14 +9,12 @@ import { setLogin } from "state";
 
 const signupSchema = yup.object().shape({
     fullname: yup.string().required("Required"),
-    username: yup.string().required("Required"),
     email: yup.string().email("Invalid Email").required("Required"),
     password: yup.string().min(6, "Password must be atleast 6 characters").max(20, "Password must be less than 20 characters").required("Required")
 });
 
 const initialValuesSignup = {
     fullname: "",
-    username: "",
     email: "",
     password: ""
 };
@@ -40,18 +38,18 @@ export const SignupForm = (props) => {
         if (signupResponse.status === 201) {
             dispatch(
                 setLogin({
-                    user : signupData.user,
-                    token : signupData.token
+                    user: signupData.user,
+                    token: signupData.token
                 })
             );
             navigate("/home");
         }
-        else{
+        else {
             setSignupErrorFunc(signupData.message);
         }
     };
 
-    const setSignupErrorFunc = (message)=>{
+    const setSignupErrorFunc = (message) => {
         setSignupError(message);
         setTimeout(() => {
             setSignupError("");
@@ -82,7 +80,7 @@ export const SignupForm = (props) => {
                             marginBottom={"1rem"}
                             isInvalid={errors.fullname && touched.fullname}>
                             <FormLabel
-                                fontSize={"h4"}
+                                fontSize={"h5"}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Full Name
@@ -103,32 +101,9 @@ export const SignupForm = (props) => {
                         </FormControl>
                         <FormControl
                             marginBottom={"1rem"}
-                            isInvalid={errors.username && touched.username}>
-                            <FormLabel
-                                fontSize={"h4"}
-                                letterSpacing={"1px"}
-                                marginBottom={"2%"}>
-                                Username
-                            </FormLabel>
-                            <Input
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                                value={values.username}
-                                name='username'
-                                fontSize={"h6"}
-                                padding={"1rem 0.5rem"}
-                                height={"5%"}
-                                outline={"1px solid #DB005B"}
-                                _focus={{
-                                    outline: "1px solid blue"
-                                }}></Input>
-                            <FormErrorMessage fontSize={"larger"}>{errors.username}</FormErrorMessage>
-                        </FormControl>
-                        <FormControl
-                            marginBottom={"1rem"}
                             isInvalid={errors.email && touched.email}>
                             <FormLabel
-                                fontSize={"h4"}
+                                fontSize={"h5"}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Email
@@ -151,7 +126,7 @@ export const SignupForm = (props) => {
                             marginBottom={"10%"}
                             isInvalid={errors.password && touched.password}>
                             <FormLabel
-                                fontSize={"h4"}
+                                fontSize={"h5"}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Password
