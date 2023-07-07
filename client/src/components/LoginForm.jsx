@@ -1,4 +1,4 @@
-import { FormControl, FormErrorMessage, FormLabel, Input, Text, useToast } from '@chakra-ui/react'
+import { FormControl, FormErrorMessage, FormLabel, Input, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { FillButton } from './FillButton'
 import { Formik } from "formik";
@@ -6,7 +6,6 @@ import * as yup from "yup";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
-import Dropzone from "react-dropzone";
 
 const loginSchema = yup.object().shape({
     email: yup.string().email("Invalid Email").required("Required"),
@@ -78,7 +77,6 @@ export const LoginForm = (props) => {
                     handleBlur,
                     handleChange,
                     handleSubmit,
-                    setFieldValue,
                     resetForm,
                 }) => (
 
