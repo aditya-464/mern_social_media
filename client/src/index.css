@@ -10,3 +10,11 @@ html{
   font-family: 'Nanum Gothic', sans-serif;
   scroll-behavior: smooth;
 }
+
+.signup-link{
+  color: #DB005B;
+}
+
+.signup-link:hover{
+  text-decoration: underline;
+}

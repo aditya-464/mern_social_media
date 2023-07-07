@@ -1,5 +1,5 @@
-import { FormControl, FormErrorMessage, FormLabel, Input, Text } from '@chakra-ui/react'
-import React from 'react'
+import { FormControl, FormErrorMessage, FormLabel, Input, Text, useToast } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import { FillButton } from './FillButton'
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -24,13 +24,45 @@ const initialValuesLogin = {
 export const LoginForm = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [invalidCredentials, setInvalidCredentials] = useState(false);
 
     const login = async (values, onSubmitProps) => {
+        const loggedInResponse = await fetch("http://127.0.0.1:3300/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(values)
+        });
 
-    }
+        const loggedIn = await loggedInResponse.json();
+        onSubmitProps.resetForm();
+        if (loggedInResponse.status === 200) {
+            dispatch(
+                setLogin({
+                    user: loggedIn.user,
+                    token: loggedIn.token
+                })
+            );
+            console.log("User logged in successfully");
+            console.log(loggedIn.user);
+            navigate("/home");
+        }
+        else {
+            invalidCredentialsFunc();
+        }
+
+    };
 
     const handleFormSubmit = async (values, onSubmitProps) => {
         await login(values, onSubmitProps);
+    };
+
+    const invalidCredentialsFunc = () => {
+        setInvalidCredentials(true);
+        setTimeout(() => {
+            setInvalidCredentials(false);
+        }, 3000);
     }
 
     return (
@@ -99,11 +131,20 @@ export const LoginForm = (props) => {
                             <FormErrorMessage fontSize={"larger"}>{errors.password}</FormErrorMessage>
                         </FormControl>
                         <FillButton name="log in" fs="h5" pd="8% 0" width="100%"></FillButton>
+                        {invalidCredentials
+                            && <Text
+                                marginTop={"5%"}
+                                fontSize={"h6"}
+                                color={"red"} letterSpacing={"1px"}
+                                textAlign={"center"}>
+                                * Invalid Credentials *
+                            </Text>
+                        }
                         <Text
                             color={"primaryDark"}
                             fontSize={"h6"}
                             marginTop={"5%"}>
-                            Don't have an account? <Text color={"pinkish"} display={"inline"} _hover={{ textDecoration: "underline" }}><NavLink to="/signup" > Sign Up</NavLink></Text>
+                            Don't have an account? <span className='signup-link'><NavLink to="/signup" > Sign Up</NavLink></span>
                         </Text>
                     </form>
                 )}

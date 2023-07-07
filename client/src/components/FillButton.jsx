@@ -6,6 +6,7 @@ export const FillButton = (props) => {
     return (
         <>
             <Button
+                type='submit'
                 width={width}
                 background={"linear-gradient(90deg, rgba(219,0,91,1) 0%, rgba(247,147,39,1) 100%, rgba(247,147,39,1) 100%)"}
                 borderRadius={"7px"}
