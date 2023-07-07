@@ -11,7 +11,7 @@ const signupSchema = yup.object().shape({
     fullname: yup.string().required("Required"),
     username: yup.string().required("Required"),
     email: yup.string().email("Invalid Email").required("Required"),
-    password: yup.string().required("Required")
+    password: yup.string().min(6, "Password must be atleast 6 characters").max(20, "Password must be less than 20 characters").required("Required")
 });
 
 const initialValuesSignup = {
@@ -24,6 +24,7 @@ const initialValuesSignup = {
 export const SignupForm = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [signupError, setSignupError] = useState("");
 
     const signup = async (values, onSubmitProps) => {
         const signupResponse = await fetch("http://127.0.0.1:3300/auth/register", {
@@ -34,12 +35,28 @@ export const SignupForm = (props) => {
             body: JSON.stringify(values)
         });
 
+        const signupData = await signupResponse.json();
+        onSubmitProps.resetForm();
         if (signupResponse.status === 201) {
-            const signupData = await signupResponse.json();
-            console.log(signupData);
+            dispatch(
+                setLogin({
+                    user : signupData.user,
+                    token : signupData.token
+                })
+            );
+            navigate("/home");
+        }
+        else{
+            setSignupErrorFunc(signupData.message);
         }
     };
 
+    const setSignupErrorFunc = (message)=>{
+        setSignupError(message);
+        setTimeout(() => {
+            setSignupError("");
+        }, 3000);
+    }
     const handleFormSubmit = async (values, onSubmitProps) => {
         await signup(values, onSubmitProps);
     };
@@ -155,6 +172,15 @@ export const SignupForm = (props) => {
                             <FormErrorMessage fontSize={"larger"}>{errors.password}</FormErrorMessage>
                         </FormControl>
                         <FillButton name="sign up" fs="h5" pd="8% 0" width="100%"></FillButton>
+                        {signupError
+                            && <Text
+                                marginTop={"5%"}
+                                fontSize={"h6"}
+                                color={"red"} letterSpacing={"1px"}
+                                textAlign={"center"}>
+                                * {signupError} *
+                            </Text>
+                        }
                         <Text
                             color={"primaryDark"}
                             fontSize={"h6"}

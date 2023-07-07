@@ -9,16 +9,13 @@ import { setLogin } from "state";
 
 const loginSchema = yup.object().shape({
     email: yup.string().email("Invalid Email").required("Required"),
-    password: yup.string().min(6, "Password must be atleast 6 characters").max(20, "Password must be less than 20 characters").required("Required")
+    password: yup.string().required("Required")
 });
 
 const initialValuesLogin = {
     email: "",
     password: "",
 };
-
-
-
 
 export const LoginForm = (props) => {
     const dispatch = useDispatch();
@@ -43,8 +40,6 @@ export const LoginForm = (props) => {
                     token: loggedIn.token
                 })
             );
-            console.log("User logged in successfully");
-            console.log(loggedIn.user);
             navigate("/home");
         }
         else {
