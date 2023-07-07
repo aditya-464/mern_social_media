@@ -36,6 +36,7 @@ export const SignupForm = (props) => {
 
         if (signupResponse.status === 201) {
             const signupData = await signupResponse.json();
+            console.log(signupData);
         }
     };
 
