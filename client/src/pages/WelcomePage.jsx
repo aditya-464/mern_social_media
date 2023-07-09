@@ -36,7 +36,8 @@ export const WelcomePage = () => {
                 fontWeight={600}
                 letterSpacing={"3px"}
                 bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
-                bgClip={"text"}>
+                bgClip={"text"}
+                fontFamily={"Poppins, sans-serif"}>
                 Vakya
               </Text>
               <Text
