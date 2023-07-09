@@ -11,7 +11,9 @@ export const WelcomePage = () => {
       <Flex className="welcome-container"
         maxWidth={"100vw"}
         height={"100vh"}
-        bgColor={"primaryLight"}>
+        fontFamily={"Poppins, sans-serif"}
+        bgColor={"primaryLight"}
+        >
         <Box className="welcome-image-container"
           width={"40%"}
           height={"100%"}>
@@ -37,7 +39,7 @@ export const WelcomePage = () => {
                 letterSpacing={"3px"}
                 bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
                 bgClip={"text"}
-                fontFamily={"Poppins, sans-serif"}>
+                >
                 Vakya
               </Text>
               <Text

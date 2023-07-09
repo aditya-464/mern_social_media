@@ -75,7 +75,8 @@ export const LoginForm = (props) => {
                     resetForm,
                 }) => (
 
-                    <form style={{ width: props.width, padding: "1rem", margin: "auto", color: "primaryDark", textAlign: "center" }} onSubmit={handleSubmit}>
+                    <form style={{
+                        width: props.width, padding: "1rem", margin: "auto", color: "primaryDark", textAlign: "center", fontFamily: "Poppins, sans-serif"}} onSubmit={handleSubmit}>
                         <FormControl
                             marginBottom={"1rem"}
                             isInvalid={errors.email && touched.email}>
