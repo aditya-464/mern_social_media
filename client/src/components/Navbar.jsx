@@ -1,6 +1,7 @@
 import { Box, Flex, Input, Text } from '@chakra-ui/react'
-import { FaSearch, FaMoon, FaSun, FaBell, FaQuestionCircle, FaGear } from "react-icons/fa";
-import { HiAnnotation } from "react-icons/hi";
+import { FaSearch, FaMoon, FaSun, FaBell, FaQuestionCircle } from "react-icons/fa";
+import { MdChat } from "react-icons/md";
+import { FaUser } from "react-icons/fa6";
 import React from 'react'
 
 export const Navbar = () => {
@@ -16,8 +17,11 @@ export const Navbar = () => {
             >
                 <Flex className='navbar-left-container'
                     width={"50%"}>
-                    <Box className='app-icon-container'
-                        textAlign={"center"}>
+                    <Flex className='app-icon-container'
+                        justifyContent={"center"}
+                        alignItems={"center"}
+                        textAlign={"center"}
+                    >
                         <Text
                             fontSize={"h4"}
                             fontWeight={600}
@@ -26,11 +30,12 @@ export const Navbar = () => {
                             bgClip={"text"}>
                             Vakya
                         </Text>
-                    </Box>
+                    </Flex>
                     <Flex className='search-bar-container'
                         justifyContent={"center"}
                         alignItems={"center"}
                         marginLeft={"3rem"}
+                        padding={"0.5rem 0"}
                     >
                         <Flex className='search-bar'
                             justifyContent={"center"}
@@ -46,6 +51,7 @@ export const Navbar = () => {
                                 border={"none"}
                                 marginRight={"1rem"}
                                 padding={"1rem 0.5rem"}
+                                focusBorderColor={"transparent"}
                             >
                             </Input>
                             <FaSearch fontSize={"16px"} />
@@ -53,12 +59,45 @@ export const Navbar = () => {
                     </Flex>
                 </Flex>
                 <Flex className='navbar-right-container'
-                    width={"50%"}>
-                    <Box className='display-mode'></Box>
-                    <Box className='message'></Box>
-                    <Box className='notification'></Box>
-                    <Box className='help'></Box>
-                    <Box className='settings'></Box>
+                    width={"50%"}
+                    justifyContent={"flex-end"}
+                    alignItems={"center"}
+                >
+                    <Box className='display-mode'
+                        margin={"0 0.5rem"}
+                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
+                        padding={"0.7rem"}
+                        borderRadius={"5px"}>
+                        <FaMoon fontSize={"18px"}></FaMoon>
+                    </Box>
+                    <Box className='message'
+                        margin={"0 0.5rem"}
+                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
+                        padding={"0.7rem"}
+                        borderRadius={"5px"}>
+                        <MdChat fontSize={"18px"}></MdChat>
+                    </Box>
+                    <Box className='notification'
+                        margin={"0 0.5rem"}
+                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
+                        padding={"0.7rem"}
+                        borderRadius={"5px"}>
+                        <FaBell fontSize={"18px"}></FaBell>
+                    </Box>
+                    <Box className='help'
+                        margin={"0 0.5rem"}
+                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
+                        padding={"0.7rem"}
+                        borderRadius={"5px"}>
+                        <FaQuestionCircle fontSize={"18px"}></FaQuestionCircle>
+                    </Box>
+                    <Box className='settings'
+                        margin={"0 0.5rem"}
+                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
+                        padding={"0.7rem"}
+                        borderRadius={"5px"} marginRight={"0"}>
+                        <FaUser fontSize={"18px"}></FaUser>
+                    </Box>
                 </Flex>
             </Flex>
         </>
