@@ -39,7 +39,17 @@ const storage = multer.diskStorage({
         cb(null, "public/assets");
     },
     filename: function (req, file, cb) {
-        cb(null, `${file.originalname}+${Date.now()}`);
+        // To find extension of file 
+        let fn = file.originalname;
+        let len = 0;
+        for (let i = fn.length - 1; i >= 0; i--) {
+            if (fn[i] === '.') {
+                len = i;
+                break;
+            }
+        }
+        let ft = fn.substring(len + 1);
+        cb(null, file.originalname + "-" + Date.now() + "." + ft);
     }
 });
 const upload = multer({ storage });
@@ -63,7 +73,7 @@ app.use("/posts", verifyToken, upload.single("picture"), createPost);
 
 // Connection with Database
 const DB = process.env.MONGO_URL;
-mongoose.connect(DB,{useNewUrlParser: true,  useUnifiedTopology: true}).then(() => {
+mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log("Connection with database is Successful!");
 }).catch((err) => {
     console.log("Connection with database Failed!", err);

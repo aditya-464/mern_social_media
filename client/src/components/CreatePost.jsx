@@ -16,6 +16,25 @@ export const CreatePost = () => {
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
 
+    const handlePost = async () => {
+        const formData = new FormData();
+        formData.append("userId", _id);
+        formData.append("description", post);
+        if (image) {
+            formData.append("picture", image);
+            formData.append("picturePath", image.name);
+        }
+
+        const response = await fetch(`http://127.0.0.1:3300/posts`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}` },
+            body: formData,
+        });
+        const posts = await response.json();
+        dispatch(setPosts({ posts }));
+        setImage(null);
+        setPost("");
+    }
 
     return (
         <>
@@ -42,6 +61,8 @@ export const CreatePost = () => {
                         alignItems={"center"}
                     >
                         <Input
+                            onChange={(e) => setPost(e.target.value)}
+                            value={post || ""}
                             placeholder={'Write your post...'}
                             fontSize={"h6"}
                             bgColor={"#d2cdcd"}
@@ -169,7 +190,16 @@ export const CreatePost = () => {
                         <Text padding={"0.5rem"}>Audio</Text>
                     </Flex>
 
-                    <FillButton name="post" width="20%" fs="h6" pd="1.6rem 0" br="20px"></FillButton>
+                    <Box className='post-btn'
+                        width={"20%"}
+                        onClick={() => {
+                            if (post) {
+                                handlePost();
+                            }
+                        }}
+                    >
+                        <FillButton name="post" width="100%" fs="h6" pd="1.6rem 0" br="20px"></FillButton>
+                    </Box>
                 </Flex>
             </Box>
         </>
