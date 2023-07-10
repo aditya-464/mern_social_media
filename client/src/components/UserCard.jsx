@@ -8,29 +8,29 @@ import { useSelector } from 'react-redux';
 
 
 export const UserCard = (props) => {
-    const {userId, picturePath} = props;
+    const { userId, picturePath } = props;
     const [user, setUser] = useState(null);
     const token = useSelector((state) => state.token);
 
     const getUser = async () => {
         const response = await fetch(`http://127.0.0.1:3300/users/${userId}`, {
-            method : "GET",
+            method: "GET",
             headers: { Authorization: `Bearer ${token}` }
         });
 
         const data = await response.json();
         setUser(data);
-        
+
     }
     useEffect(() => {
         getUser();
     }, []);
 
-    if(!user){
+    if (!user) {
         return null;
     }
 
-    const {fullname, bio, location, occupation, profileViews, impressions} = user;
+    const { fullname, bio, location, occupation, profileViews, impressions } = user;
 
     return (
         <>
@@ -38,7 +38,7 @@ export const UserCard = (props) => {
                 width={"25vw"}
                 backgroundColor={"secondaryLight"}
                 borderRadius={"10px"}
-                padding={"2rem 1rem"}
+                padding={"1rem"}
                 color={"primaryDark"}
                 fontFamily={"Poppins, sans-serif"}
             >
@@ -47,7 +47,7 @@ export const UserCard = (props) => {
                 >
                     <Box className='image-box'>
                         <Img src={profileDummyImg}
-                            width={"5vw"}
+                            width={"3vw"}
                             borderRadius={"50%"}
                         ></Img>
                     </Box>
