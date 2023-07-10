@@ -1,10 +1,22 @@
-import { Box, Flex, Text, Input, Img, Button } from '@chakra-ui/react'
+import { Box, Flex, Text, Input, Img } from '@chakra-ui/react'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
-import React from 'react'
-import { MdOutlineImage, MdOutlineGifBox, MdOutlineMicNone } from "react-icons/md";
+import React, { useState } from 'react'
+import { MdOutlineImage, MdOutlineGifBox, MdOutlineMicNone, MdDeleteOutline } from "react-icons/md";
 import { FillButton } from './FillButton';
+import Dropzone from "react-dropzone";
+import { useDispatch, useSelector } from "react-redux";
+import { setPosts } from "state";
+
 
 export const CreatePost = () => {
+    const dispatch = useDispatch();
+    const [isImage, setIsImage] = useState(false);
+    const [image, setImage] = useState(null);
+    const [post, setPost] = useState("");
+    const { _id } = useSelector((state) => state.user);
+    const token = useSelector((state) => state.token);
+
+
     return (
         <>
             <Box className='create-post-container'
@@ -44,14 +56,69 @@ export const CreatePost = () => {
                         ></Input>
                     </Flex>
                 </Flex>
-                <Box className='dropzone-box'>
+                {isImage &&
+                    <Box className='dropzone-box'>
+                        <Dropzone
+                            acceptedFiles=".jpg,.jpeg,.png"
+                            multiple={false}
+                            onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
+                        >
+                            {({ getRootProps, getInputProps }) => (
+                                <Flex
+                                    width={"100%"}
+                                    fontSize={"h6"}
+                                    border={image ? "1px dashed blue" : "1px dashed black"}
+                                    borderRadius={"10px"}
+                                    padding={"1.5rem"}
+                                    margin={"1rem 0"}
+                                >
+                                    <Box
+                                        {...getRootProps()}
+                                        width={"100%"}
+                                        _hover={{ cursor: "pointer" }}
+                                    >
+                                        <input {...getInputProps()} />
+                                        {!image ? (
+                                            <Text opacity={"0.5"}>Add image here</Text>
+                                        ) : (
+                                            <Flex>
+                                                <Text >{image.name}</Text>
+                                            </Flex>
+                                        )}
+                                    </Box>
+                                    {image && (
+                                        <Flex
+                                            justify={"center"}
+                                            align={"center"}
+                                            fontSize={"h5"}
+                                            padding={"0.5rem"}
+                                            borderRadius={"5px"}
+                                            onClick={() => { setImage(null) }}
+                                            _hover={{
+                                                bgColor: "#d2cdcd",
+                                                cursor: "pointer"
+                                            }}
+                                        >
+                                            <MdDeleteOutline></MdDeleteOutline>
+                                        </Flex>
+                                    )}
+                                </Flex>
+                            )}
 
-                </Box>
+                        </Dropzone>
+                    </Box>}
+
+                <Box className='line-break'
+                    width={"100%"}
+                    height={"1px"}
+                    backgroundColor={"#c4c4c4"}
+                    margin={"1.5rem 0"}
+                ></Box>
+
                 <Flex className='button-box'
                     width={"100%"}
                     align={"center"}
                     justify={"space-between"}
-                    marginTop={"1rem"}
                 >
                     <Flex className='button-grp'
                         color={"primaryDark"}
@@ -64,6 +131,7 @@ export const CreatePost = () => {
                             bgColor: "#d2cdcd",
                             cursor: "pointer"
                         }}
+                        onClick={() => { setIsImage(!isImage) }}
                     >
                         <MdOutlineImage></MdOutlineImage>
                         <Text padding={"0.5rem"}>Image</Text>
