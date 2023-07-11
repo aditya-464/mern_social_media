@@ -5,6 +5,7 @@ import { BiShareAlt, BiSolidHeart, BiHeart, BiChat } from "react-icons/bi";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
+import { PostUserDetails } from './PostUserDetails';
 
 export const ViewPosts = (props) => {
   const {
@@ -22,8 +23,8 @@ export const ViewPosts = (props) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const loggedInUserId = useSelector((state) => state.user._id);
-  const isLiked = Boolean(likes[loggedInUserId]);
-  const likeCount = Object.keys(likes).length;
+  // const isLiked = Boolean(likes[loggedInUserId]);
+  // const likeCount = Object.keys(likes).length;
 
   const patchLike = async () => {
     const response = await fetch(`http://127.0.0.1:3300/posts/${postId}/like`, {
@@ -54,7 +55,8 @@ export const ViewPosts = (props) => {
         fontFamily={"Poppins, sans-serif"}
         marginBottom={"2.5rem"}
       >
-        <Flex className="view-post-name-image">
+
+        {/* <Flex className="view-post-name-image">
           <Flex className='view-post-image'
             justify={"center"}
             align={"center"}
@@ -102,7 +104,15 @@ export const ViewPosts = (props) => {
               <HiOutlineUserPlus></HiOutlineUserPlus>
             </Flex>
           </Flex>
-        </Flex>
+        </Flex> */}
+        <PostUserDetails
+          friendId={postUserId}
+          name={fullname}
+          subtitle={location}
+          userPicturePath={userPicturePath}
+        >
+        </PostUserDetails>
+
         <Flex className="view-post"
           flexDir={"column"}
         >

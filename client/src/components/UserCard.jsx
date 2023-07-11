@@ -47,7 +47,7 @@ export const UserCard = (props) => {
                 >
                     <Box className='image-box'>
                         <Img src={profileDummyImg}
-                            width={"3vw"}
+                            width={"4vw"}
                             borderRadius={"50%"}
                         ></Img>
                     </Box>

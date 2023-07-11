@@ -51,7 +51,7 @@ export const CreatePost = () => {
                         alignItems={"center"}
                     >
                         <Img src={profileDummyImg}
-                            width={"3vw"}
+                            width={"4vw"}
                             borderRadius={"50%"}
                         ></Img>
                     </Flex>
