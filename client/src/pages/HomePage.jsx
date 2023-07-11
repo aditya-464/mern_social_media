@@ -1,4 +1,5 @@
 import { Flex } from '@chakra-ui/react';
+import { AllPosts } from 'components/AllPosts';
 import { CreatePost } from 'components/CreatePost';
 import { Navbar } from 'components/Navbar'
 import { UserCard } from 'components/UserCard'
@@ -15,8 +16,9 @@ export const HomePage = () => {
       {/* <Navbar></Navbar> */}
       <Flex>
         {/* <UserCard userId={_id} picturePath={picturePath}></UserCard> */}
-        {/* <CreatePost></CreatePost> */}
-        <ViewPosts></ViewPosts>
+        <CreatePost></CreatePost>
+        {/* <ViewPosts></ViewPosts> */}
+        <AllPosts></AllPosts>
       </Flex>
     </>
   )

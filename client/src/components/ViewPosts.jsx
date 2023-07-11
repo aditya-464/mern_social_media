@@ -1,10 +1,47 @@
-import React from 'react'
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import { HiOutlineUserPlus, HiOutlineUserMinus } from "react-icons/hi2";
 import { BiShareAlt, BiSolidHeart, BiHeart, BiChat } from "react-icons/bi";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setPost } from "state";
 
-export const ViewPosts = () => {
+export const ViewPosts = (props) => {
+  const {
+    postId,
+    postUserId,
+    fullname,
+    description,
+    location,
+    picturePath,
+    userPicturePath,
+    likes,
+    comments, } = props;
+
+  const [isComments, setIsComments] = useState(false);
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.token);
+  const loggedInUserId = useSelector((state) => state.user._id);
+  const isLiked = Boolean(likes[loggedInUserId]);
+  const likeCount = Object.keys(likes).length;
+
+  const patchLike = async () => {
+    const response = await fetch(`http://127.0.0.1:3300/posts/${postId}/like`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId: loggedInUserId }),
+    });
+    const updatedPost = await response.json();
+    dispatch(setPost({ post: updatedPost }));
+  };
+
+
+
+
+
   return (
     <>
       <Box className='view-post-container'
@@ -15,6 +52,7 @@ export const ViewPosts = () => {
         padding={"1.5rem"}
         borderRadius={"10px"}
         fontFamily={"Poppins, sans-serif"}
+        marginBottom={"2.5rem"}
       >
         <Flex className="view-post-name-image">
           <Flex className='view-post-image'
@@ -42,12 +80,12 @@ export const ViewPosts = () => {
                 fontSize={"h6"}
                 fontWeight={"bold"}
               >
-                Aditya Giri
+                {fullname}
               </Text>
               <Text className="location"
                 fontSize={"12px"}
               >
-                Kolkata, India
+                {location}
               </Text>
             </Flex>
             <Flex className='friend-icon'
@@ -67,24 +105,24 @@ export const ViewPosts = () => {
         </Flex>
         <Flex className="view-post"
           flexDir={"column"}
-          justifyContent={"center"}
-          align={"center"}
         >
           <Box className='post-text'
-            marginY={"1.5rem"}>
+            marginY={"1.5rem"}
+          >
             <Text
               fontSize={"14px"}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dolorem soluta earum odio aspernatur beatae harum dolore sapiente aperiam! Dolore!
+              {description}
             </Text>
           </Box>
           <Flex className='post-image'>
-            <Img
-              src={profileDummyImg}
-              width={"100%"}
-              height={"auto"}
-              borderRadius={"10px"}
-            ></Img>
+            {picturePath &&
+              <Img
+                src={`http://127.0.0.1:3300/assets/${picturePath}`}
+                width={"100%"}
+                height={"auto"}
+                borderRadius={"10px"}
+              ></Img>}
           </Flex>
 
           <Flex className='post-action-box'
@@ -107,6 +145,7 @@ export const ViewPosts = () => {
                     bgColor: "#d2cdcd",
                     cursor: "pointer"
                   }}
+                  onClick={patchLike}
                 >
                   <BiHeart></BiHeart>
                 </Box>

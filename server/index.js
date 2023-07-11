@@ -49,7 +49,9 @@ const storage = multer.diskStorage({
             }
         }
         let ft = fn.substring(len + 1);
-        cb(null, file.originalname + "-" + Date.now() + "." + ft);
+        let newName = file.originalname + "-" + Date.now() + "." + ft;
+        req.newFileName = newName;
+        cb(null, newName);
     }
 });
 const upload = multer({ storage });
