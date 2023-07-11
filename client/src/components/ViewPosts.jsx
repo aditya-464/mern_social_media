@@ -1,9 +1,7 @@
 import React from 'react'
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
-import { HiOutlineUserPlus, HiOutlineUserMinus, HiHeart, HiOutlineHeart } from "react-icons/hi2";
-import { IoMdHeart, IoMdHeartEmpty, IoMdChatbubbles, IoMdShare } from "react-icons/io";
-
+import { HiOutlineUserPlus, HiOutlineUserMinus } from "react-icons/hi2";
 import { BiShareAlt, BiSolidHeart, BiHeart, BiChat } from "react-icons/bi";
 
 export const ViewPosts = () => {
