@@ -2,6 +2,7 @@ import { Flex } from '@chakra-ui/react';
 import { CreatePost } from 'components/CreatePost';
 import { Navbar } from 'components/Navbar'
 import { UserCard } from 'components/UserCard'
+import { ViewPosts } from 'components/ViewPosts';
 import React from 'react'
 import { useSelector } from 'react-redux';
 
@@ -14,7 +15,8 @@ export const HomePage = () => {
       {/* <Navbar></Navbar> */}
       <Flex>
         {/* <UserCard userId={_id} picturePath={picturePath}></UserCard> */}
-        <CreatePost></CreatePost>
+        {/* <CreatePost></CreatePost> */}
+        <ViewPosts></ViewPosts>
       </Flex>
     </>
   )

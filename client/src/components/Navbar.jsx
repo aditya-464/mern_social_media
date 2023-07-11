@@ -8,7 +8,7 @@ export const Navbar = () => {
     return (
         <>
             <Flex className='navbar-container'
-                width={"100vw"}
+                maxWidth={"100vw"}
                 padding={"1vh 5vw"}
                 bgColor={"secondaryLight"}
                 color={"primaryDark"}
@@ -92,10 +92,11 @@ export const Navbar = () => {
                         <FaQuestionCircle fontSize={"18px"}></FaQuestionCircle>
                     </Box>
                     <Box className='settings'
-                        margin={"0 0.5rem"}
+                        margin={"0 1.5rem"}
                         _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
                         padding={"0.7rem"}
-                        borderRadius={"5px"} marginRight={"0"}>
+                        borderRadius={"5px"} 
+                        marginRight={"0"}>
                         <FaUser fontSize={"18px"}></FaUser>
                     </Box>
                 </Flex>

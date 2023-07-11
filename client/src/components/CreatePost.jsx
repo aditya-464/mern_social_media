@@ -88,7 +88,7 @@ export const CreatePost = () => {
                                 <Flex
                                     width={"100%"}
                                     fontSize={"h6"}
-                                    border={image ? "1px dashed blue" : "1px dashed black"}
+                                    border={image ? "1px dashed #DB005B" : "1px dashed black"}
                                     borderRadius={"10px"}
                                     padding={"1.5rem"}
                                     margin={"1rem 0"}
