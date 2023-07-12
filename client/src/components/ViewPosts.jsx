@@ -1,14 +1,14 @@
-import { Box, Flex, Img, Text } from '@chakra-ui/react'
+import { Box, Flex, Img, Input, Text } from '@chakra-ui/react'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import { HiOutlineUserPlus, HiOutlineUserMinus } from "react-icons/hi2";
-import { BiShareAlt, BiSolidHeart, BiHeart, BiChat } from "react-icons/bi";
+import { BiShareAlt, BiSolidHeart, BiHeart, BiChat, BiSend } from "react-icons/bi";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
 import { PostUserDetails } from './PostUserDetails';
 
 export const ViewPosts = (props) => {
-  const {
+  let {
     postId,
     postUserId,
     fullname,
@@ -20,18 +20,12 @@ export const ViewPosts = (props) => {
     comments, } = props;
 
   const [isComments, setIsComments] = useState(false);
+  const [comment, setComment] = useState("");
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
-  
-  
-  console.log(token);
-
-
-
   const loggedInUserId = useSelector((state) => state.user._id);
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
-
   const patchLike = async () => {
     const response = await fetch(`http://127.0.0.1:3300/posts/${postId}/like`, {
       method: "PATCH",
@@ -45,6 +39,21 @@ export const ViewPosts = (props) => {
     dispatch(setPost({ post: updatedPost }));
   };
 
+  const patchComment = async () => {
+    const response = await fetch(`http://127.0.0.1:3300/posts/${postId}/comment`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: loggedInUserId,
+        comment: comment
+      }),
+    });
+    const updatedPost = await response.json();
+    dispatch(setPost({ post: updatedPost }));
+  }
 
 
 
@@ -181,14 +190,16 @@ export const ViewPosts = (props) => {
                     bgColor: "#d2cdcd",
                     cursor: "pointer"
                   }}
-                  onClick={() => setIsComments(!isComments)}
+                  onClick={() => {
+                    setIsComments(!isComments);
+                  }}
                 >
                   <BiChat></BiChat>
                 </Box>
                 <Box
                   minWidth={"3vw"}
                 >
-                  <Text fontSize={"h6"} marginLeft={"0.2rem"}>28</Text>
+                  <Text fontSize={"h6"} marginLeft={"0.2rem"}>{comments.length}</Text>
                 </Box>
               </Flex>
             </Flex>
@@ -210,8 +221,65 @@ export const ViewPosts = (props) => {
               </Flex>
             </Flex>
           </Flex>
-        </Flex>
 
+          {isComments && comments.length > 0 &&
+            <>
+
+              <Flex className='comments-section'
+                fontSize={"13px"}
+                marginTop={"1rem"}
+                maxHeight={"20vh"}
+                overflowY={"auto"}
+                flexDir={"column"}
+                scrollBehavior={"smooth"}
+              >
+                {Array.isArray(comments) && comments.map((comment, i) => (
+                  <Flex className='individual-comment' key={`${comment.name}+${i}`}>
+                    <Text
+                      fontWeight={"bold"}
+                      marginRight={"1.5rem"}
+                    >{comment.name}</Text>
+                    <Text>{comment.comment}</Text>
+                  </Flex>
+                ))}
+              </Flex>
+              <Flex className='add-comment'
+                padding={"1.5rem 0 1rem 0"}
+                height={"9vh"}
+              >
+                <Input
+                  onChange={(e) => setComment(e.target.value)}
+                  value={comment}
+                  height={"100%"}
+                  outline={"none"}
+                  bgColor={"#d2cdcd"}
+                  border={"1px solid secondaryLight"}
+                  placeholder='Write a comment'
+                  borderRadius={"20px"}
+                  fontSize={"13px"}
+                  padding={"0 1.5rem"}
+                  focusBorderColor={"transaprent"}
+                ></Input>
+                <Flex
+                  justify={"center"}
+                  align={"center"}
+                  fontSize={"28px"}
+                  padding={"0 0.8rem"}
+                  borderRadius={"7px"}
+                  _hover={{ bgColor: "#d2cdcd" }}
+                  cursor={"pointer"}
+                  marginLeft={"1rem"}
+                  onClick={() => {
+                    patchComment();
+                    setComment("");
+                  }}
+                >
+                  <BiSend></BiSend>
+                </Flex>
+              </Flex>
+            </>
+          }
+        </Flex>
       </Box>
     </>
   )

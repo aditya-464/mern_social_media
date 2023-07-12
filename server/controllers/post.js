@@ -73,18 +73,22 @@ export const postComment = async (req, res) => {
     try {
         const { id } = req.params;
         const { userId, comment } = req.body;
-        const newComment = {};
-        newComment[userId] = comment;
+        const user = await User.findById(userId);
+        const newComment = {
+            userId: user._id,
+            name: user.fullname,
+            comment
+        };
         const post = await Post.findById(id);
         const commentsArray = post.comments;
         commentsArray.push(newComment);
         const updatePostComments = await Post.findByIdAndUpdate(
             id,
             { comments: commentsArray },
-            {new : true}
-        )
-        const newCommentsArray = updatePostComments.comments;
-        return res.status(200).json(newCommentsArray);
+            { new: true }
+        );
+        
+        res.status(200).json(updatePostComments);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
