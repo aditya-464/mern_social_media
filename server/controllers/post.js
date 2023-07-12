@@ -69,3 +69,23 @@ export const likePost = async (req, res) => {
         res.status(409).json({ message: error });
     }
 }
+export const postComment = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { userId, comment } = req.body;
+        const newComment = {};
+        newComment[userId] = comment;
+        const post = await Post.findById(id);
+        const commentsArray = post.comments;
+        commentsArray.push(newComment);
+        const updatePostComments = await Post.findByIdAndUpdate(
+            id,
+            { comments: commentsArray },
+            {new : true}
+        )
+        const newCommentsArray = updatePostComments.comments;
+        return res.status(200).json(newCommentsArray);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+}

@@ -22,9 +22,15 @@ export const ViewPosts = (props) => {
   const [isComments, setIsComments] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
+  
+  
+  console.log(token);
+
+
+
   const loggedInUserId = useSelector((state) => state.user._id);
-  // const isLiked = Boolean(likes[loggedInUserId]);
-  // const likeCount = Object.keys(likes).length;
+  const isLiked = Boolean(likes[loggedInUserId]);
+  const likeCount = Object.keys(likes).length;
 
   const patchLike = async () => {
     const response = await fetch(`http://127.0.0.1:3300/posts/${postId}/like`, {
@@ -146,7 +152,6 @@ export const ViewPosts = (props) => {
             <Flex className='left-side'>
               <Flex className='like-grp'
                 align={"center"}
-                marginRight={"2rem"}
               >
                 <Box
                   padding={"0.8rem"}
@@ -157,10 +162,15 @@ export const ViewPosts = (props) => {
                   }}
                   onClick={patchLike}
                 >
-                  <BiHeart></BiHeart>
+                  {isLiked ? (<BiSolidHeart color='#DB005B'></BiSolidHeart>) : (<BiHeart></BiHeart>)}
                 </Box>
-                <Text fontSize={"h6"} marginLeft={"0.2rem"}>156</Text>
+                <Box
+                  minWidth={"3vw"}
+                >
+                  <Text fontSize={"h6"} marginLeft={"0.2rem"}>{likeCount}</Text>
+                </Box>
               </Flex>
+
               <Flex className='comment-grp'
                 align={"center"}
               >
@@ -171,10 +181,15 @@ export const ViewPosts = (props) => {
                     bgColor: "#d2cdcd",
                     cursor: "pointer"
                   }}
+                  onClick={() => setIsComments(!isComments)}
                 >
                   <BiChat></BiChat>
                 </Box>
-                <Text fontSize={"h6"} marginLeft={"0.2rem"}>28</Text>
+                <Box
+                  minWidth={"3vw"}
+                >
+                  <Text fontSize={"h6"} marginLeft={"0.2rem"}>28</Text>
+                </Box>
               </Flex>
             </Flex>
 

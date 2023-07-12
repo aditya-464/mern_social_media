@@ -48,6 +48,7 @@ export const PostUserDetails = (props) => {
                     onClick={() => {
                         navigate("/profile");
                     }}
+                    _hover={{cursor: "pointer"}}
                 >
                     <Img
                         src={userPicturePath === "picturePath" ? profileDummyImg : `http://127.0.0.1:3300/assets/${userPicturePath}`}
@@ -69,6 +70,7 @@ export const PostUserDetails = (props) => {
                         onClick={() => {
                             navigate("/profile");
                         }}
+                        _hover={{cursor: "pointer"}}
                     >
                         <Text className="name"
                             fontSize={"h6"}
