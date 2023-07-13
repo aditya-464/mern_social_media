@@ -8,7 +8,7 @@ import { setPost } from "state";
 import { PostUserDetails } from './PostUserDetails';
 
 export const ViewPosts = (props) => {
-  let {
+  const {
     postId,
     postUserId,
     fullname,
@@ -222,7 +222,7 @@ export const ViewPosts = (props) => {
             </Flex>
           </Flex>
 
-          {isComments && comments.length > 0 &&
+          {isComments &&
             <>
 
               <Flex className='comments-section'
@@ -254,7 +254,7 @@ export const ViewPosts = (props) => {
                   outline={"none"}
                   bgColor={"#d2cdcd"}
                   border={"1px solid secondaryLight"}
-                  placeholder='Write a comment'
+                  placeholder='Add a comment'
                   borderRadius={"20px"}
                   fontSize={"13px"}
                   padding={"0 1.5rem"}
@@ -270,7 +270,9 @@ export const ViewPosts = (props) => {
                   cursor={"pointer"}
                   marginLeft={"1rem"}
                   onClick={() => {
-                    patchComment();
+                    if (comment) {
+                      patchComment();
+                    }
                     setComment("");
                   }}
                 >

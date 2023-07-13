@@ -1,6 +1,8 @@
-import { Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
+import { Advertisement } from 'components/Advertisement';
 import { AllPosts } from 'components/AllPosts';
 import { CreatePost } from 'components/CreatePost';
+import { ImageSlider } from 'components/ImageSlider';
 import { Navbar } from 'components/Navbar'
 import { PostUserDetails } from 'components/PostUserDetails';
 import { UserCard } from 'components/UserCard'
@@ -15,12 +17,36 @@ export const HomePage = () => {
   return (
     <>
       {/* <Navbar></Navbar> */}
-      <Flex>
-        {/* <UserCard userId={_id} picturePath={picturePath}></UserCard> */}
-        {/* <CreatePost></CreatePost> */}
-        {/* <ViewPosts></ViewPosts> */}
-        <AllPosts></AllPosts>
+
+      {/* <Flex
+        width={"90vw"}
+        height={"auto"}
+        justify={"space-between"}
+        margin={"auto"}
+      >
+        <Box
+          marginTop={"2rem"}
+        >
+          <UserCard userId={_id} picturePath={picturePath}></UserCard>
+        </Box>
+        <Flex
+          flexDir={"column"}
+          marginTop={"2rem"}
+        >
+          <CreatePost></CreatePost>
+          <Box width={"100%"} height={"2rem"}></Box>
+          <AllPosts></AllPosts>
+        </Flex>
+        <Box
+          marginTop={"2rem"}
+        >
+          <UserCard userId={_id} picturePath={picturePath}></UserCard>
+        </Box>
       </Flex>
+     */}
+
+     {/* <Advertisement></Advertisement> */}
+     <ImageSlider></ImageSlider>
     </>
   )
 }

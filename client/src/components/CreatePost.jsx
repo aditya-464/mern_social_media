@@ -90,29 +90,31 @@ export const CreatePost = () => {
                                     fontSize={"h6"}
                                     border={image ? "1px dashed #DB005B" : "1px dashed black"}
                                     borderRadius={"10px"}
-                                    padding={"1.5rem"}
                                     margin={"1rem 0"}
                                 >
-                                    <Box
+                                    <Flex
                                         {...getRootProps()}
                                         width={"100%"}
+                                        height={"8vh"}
                                         _hover={{ cursor: "pointer" }}
+                                        flexDir={"column"}
+                                        justify={"center"}
                                     >
                                         <input {...getInputProps()} />
                                         {!image ? (
-                                            <Text opacity={"0.5"}>Add image here</Text>
+                                            <Text opacity={"0.5"} paddingLeft={"1rem"}>Add image here</Text>
                                         ) : (
                                             <Flex>
-                                                <Text >{image.name}</Text>
+                                                <Text paddingLeft={"1rem"}>{image.name}</Text>
                                             </Flex>
                                         )}
-                                    </Box>
+                                    </Flex>
                                     {image && (
                                         <Flex
                                             justify={"center"}
                                             align={"center"}
-                                            fontSize={"h5"}
-                                            padding={"0.5rem"}
+                                            fontSize={"h4"}
+                                            padding={"1rem"}
                                             borderRadius={"5px"}
                                             onClick={() => { setImage(null) }}
                                             _hover={{
@@ -144,7 +146,7 @@ export const CreatePost = () => {
                     <Flex className='button-grp'
                         color={"primaryDark"}
                         width={"20%"}
-                        fontSize={"h6"}
+                        fontSize={"h5"}
                         justify={"center"}
                         align={"center"}
                         borderRadius={"20px"}
@@ -155,13 +157,13 @@ export const CreatePost = () => {
                         onClick={() => { setIsImage(!isImage) }}
                     >
                         <MdOutlineImage></MdOutlineImage>
-                        <Text padding={"0.5rem"}>Image</Text>
+                        <Text padding={"0.5rem"} fontSize={"h6"}>Image</Text>
                     </Flex>
 
                     <Flex className='button-grp'
                         color={"primaryDark"}
                         width={"20%"}
-                        fontSize={"h6"}
+                        fontSize={"h5"}
                         justify={"center"}
                         align={"center"}
                         borderRadius={"20px"}
@@ -171,13 +173,13 @@ export const CreatePost = () => {
                         }}
                     >
                         <MdOutlineGifBox></MdOutlineGifBox>
-                        <Text padding={"0.5rem"}>Clip</Text>
+                        <Text padding={"0.5rem"} fontSize={"h6"}>Clip</Text>
                     </Flex>
 
                     <Flex className='button-grp'
                         color={"primaryDark"}
                         width={"20%"}
-                        fontSize={"h6"}
+                        fontSize={"h5"}
                         justify={"center"}
                         align={"center"}
                         borderRadius={"20px"}
@@ -187,7 +189,7 @@ export const CreatePost = () => {
                         }}
                     >
                         <MdOutlineMicNone></MdOutlineMicNone>
-                        <Text padding={"0.5rem"}>Audio</Text>
+                        <Text padding={"0.5rem"} fontSize={"h6"}>Audio</Text>
                     </Flex>
 
                     <Box className='post-btn'
