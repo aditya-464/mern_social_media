@@ -1,14 +1,14 @@
 import { Flex, Box, Text, Img } from '@chakra-ui/react'
 import { HiOutlineSparkles } from "react-icons/hi"
 import React from 'react'
+import { ImageSlider } from './ImageSlider'
 
 
 export const Advertisement = () => {
     return (
         <>
             <Flex className='advertisement-container'
-                width={"25vw"}
-                height={"30vh"}
+                width={"20vw"}
                 bgColor={"secondaryLight"}
                 color={"primaryDark"}
                 padding={"1.5rem"}
@@ -33,11 +33,13 @@ export const Advertisement = () => {
                         <HiOutlineSparkles></HiOutlineSparkles>
                     </Box>
                 </Flex>
-                <Flex className='slider-box'
+                <Box className='slider-box'
                     width={"100%"}
+                    margin={"1rem 0"}
                 >
                     {/* Slider component */}
-                </Flex>
+                    <ImageSlider width="20vw"></ImageSlider>
+                </Box>
                 <Box className='text-box'>
                     <Text>Hare krishna</Text>
                 </Box>

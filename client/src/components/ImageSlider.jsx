@@ -14,33 +14,36 @@ import { Box, Img } from '@chakra-ui/react';
 export const ImageSlider = (props) => {
     const { imgwidth } = props;
     var settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 5000,
     };
 
     return (
         <>
-            <Box width={imgwidth}>
+            <Box width={imgwidth}
+                borderRadius={"10px"}
+                overflow={"hidden"}
+            >
                 <Slider {...settings}>
                     <Box>
-                        <Img src={ok4} width={imgwidth}></Img>
+                        <Img src={ok4} width={imgwidth} borderRadius={"10px"}></Img>
                     </Box>
                     <Box>
-                        <Img src={ok3} width={imgwidth}></Img>
+                        <Img src={ok3} width={imgwidth} borderRadius={"10px"}></Img>
                     </Box>
                     <Box>
-                        <Img src={ok1} width={imgwidth}></Img>
+                        <Img src={ok1} width={imgwidth} borderRadius={"10px"}></Img>
                     </Box>
                     <Box>
-                        <Img src={ok8} width={imgwidth}></Img>
+                        <Img src={ok8} width={imgwidth} borderRadius={"10px"}></Img>
                     </Box>
                     <Box>
-                        <Img src={ok6} width={imgwidth}></Img>
+                        <Img src={ok6} width={imgwidth} borderRadius={"10px"}></Img>
                     </Box>
                 </Slider>
             </Box>

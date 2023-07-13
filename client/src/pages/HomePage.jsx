@@ -45,8 +45,8 @@ export const HomePage = () => {
       </Flex>
      */}
 
-     {/* <Advertisement></Advertisement> */}
-     <ImageSlider></ImageSlider>
+     <Advertisement></Advertisement>
+     {/* <ImageSlider></ImageSlider> */}
     </>
   )
 }
