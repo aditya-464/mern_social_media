@@ -12,7 +12,7 @@ export const Advertisement = () => {
                 bgColor={"secondaryLight"}
                 color={"primaryDark"}
                 padding={"1.5rem"}
-                margin={"2rem 0"}
+                marginBottom={"2rem"}
                 borderRadius={"10px"}
                 fontFamily={"Poppins, sans-serif"}
                 flexDir={"column"}
@@ -39,9 +39,6 @@ export const Advertisement = () => {
                 >
                     {/* Slider component */}
                     <ImageSlider width="20vw"></ImageSlider>
-                </Box>
-                <Box className='text-box'>
-                    <Text>Hare krishna</Text>
                 </Box>
             </Flex>
         </>
