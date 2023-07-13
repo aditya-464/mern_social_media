@@ -25,7 +25,7 @@ export const ImageSlider = (props) => {
 
     return (
         <>
-            <Box border={"2px solid red"} width={imgwidth}>
+            <Box width={imgwidth}>
                 <Slider {...settings}>
                     <Box>
                         <Img src={ok4} width={imgwidth}></Img>
