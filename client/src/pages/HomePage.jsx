@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import { Advertisement } from 'components/Advertisement';
 import { AllPosts } from 'components/AllPosts';
 import { CreatePost } from 'components/CreatePost';
+import { FriendsList } from 'components/FriendsList';
 import { ImageSlider } from 'components/ImageSlider';
 import { Navbar } from 'components/Navbar'
 import { PostUserDetails } from 'components/PostUserDetails';
@@ -45,8 +46,13 @@ export const HomePage = () => {
       </Flex>
      */}
 
-     <Advertisement></Advertisement>
-     {/* <ImageSlider></ImageSlider> */}
+      {/* <AllPosts></AllPosts> */}
+      {/* <Advertisement></Advertisement> */}
+      {/* <CreatePost></CreatePost> */}
+      <FriendsList></FriendsList>
+      <Flex>
+        {/* <ImageSlider></ImageSlider> */}
+      </Flex>
     </>
   )
 }
