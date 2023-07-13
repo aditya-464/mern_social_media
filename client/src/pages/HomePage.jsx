@@ -49,7 +49,7 @@ export const HomePage = () => {
       {/* <AllPosts></AllPosts> */}
       {/* <Advertisement></Advertisement> */}
       {/* <CreatePost></CreatePost> */}
-      <FriendsList></FriendsList>
+      {/* <FriendsList></FriendsList> */}
       <Flex>
         {/* <ImageSlider></ImageSlider> */}
       </Flex>

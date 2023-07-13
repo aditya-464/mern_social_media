@@ -4,7 +4,8 @@ import { setPosts } from "state";
 import { ViewPosts } from './ViewPosts';
 import { Box } from '@chakra-ui/react';
 
-export const AllPosts = ({ userId, isProfile = false }) => {
+export const AllPosts = (props) => {
+    const { userId, isProfile } = props;
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.posts);
     const token = useSelector((state) => state.token);
@@ -31,7 +32,7 @@ export const AllPosts = ({ userId, isProfile = false }) => {
     };
 
     useEffect(() => {
-        if (isProfile) {
+        if (isProfile === true) {
             getUserPosts();
         } else {
             getPosts();
