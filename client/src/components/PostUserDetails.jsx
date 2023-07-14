@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setFriends } from "state";
 import React from 'react'
+import Avatar from 'react-avatar';
 
 export const PostUserDetails = (props) => {
     const { friendId, name, subtitle, userPicturePath } = props;
@@ -48,13 +49,13 @@ export const PostUserDetails = (props) => {
                     onClick={() => {
                         navigate("/profile");
                     }}
-                    _hover={{cursor: "pointer"}}
+                    _hover={{ cursor: "pointer" }}
                 >
-                    <Img
-                        src={userPicturePath === "picturePath" ? profileDummyImg : `http://127.0.0.1:3300/assets/${userPicturePath}`}
-                        width={"4vw"}
-                        borderRadius={"50%"}
-                    ></Img>
+                    <Avatar
+                        src={userPicturePath === "picturePath" || !userPicturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${userPicturePath}`}
+                        size={50}
+                        round={true}
+                    />
                 </Flex>
                 <Flex className='view-post-details'
                     width={"100%"}
@@ -70,7 +71,7 @@ export const PostUserDetails = (props) => {
                         onClick={() => {
                             navigate("/profile");
                         }}
-                        _hover={{cursor: "pointer"}}
+                        _hover={{ cursor: "pointer" }}
                     >
                         <Text className="name"
                             fontSize={"h6"}

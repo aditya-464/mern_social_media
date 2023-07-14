@@ -52,7 +52,7 @@ export const UserCard = (props) => {
                     >
                         <Avatar
                             src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
-                            size={75}
+                            size={60}
                             round={true}
                         />
                     </Flex>

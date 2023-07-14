@@ -49,9 +49,9 @@ export const HomePage = () => {
 
       {/* <AllPosts></AllPosts> */}
       {/* <Advertisement></Advertisement> */}
-      {/* <CreatePost></CreatePost> */}
+      <CreatePost></CreatePost>
       {/* <FriendsList></FriendsList> */}
-      <AccountPage></AccountPage>
+      {/* <AccountPage></AccountPage> */}
       {/* <UserCard userId={_id} picturePath={picturePath}></UserCard> */}
       <Flex>
         {/* <ImageSlider></ImageSlider> */}

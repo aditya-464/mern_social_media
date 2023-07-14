@@ -6,6 +6,7 @@ import { FillButton } from './FillButton';
 import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
+import Avatar from 'react-avatar';
 
 
 export const CreatePost = () => {
@@ -13,6 +14,7 @@ export const CreatePost = () => {
     const [isImage, setIsImage] = useState(false);
     const [image, setImage] = useState(null);
     const [post, setPost] = useState("");
+    const user = useSelector((state)=>state.user);
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
 
@@ -50,10 +52,11 @@ export const CreatePost = () => {
                         justifyContent={"center"}
                         alignItems={"center"}
                     >
-                        <Img src={profileDummyImg}
-                            width={"4vw"}
-                            borderRadius={"50%"}
-                        ></Img>
+                        <Avatar
+                            src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
+                            size={60}
+                            round={true}
+                        />
                     </Flex>
                     <Flex className='post-box'
                         width={"100%"}
