@@ -12,6 +12,7 @@ import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/post.js";
 import { verifyToken } from "./middlewares/auth.js";
 import { createPost } from "./controllers/post.js";
+import { updateUserImage } from "./controllers/users.js";
 
 
 // Configurations
@@ -30,7 +31,20 @@ app.use(express.urlencoded({
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
+
+
+// const corsOptions ={
+//     origin:'*', 
+//     credentials:true,            //access-control-allow-credentials:true
+//     optionSuccessStatus:200,
+//  }
+
+
+// app.use(cors(corsOptions));
 app.use(cors());
+
+
+
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 // File Storage
@@ -58,20 +72,15 @@ const upload = multer({ storage });
 
 // Routes with files
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
-
-
-// app.post("/auth/setupaccount", upload.single("picture"), setupAccount);
-
-
-app.use("/auth", authRoutes);
+app.patch("/users/updateUserImage", verifyToken, upload.single("picture"), updateUserImage);
 
 // Routes
+app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
 // Routes with files
 app.use("/posts", verifyToken, upload.single("picture"), createPost);
-
 
 // Connection with Database
 const DB = process.env.MONGO_URL;

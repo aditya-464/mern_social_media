@@ -1,4 +1,6 @@
 import User from "../models/user.js";
+import jwt from 'jsonwebtoken';
+
 
 // Get User Details
 export const getUser = async (req, res) => {
@@ -57,6 +59,44 @@ export const addRemoveFriend = async (req, res) => {
         });
         res.status(200).json(formattedFriends);
 
+    } catch (error) {
+        return res.status(404).json({ message: error });
+    }
+}
+
+// Update User
+export const updateUser = async (req, res) => {
+    try {
+        const { _id, fullname, username, location, bio, occupation } = req.body;
+        const newUser = await User.findByIdAndUpdate(
+            _id,
+            {
+                fullname: fullname,
+                username: username,
+                location: location,
+                bio: bio,
+                occupation: occupation,
+            },
+            { new: true },
+        );
+        res.status(200).json(newUser);
+    } catch (error) {
+        return res.status(404).json({ message: error });
+    }
+}
+
+// Update User Image
+export const updateUserImage = async (req, res) => {
+    try {
+        const { _id } = req.body;
+        let val = req.newFileName;
+        const newUser = await User.findByIdAndUpdate(
+            _id,
+            { picturePath: val },
+            { new: true },
+        );
+        const token = jwt.sign({id : newUser._id}, process.env.JWT_SECRET_KEY);
+        res.status(201).json({token, newUser});
     } catch (error) {
         return res.status(404).json({ message: error });
     }

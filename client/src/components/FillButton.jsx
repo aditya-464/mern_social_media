@@ -15,7 +15,7 @@ export const FillButton = (props) => {
                 padding={pd}
                 color={"primaryLight"}
                 _hover={{
-                    opacity: "0.6",
+                    color : "primaryLight",
                     borderRadius: br == null ? "4px" : `${br}`
                 }}
                 _active={{

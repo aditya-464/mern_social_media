@@ -1,4 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
+import { AccountPage } from 'components/AccountPage';
 import { Advertisement } from 'components/Advertisement';
 import { AllPosts } from 'components/AllPosts';
 import { CreatePost } from 'components/CreatePost';
@@ -50,6 +51,8 @@ export const HomePage = () => {
       {/* <Advertisement></Advertisement> */}
       {/* <CreatePost></CreatePost> */}
       {/* <FriendsList></FriendsList> */}
+      <AccountPage></AccountPage>
+      {/* <UserCard userId={_id} picturePath={picturePath}></UserCard> */}
       <Flex>
         {/* <ImageSlider></ImageSlider> */}
       </Flex>

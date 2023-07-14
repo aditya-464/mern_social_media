@@ -4,6 +4,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import Avatar from 'react-avatar';
 
 
 
@@ -45,12 +46,16 @@ export const UserCard = (props) => {
                 <Flex className='user-name-image'
                     marginBottom={"1rem"}
                 >
-                    <Box className='image-box'>
-                        <Img src={profileDummyImg}
-                            width={"4vw"}
-                            borderRadius={"50%"}
-                        ></Img>
-                    </Box>
+                    <Flex className='image-box'
+                    justify={"center"}
+                    align={"center"}
+                    >
+                        <Avatar
+                            src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
+                            size={75}
+                            round={true}
+                        />
+                    </Flex>
                     <Flex className='name-box'
                         flexDirection={"column"}
                         justifyContent={"center"}

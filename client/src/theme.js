@@ -17,7 +17,7 @@ const theme = extendTheme({
         h4 : "24px",
         h5 : "20px",
         h6 : "16px",
-    }
+    },
 });
 
 export default theme;
