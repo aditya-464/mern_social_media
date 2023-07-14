@@ -147,3 +147,6 @@ export const LoginForm = (props) => {
         </>
     )
 }
+
+var MemoizedLoginForm = null;
+export default MemoizedLoginForm = React.memo(LoginForm);

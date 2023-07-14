@@ -104,3 +104,6 @@ export const PostUserDetails = (props) => {
         </>
     )
 }
+
+var MemoizedPostUserDetails = null;
+export default MemoizedPostUserDetails = React.memo(PostUserDetails);

@@ -1,7 +1,8 @@
 import { Flex, Box, Text, Img } from '@chakra-ui/react'
 import { HiOutlineSparkles } from "react-icons/hi"
 import React from 'react'
-import { ImageSlider } from './ImageSlider'
+import MemoizedImageSlider from './ImageSlider'
+
 
 
 export const Advertisement = () => {
@@ -38,9 +39,13 @@ export const Advertisement = () => {
                     margin={"1rem 0"}
                 >
                     {/* Slider component */}
-                    <ImageSlider width="20vw"></ImageSlider>
+                    <MemoizedImageSlider width="20vw"></MemoizedImageSlider>
                 </Box>
             </Flex>
         </>
     )
 }
+
+var MemoizedAdvertisement =null ;
+export default MemoizedAdvertisement = React.memo(Advertisement);
+

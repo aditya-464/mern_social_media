@@ -52,7 +52,7 @@ export const UserCard = (props) => {
                     >
                         <Avatar
                             src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
-                            size={60}
+                            size={70}
                             round={true}
                         />
                     </Flex>
@@ -158,3 +158,6 @@ export const UserCard = (props) => {
         </>
     )
 }
+
+var MemoizedUserCard = null;
+export default MemoizedUserCard = React.memo(UserCard);

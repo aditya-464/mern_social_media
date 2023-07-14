@@ -170,3 +170,6 @@ export const SignupForm = (props) => {
         </>
     )
 }
+
+var MemoizedSignupForm = null;
+export default MemoizedSignupForm = React.memo(SignupForm);

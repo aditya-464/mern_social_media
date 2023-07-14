@@ -78,3 +78,6 @@ export const AllPosts = (props) => {
         </>
     )
 }
+
+var MemoizedAllPosts = null;
+export default MemoizedAllPosts = React.memo(AllPosts);

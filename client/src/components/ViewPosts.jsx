@@ -286,3 +286,7 @@ export const ViewPosts = (props) => {
     </>
   )
 }
+
+
+var MemoizedViewPosts = null;
+export default MemoizedViewPosts = React.memo(ViewPosts);

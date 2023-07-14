@@ -79,7 +79,8 @@ export const updateUser = async (req, res) => {
             },
             { new: true },
         );
-        res.status(200).json(newUser);
+        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
+        res.status(201).json({ token, newUser });
     } catch (error) {
         return res.status(404).json({ message: error });
     }
@@ -95,8 +96,8 @@ export const updateUserImage = async (req, res) => {
             { picturePath: val },
             { new: true },
         );
-        const token = jwt.sign({id : newUser._id}, process.env.JWT_SECRET_KEY);
-        res.status(201).json({token, newUser});
+        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
+        res.status(201).json({ token, newUser });
     } catch (error) {
         return res.status(404).json({ message: error });
     }

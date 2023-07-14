@@ -65,3 +65,7 @@ export const FriendsList = () => {
         </>
     )
 }
+
+
+var MemoizedFriendsList = null;
+export default MemoizedFriendsList = React.memo(FriendsList);

@@ -88,3 +88,7 @@ export const ImageSlider = (props) => {
         </>
     )
 }
+
+
+var MemoizedImageSlider = null;
+export default MemoizedImageSlider = React.memo(ImageSlider);

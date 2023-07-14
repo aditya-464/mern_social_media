@@ -11,6 +11,8 @@ import { UserCard } from 'components/UserCard'
 import { ViewPosts } from 'components/ViewPosts';
 import React from 'react'
 import { useSelector } from 'react-redux';
+import MemoizedAdvertisement from 'components/Advertisement';
+
 
 
 export const HomePage = () => {
@@ -49,13 +51,14 @@ export const HomePage = () => {
 
       {/* <AllPosts></AllPosts> */}
       {/* <Advertisement></Advertisement> */}
-      <CreatePost></CreatePost>
+      {/* <CreatePost></CreatePost> */}
       {/* <FriendsList></FriendsList> */}
       {/* <AccountPage></AccountPage> */}
       {/* <UserCard userId={_id} picturePath={picturePath}></UserCard> */}
       <Flex>
         {/* <ImageSlider></ImageSlider> */}
       </Flex>
+      <MemoizedAdvertisement></MemoizedAdvertisement>
     </>
   )
 }

@@ -104,3 +104,6 @@ export const Navbar = () => {
         </>
     )
 }
+
+var MemoizedNavbar = null;
+export default MemoizedNavbar = React.memo(Navbar);

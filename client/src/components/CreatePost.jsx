@@ -54,7 +54,7 @@ export const CreatePost = () => {
                     >
                         <Avatar
                             src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
-                            size={60}
+                            size={70}
                             round={true}
                         />
                     </Flex>
@@ -210,3 +210,6 @@ export const CreatePost = () => {
         </>
     )
 }
+
+var MemoizedCreatePost = null;
+export default MemoizedCreatePost = React.memo(CreatePost);
