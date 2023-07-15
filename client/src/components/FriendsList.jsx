@@ -6,7 +6,7 @@ import { setFriends } from 'state';
 
 
 export const FriendsList = (props) => {
-    const { self } = props;
+    const { self, homepage } = props;
     const dispatch = useDispatch();
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
@@ -77,6 +77,7 @@ export const FriendsList = (props) => {
                                 subtitle={friend.location}
                                 userPicturePath={friend.picturePath}
                                 self={self}
+                                homepage={homepage}
                             ></PostUserDetails>
                         </Box>
                     )))

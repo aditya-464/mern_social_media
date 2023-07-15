@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import { ViewPosts } from './ViewPosts';
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 
 export const AllPosts = (props) => {
-    const { userId, isProfile, hideIcons } = props;
+    const { userId, isProfile, hideIcons, homepage } = props;
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.posts);
     const token = useSelector((state) => state.token);
@@ -20,7 +20,7 @@ export const AllPosts = (props) => {
     };
 
     const getUserPosts = async () => {
-        if(!userId) return null;
+        if (!userId) return null;
         const response = await fetch(
             `http://127.0.0.1:3300/posts/${userId}/posts`,
             {
@@ -49,6 +49,16 @@ export const AllPosts = (props) => {
                 width={"35vw"}
                 height={"auto"}
             >
+                {posts.length === 0 && isProfile &&
+                    <Text
+                        fontSize={"h3"}
+                        textAlign={"center"}
+                        fontFamily={"Poppins, sans-serif"}
+                        marginTop={"5rem"}
+                    >
+                        No posts yet <Text display={"inline-block"} paddingLeft={"1rem"}>&#58; &#40;</Text>
+                    </Text>
+                }
                 {Array.isArray(posts) && posts.map(
                     ({
                         _id,
@@ -73,6 +83,7 @@ export const AllPosts = (props) => {
                             likes={likes}
                             comments={comments}
                             hideIcons={hideIcons}
+                            homepage={homepage}
                         />
                     )
                 )}

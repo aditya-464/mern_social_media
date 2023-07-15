@@ -38,11 +38,11 @@ export const SignupForm = (props) => {
         if (signupResponse.status === 201) {
             dispatch(
                 setLogin({
-                    user: signupData.user,
+                    user: signupData.savedNewUser,
                     token: signupData.token
                 })
             );
-            dispatch(setViewProfile(signupData.user._id));
+            dispatch(setViewProfile(signupData.savedNewUser._id));
             navigate("/home");
         }
         else {

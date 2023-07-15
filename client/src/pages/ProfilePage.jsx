@@ -71,14 +71,14 @@ const ProfilePage = () => {
               <Box className='friends-list-container'
                 marginTop={"2rem"}
               >
-                <MemoizedFriendsList self={self}></MemoizedFriendsList>
+                <MemoizedFriendsList self={self} homepage={false}></MemoizedFriendsList>
               </Box>
             </Box>
 
             <Box className='all-posts-container'
               marginTop={"2rem"}
             >
-              <MemoizedAllPosts isProfile={true} userId={viewData.id} hideIcons={true}></MemoizedAllPosts>
+              <MemoizedAllPosts isProfile={true} userId={viewData.id} hideIcons={true} self={self} homepage={false}></MemoizedAllPosts>
             </Box>
           </Flex>
         </Box>}

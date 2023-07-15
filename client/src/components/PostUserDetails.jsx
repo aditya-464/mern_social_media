@@ -1,4 +1,4 @@
-import { Flex, Img, Box, Text } from '@chakra-ui/react'
+import { Flex, Text } from '@chakra-ui/react'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import { HiOutlineUserPlus, HiOutlineUserMinus } from 'react-icons/hi2'
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import React from 'react'
 import Avatar from 'react-avatar';
 
 export const PostUserDetails = (props) => {
-    const { friendId, name, subtitle, userPicturePath, hideIcons, self } = props;
+    const { friendId, name, subtitle, userPicturePath, hideIcons, self, homepage } = props;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { _id } = useSelector((state) => state.user);
@@ -92,7 +92,7 @@ export const PostUserDetails = (props) => {
                             {subtitle}
                         </Text>
                     </Flex>
-                    {(_id !== friendId) && !hideIcons && self && <Flex className='friend-icon'
+                    {(_id !== friendId) && !hideIcons && (homepage == true) && <Flex className='friend-icon'
                         fontSize={"22px"}
                         justifyContent={"center"}
                         alignItems={"center"}

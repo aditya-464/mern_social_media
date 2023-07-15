@@ -17,6 +17,7 @@ export const ViewPosts = (props) => {
     likes,
     comments,
     hideIcons,
+    homepage,
   } = props;
 
   const [isComments, setIsComments] = useState(false);
@@ -74,6 +75,7 @@ export const ViewPosts = (props) => {
           subtitle={location}
           userPicturePath={userPicturePath}
           hideIcons={hideIcons}
+          homepage={homepage}
         >
         </PostUserDetails>
 
