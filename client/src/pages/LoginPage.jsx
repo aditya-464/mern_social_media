@@ -28,8 +28,12 @@ export const LoginPage = () => {
             margin={"auto"}
             marginTop={"15%"}
           >
-            <Box className='welcome-text'
-              textAlign={"center"}>
+            <Box className='login-text'
+              textAlign={"center"}
+              bgColor={"white"}
+              borderRadius={"10px"}
+              padding={"1rem 0"}
+              >
               <Text
                 fontSize={"h2"}
                 fontWeight={600}
@@ -42,14 +46,6 @@ export const LoginPage = () => {
               <LoginForm width="55%"></LoginForm>
 
             </Box>
-
-            <Flex className='welcome-text-buttons'
-              width={"60%"}
-              margin={"auto"}
-              marginTop={"7%"}
-              justifyContent={"space-around"}
-              alignItems={"center"}>
-            </Flex>
           </Box>
         </Box>
       </Flex>
