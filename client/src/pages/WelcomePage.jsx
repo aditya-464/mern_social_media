@@ -1,19 +1,36 @@
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import welcomePageImage from "../assets/welcome-page.webp"
 import { FillButton } from 'components/FillButton'
 import { EmptyButton } from 'components/EmptyButton'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export const WelcomePage = () => {
+  const [welcome, setWelcome] = useState(false);
+  const navigate = useNavigate();
+  const user = useSelector((state => state.user));
+  const token = useSelector((state) => state.token);
+
+  useEffect(() => {
+    if (user && token) {
+      navigate("/home");
+    }
+    else {
+      setWelcome(true);
+    }
+  }, [])
+
+
+
   return (
     <>
-      <Flex className="welcome-container"
+      {welcome && <Flex className="welcome-container"
         maxWidth={"100vw"}
         height={"100vh"}
         fontFamily={"Poppins, sans-serif"}
         bgColor={"primaryLight"}
-        >
+      >
         <Box className="welcome-image-container"
           width={"40%"}
           height={"100%"}>
@@ -39,7 +56,7 @@ export const WelcomePage = () => {
                 letterSpacing={"3px"}
                 bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
                 bgClip={"text"}
-                >
+              >
                 Vakya
               </Text>
               <Text
@@ -65,7 +82,7 @@ export const WelcomePage = () => {
             </Flex>
           </Box>
         </Box>
-      </Flex>
+      </Flex>}
     </>
   )
 }

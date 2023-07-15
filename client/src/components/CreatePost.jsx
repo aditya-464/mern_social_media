@@ -14,7 +14,7 @@ export const CreatePost = () => {
     const [isImage, setIsImage] = useState(false);
     const [image, setImage] = useState(null);
     const [post, setPost] = useState("");
-    const user = useSelector((state)=>state.user);
+    const user = useSelector((state) => state.user);
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
 
@@ -84,6 +84,11 @@ export const CreatePost = () => {
                     <Box className='dropzone-box'>
                         <Dropzone
                             acceptedFiles=".jpg,.jpeg,.png"
+                            accept={{
+                                'image/png': ['.png'],
+                                'image/jpeg': ['.jpeg'],
+                                'image/webp': ['.webp'],
+                            }}
                             multiple={false}
                             onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
                         >

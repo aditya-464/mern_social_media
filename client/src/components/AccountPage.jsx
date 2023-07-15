@@ -88,7 +88,7 @@ export const AccountPage = () => {
 
     const logoutFunc = () => {
         dispatch(setLogout());
-        navigate("/welcome");
+        navigate("/");
     }
 
 
@@ -213,6 +213,11 @@ export const AccountPage = () => {
                                     >
                                         <Dropzone
                                             acceptedFiles=".jpg,.jpeg,.png"
+                                            accept={{
+                                                'image/png': ['.png'],
+                                                'image/jpeg': ['.jpeg'],
+                                                'image/webp': ['.webp'],
+                                            }}
                                             multiple={false}
                                             onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
                                         >
