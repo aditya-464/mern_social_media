@@ -1,7 +1,6 @@
 import { Box, Flex, Input, Text } from '@chakra-ui/react'
 import { FaSearch, FaMoon, FaSun, FaBell, FaQuestionCircle } from "react-icons/fa";
-import { MdChat } from "react-icons/md";
-import { FaGear, FaUser } from "react-icons/fa6";
+import { MdChat, MdManageAccounts } from "react-icons/md";
 import React from 'react'
 
 export const Navbar = () => {
@@ -95,9 +94,10 @@ export const Navbar = () => {
                         margin={"0 1.5rem"}
                         _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
                         padding={"0.7rem"}
-                        borderRadius={"5px"} 
-                        marginRight={"0"}>
-                        <FaGear fontSize={"18px"}></FaGear>
+                        borderRadius={"5px"}
+                        marginRight={"0"}
+                    >
+                        <MdManageAccounts fontSize={"24px"}></MdManageAccounts>
                     </Box>
                 </Flex>
             </Flex>

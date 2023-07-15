@@ -1,18 +1,12 @@
 import { Box, Flex } from '@chakra-ui/react';
-import { AccountPage } from 'components/AccountPage';
-import { Advertisement } from 'components/Advertisement';
-import { AllPosts } from 'components/AllPosts';
-import { CreatePost } from 'components/CreatePost';
-import { FriendsList } from 'components/FriendsList';
-import { ImageSlider } from 'components/ImageSlider';
-import { Navbar } from 'components/Navbar'
-import { PostUserDetails } from 'components/PostUserDetails';
-import { UserCard } from 'components/UserCard'
-import { ViewPosts } from 'components/ViewPosts';
 import React from 'react'
 import { useSelector } from 'react-redux';
+import MemoizedNavbar from 'components/Navbar';
+import MemoizedUserCard from 'components/UserCard'
+import MemoizedAllPosts from 'components/AllPosts'
+import MemoizedFriendsList from 'components/FriendsList'
+import MemoizedCreatePost from "components/CreatePost"
 import MemoizedAdvertisement from 'components/Advertisement';
-import MemoizedAccountPage from "components/AccountPage"
 
 
 
@@ -21,46 +15,51 @@ export const HomePage = () => {
   const { _id, picturePath } = user;
   return (
     <>
-      {/* <Navbar></Navbar> */}
-
-      {/* <Flex
-        width={"90vw"}
-        height={"auto"}
-        justify={"space-between"}
-        margin={"auto"}
+      <MemoizedNavbar></MemoizedNavbar>
+      <Box className='home-page-outer-container'
+        maxWidth={"100vw"}
+        paddingX={"5vw"}
+        bgColor={"primaryLight"}
       >
-        <Box
-          marginTop={"2rem"}
+        <Flex className='home-page-inner-container'
+          maxWidth={"100%"}
+          justify={"space-between"}
+          bgColor={"primaryLight"}
+          margin={"auto"}
         >
-          <UserCard userId={_id} picturePath={picturePath}></UserCard>
-        </Box>
-        <Flex
-          flexDir={"column"}
-          marginTop={"2rem"}
-        >
-          <CreatePost></CreatePost>
-          <Box width={"100%"} height={"2rem"}></Box>
-          <AllPosts></AllPosts>
+          <Box className='user-card-and-friends-list-component'>
+            <Box className='user-card'
+              marginTop={"2rem"}
+            >
+              <MemoizedUserCard userId={_id} picturePath={picturePath}></MemoizedUserCard>
+            </Box>
+            <Box className='friends-list'
+              marginTop={"2rem"}
+            >
+              <MemoizedFriendsList></MemoizedFriendsList>
+            </Box>
+          </Box>
+          <Box className='create-post-and-all-posts-component'>
+            <Box className='create-post'
+              marginTop={"2rem"}
+            >
+              <MemoizedCreatePost></MemoizedCreatePost>
+            </Box>
+            <Box className='all-posts'
+              marginTop={"2rem"}
+            >
+              <MemoizedAllPosts userId={_id} isProfile={false}></MemoizedAllPosts>
+            </Box>
+          </Box>
+          <Box className='advertisement-component'>
+            <Box className='advertisements'
+              marginTop={"2rem"}
+            >
+              <MemoizedAdvertisement></MemoizedAdvertisement>
+            </Box>
+          </Box>
         </Flex>
-        <Box
-          marginTop={"2rem"}
-        >
-          <UserCard userId={_id} picturePath={picturePath}></UserCard>
-        </Box>
-      </Flex>
-     */}
-
-      {/* <AllPosts></AllPosts> */}
-      {/* <Advertisement></Advertisement> */}
-      {/* <CreatePost></CreatePost> */}
-      {/* <FriendsList></FriendsList> */}
-      {/* <AccountPage></AccountPage> */}
-      <MemoizedAccountPage></MemoizedAccountPage>
-      {/* <UserCard userId={_id} picturePath={picturePath}></UserCard> */}
-      <Flex>
-        {/* <ImageSlider></ImageSlider> */}
-      </Flex>
-      {/* <MemoizedAdvertisement></MemoizedAdvertisement> */}
+      </Box>
     </>
   )
 }
