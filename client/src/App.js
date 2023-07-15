@@ -1,9 +1,9 @@
-import { HomePage } from "pages/HomePage";
-import { LoginPage } from "pages/LoginPage";
-import { ProfilePage } from "pages/ProfilePage";
-import { SignupPage } from "pages/SignupPage";
-import { UserAccountPage } from "pages/UserAccountPage";
-import { WelcomePage } from "pages/WelcomePage.jsx";
+import HomePage from "pages/HomePage";
+import LoginPage from "pages/LoginPage";
+import ProfilePage from "pages/ProfilePage";
+import SignupPage from "pages/SignupPage";
+import UserAccountPage from "pages/UserAccountPage";
+import WelcomePage from "pages/WelcomePage.jsx";
 import { Route, Routes } from "react-router-dom";
 
 function App() {

@@ -1,9 +1,9 @@
 import { Box, Flex } from '@chakra-ui/react'
 import MemoizedAccountPage from 'components/AccountPage'
 import MemoizedNavbar from 'components/Navbar'
-import React from 'react'
+import React, {memo} from 'react'
 
-export const UserAccountPage = () => {
+const UserAccountPage = () => {
     return (
         <>
             <Box className='navbar'
@@ -33,3 +33,5 @@ export const UserAccountPage = () => {
         </>
     )
 }
+
+export default memo(UserAccountPage);

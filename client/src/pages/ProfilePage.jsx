@@ -3,10 +3,10 @@ import MemoizedAllPosts from 'components/AllPosts'
 import MemoizedFriendsList from 'components/FriendsList';
 import MemoizedNavbar from "components/Navbar"
 import { UserCard } from 'components/UserCard'
-import React from 'react'
+import React, {memo} from 'react'
 import { useSelector } from 'react-redux';
 
-export const ProfilePage = () => {
+ const ProfilePage = () => {
   const user = useSelector((state) => state.user);
   const { _id, picturePath } = user;
   const friends = useSelector((state) => state.user.friends);
@@ -47,3 +47,5 @@ export const ProfilePage = () => {
     </>
   )
 }
+
+export default memo(ProfilePage);

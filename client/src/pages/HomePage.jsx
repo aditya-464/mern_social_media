@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
-import React from 'react'
+import React, {memo} from 'react'
 import { useSelector } from 'react-redux';
 import MemoizedNavbar from 'components/Navbar';
 import MemoizedUserCard from 'components/UserCard'
@@ -10,7 +10,7 @@ import MemoizedAdvertisement from 'components/Advertisement';
 
 
 
-export const HomePage = () => {
+const HomePage = () => {
   const user = useSelector((state) => state.user);
   const { _id, picturePath } = user;
   return (
@@ -63,3 +63,5 @@ export const HomePage = () => {
     </>
   )
 }
+
+export default memo(HomePage);

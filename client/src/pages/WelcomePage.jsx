@@ -1,12 +1,12 @@
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import welcomePageImage from "../assets/welcome-page.webp"
 import { FillButton } from 'components/FillButton'
 import { EmptyButton } from 'components/EmptyButton'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-export const WelcomePage = () => {
+const WelcomePage = () => {
   const [welcome, setWelcome] = useState(false);
   const navigate = useNavigate();
   const user = useSelector((state => state.user));
@@ -86,3 +86,5 @@ export const WelcomePage = () => {
     </>
   )
 }
+
+export default memo(WelcomePage);

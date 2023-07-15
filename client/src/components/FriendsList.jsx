@@ -50,9 +50,9 @@ export const FriendsList = () => {
                     : (Array.isArray(friends) && friends.length > 0 && friends.map((friend, id) => (
                         <Box
                             margin={"1rem 0"}
+                            key={`${friend._id}+${friend.fullname}`}
                         >
                             <PostUserDetails
-                                key={`${friend._id}+${friend.fullname}`}
                                 friendId={friend._id}
                                 name={friend.fullname}
                                 subtitle={friend.location}

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {memo} from 'react'
 import image1 from "../assets/login-signup-page.webp"
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
 import { LoginForm } from 'components/LoginForm'
 
-export const LoginPage = () => {
+const LoginPage = () => {
   return (
     <>
       <Flex className="login-page-container"
@@ -52,3 +52,5 @@ export const LoginPage = () => {
     </>
   )
 }
+
+export default memo(LoginPage);
