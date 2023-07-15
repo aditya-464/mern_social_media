@@ -2,8 +2,11 @@ import { Box, Flex, Input, Text } from '@chakra-ui/react'
 import { FaSearch, FaMoon, FaSun, FaBell, FaQuestionCircle } from "react-icons/fa";
 import { MdChat, MdManageAccounts } from "react-icons/md";
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 export const Navbar = () => {
+    const navigate = useNavigate();
     return (
         <>
             <Flex className='navbar-container'
@@ -26,7 +29,14 @@ export const Navbar = () => {
                             fontWeight={600}
                             letterSpacing={"1px"}
                             bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
-                            bgClip={"text"}>
+                            bgClip={"text"}
+                            _hover={{
+                                cursor : "pointer",
+                            }}
+                            onClick={()=>{
+                                navigate("/home");
+                            }}
+                            >
                             Vakya
                         </Text>
                     </Flex>
@@ -96,6 +106,9 @@ export const Navbar = () => {
                         padding={"0.7rem"}
                         borderRadius={"5px"}
                         marginRight={"0"}
+                        onClick={()=>{
+                            navigate("/account");
+                        }}
                     >
                         <MdManageAccounts fontSize={"24px"}></MdManageAccounts>
                     </Box>

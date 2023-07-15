@@ -605,7 +605,7 @@ export const AccountPage = () => {
                                         textAlign={"center"}
                                         paddingTop={"1rem"}
                                     >
-                                        Are you sure you wan't to Logout ?
+                                        Are you certain you wish to log out?
                                     </Text>
                                 </Box>
                                 <Flex className='btns'
