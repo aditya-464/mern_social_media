@@ -13,6 +13,11 @@ html {
   /* font-family: 'Nanum Gothic', sans-serif; */
   font-family: 'Poppins', sans-serif !important;
   scroll-behavior: smooth;
+  background-color: #e7e7e7;
+}
+
+body {
+  background-color: #e7e7e7;
 }
 
 .signup-link,

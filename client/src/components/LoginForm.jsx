@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setLogin } from "state";
+import { setLogin, setViewProfile } from "state";
 
 const loginSchema = yup.object().shape({
     email: yup.string().email("Invalid Email").required("Required"),
@@ -40,6 +40,7 @@ export const LoginForm = (props) => {
                     token: loggedIn.token
                 })
             );
+            dispatch(setViewProfile(loggedIn.user._id));
             navigate("/home");
         }
         else {

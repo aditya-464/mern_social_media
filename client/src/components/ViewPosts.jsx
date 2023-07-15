@@ -1,6 +1,4 @@
 import { Box, Flex, Img, Input, Text } from '@chakra-ui/react'
-import profileDummyImg from "../assets/profile-dummy-img.jpg"
-import { HiOutlineUserPlus, HiOutlineUserMinus } from "react-icons/hi2";
 import { BiShareAlt, BiSolidHeart, BiHeart, BiChat, BiSend } from "react-icons/bi";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +15,9 @@ export const ViewPosts = (props) => {
     picturePath,
     userPicturePath,
     likes,
-    comments, } = props;
+    comments,
+    hideIcons,
+  } = props;
 
   const [isComments, setIsComments] = useState(false);
   const [comment, setComment] = useState("");
@@ -55,9 +55,6 @@ export const ViewPosts = (props) => {
     dispatch(setPost({ post: updatedPost }));
   }
 
-
-
-
   return (
     <>
       <Box className='view-post-container'
@@ -71,60 +68,12 @@ export const ViewPosts = (props) => {
         marginBottom={"2.5rem"}
       >
 
-        {/* <Flex className="view-post-name-image">
-          <Flex className='view-post-image'
-            justify={"center"}
-            align={"center"}
-          >
-            <Img src={profileDummyImg}
-              width={"3vw"}
-              borderRadius={"50%"}
-            ></Img>
-          </Flex>
-          <Flex className='view-post-details'
-            width={"100%"}
-            justifyContent={"space-between"}
-            align={"center"}
-          >
-
-            <Flex className='view-post-name'
-              flexDir={"column"}
-              justifyContent={"center"}
-              alignItems={"flex-start"}
-              paddingLeft={"1rem"}
-            >
-              <Text className="name"
-                fontSize={"h6"}
-                fontWeight={"bold"}
-              >
-                {fullname}
-              </Text>
-              <Text className="location"
-                fontSize={"12px"}
-              >
-                {location}
-              </Text>
-            </Flex>
-            <Flex className='friend-icon'
-              fontSize={"22px"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              borderRadius={"10px"}
-              padding={"1rem"}
-              _hover={{
-                bgColor: "#d2cdcd",
-                cursor: "pointer"
-              }}
-            >
-              <HiOutlineUserPlus></HiOutlineUserPlus>
-            </Flex>
-          </Flex>
-        </Flex> */}
         <PostUserDetails
           friendId={postUserId}
           name={fullname}
           subtitle={location}
           userPicturePath={userPicturePath}
+          hideIcons={hideIcons}
         >
         </PostUserDetails>
 

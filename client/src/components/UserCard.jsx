@@ -3,17 +3,22 @@ import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import { IoLocationSharp } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Avatar from 'react-avatar';
+import { useNavigate } from 'react-router-dom';
+import { setViewProfile } from 'state';
 
 
 
 export const UserCard = (props) => {
-    const { userId, picturePath } = props;
+    const { userId } = props;
     const [user, setUser] = useState(null);
     const token = useSelector((state) => state.token);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const getUser = async () => {
+        if (!userId) return null;
         const response = await fetch(`http://127.0.0.1:3300/users/${userId}`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` }
@@ -25,7 +30,7 @@ export const UserCard = (props) => {
     }
     useEffect(() => {
         getUser();
-    }, []);
+    }, [userId]);
 
     if (!user) {
         return null;
@@ -47,8 +52,15 @@ export const UserCard = (props) => {
                     marginBottom={"1rem"}
                 >
                     <Flex className='image-box'
-                    justify={"center"}
-                    align={"center"}
+                        justify={"center"}
+                        align={"center"}
+                        onClick={() => {
+                            dispatch(setViewProfile(userId));
+                            navigate(`/profile/${userId}`);
+                        }}
+                        _hover={{
+                            cursor: "pointer",
+                        }}
                     >
                         <Avatar
                             src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
@@ -64,6 +76,14 @@ export const UserCard = (props) => {
                         <Text className='name'
                             fontSize={"20px"}
                             fontWeight={"bold"}
+                            onClick={() => {
+                                dispatch(setViewProfile(userId));
+                                navigate(`/profile/${userId}`);
+                            }}
+                            _hover={{
+                                cursor: "pointer",
+                                textDecoration: "underline",
+                            }}
                         >
                             {fullname}
                         </Text>

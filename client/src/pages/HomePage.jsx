@@ -31,12 +31,12 @@ const HomePage = () => {
             <Box className='user-card'
               marginTop={"2rem"}
             >
-              <MemoizedUserCard userId={_id} picturePath={picturePath}></MemoizedUserCard>
+              <MemoizedUserCard userId={_id} picturePath={picturePath} home={true}></MemoizedUserCard>
             </Box>
             <Box className='friends-list'
               marginTop={"2rem"}
             >
-              <MemoizedFriendsList></MemoizedFriendsList>
+              <MemoizedFriendsList self={true}></MemoizedFriendsList>
             </Box>
           </Box>
           <Box className='create-post-and-all-posts-component'>
@@ -48,7 +48,7 @@ const HomePage = () => {
             <Box className='all-posts'
               marginTop={"2rem"}
             >
-              <MemoizedAllPosts userId={_id} isProfile={false}></MemoizedAllPosts>
+              <MemoizedAllPosts userId={_id} isProfile={false} hideIcons={false}></MemoizedAllPosts>
             </Box>
           </Box>
           <Box className='advertisement-component'>

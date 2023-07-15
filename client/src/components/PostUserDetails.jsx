@@ -3,12 +3,12 @@ import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import { HiOutlineUserPlus, HiOutlineUserMinus } from 'react-icons/hi2'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setFriends } from "state";
+import { setFriends, setViewProfile } from "state";
 import React from 'react'
 import Avatar from 'react-avatar';
 
 export const PostUserDetails = (props) => {
-    const { friendId, name, subtitle, userPicturePath } = props;
+    const { friendId, name, subtitle, userPicturePath, hideIcons, self } = props;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { _id } = useSelector((state) => state.user);
@@ -47,9 +47,12 @@ export const PostUserDetails = (props) => {
                     justify={"center"}
                     align={"center"}
                     onClick={() => {
-                        navigate("/profile");
+                        dispatch(setViewProfile(friendId));
+                        navigate(`/profile/${friendId}`);
                     }}
-                    _hover={{ cursor: "pointer" }}
+                    _hover={{
+                        cursor: "pointer",
+                    }}
                 >
                     <Avatar
                         src={userPicturePath === "picturePath" || !userPicturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${userPicturePath}`}
@@ -68,14 +71,18 @@ export const PostUserDetails = (props) => {
                         justifyContent={"center"}
                         alignItems={"flex-start"}
                         paddingLeft={"1rem"}
-                        onClick={() => {
-                            navigate("/profile");
-                        }}
-                        _hover={{ cursor: "pointer" }}
                     >
                         <Text className="name"
                             fontSize={"h6"}
                             fontWeight={"bold"}
+                            onClick={() => {
+                                dispatch(setViewProfile(friendId));
+                                navigate(`/profile/${friendId}`);
+                            }}
+                            _hover={{
+                                cursor: "pointer",
+                                textDecoration: "underline",
+                            }}
                         >
                             {name}
                         </Text>
@@ -85,7 +92,7 @@ export const PostUserDetails = (props) => {
                             {subtitle}
                         </Text>
                     </Flex>
-                    {(_id !== friendId) && <Flex className='friend-icon'
+                    {(_id !== friendId) && !hideIcons && self && <Flex className='friend-icon'
                         fontSize={"22px"}
                         justifyContent={"center"}
                         alignItems={"center"}

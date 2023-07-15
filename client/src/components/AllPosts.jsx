@@ -5,7 +5,7 @@ import { ViewPosts } from './ViewPosts';
 import { Box } from '@chakra-ui/react';
 
 export const AllPosts = (props) => {
-    const { userId, isProfile } = props;
+    const { userId, isProfile, hideIcons } = props;
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.posts);
     const token = useSelector((state) => state.token);
@@ -20,6 +20,7 @@ export const AllPosts = (props) => {
     };
 
     const getUserPosts = async () => {
+        if(!userId) return null;
         const response = await fetch(
             `http://127.0.0.1:3300/posts/${userId}/posts`,
             {
@@ -37,7 +38,7 @@ export const AllPosts = (props) => {
         } else {
             getPosts();
         }
-    }, []);
+    }, [userId]);
 
 
 
@@ -48,7 +49,7 @@ export const AllPosts = (props) => {
                 width={"35vw"}
                 height={"auto"}
             >
-                {posts.map(
+                {Array.isArray(posts) && posts.map(
                     ({
                         _id,
                         userId,
@@ -71,6 +72,7 @@ export const AllPosts = (props) => {
                             userPicturePath={userPicturePath}
                             likes={likes}
                             comments={comments}
+                            hideIcons={hideIcons}
                         />
                     )
                 )}

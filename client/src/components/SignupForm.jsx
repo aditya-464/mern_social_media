@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setLogin } from "state";
+import { setLogin, setViewProfile } from "state";
 
 const signupSchema = yup.object().shape({
     fullname: yup.string().required("Required"),
@@ -42,6 +42,7 @@ export const SignupForm = (props) => {
                     token: signupData.token
                 })
             );
+            dispatch(setViewProfile(signupData.user._id));
             navigate("/home");
         }
         else {
