@@ -1,13 +1,14 @@
 import { Box, Flex, FormControl, FormLabel, Img, Input, Text, Textarea } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import { FillButton } from './FillButton'
 import Dropzone from "react-dropzone";
 import { MdDeleteOutline } from 'react-icons/md'
 import { EmptyButton } from './EmptyButton'
-import { setLogin } from 'state'
+import { setLogin, setLogout } from 'state'
 import Avatar from 'react-avatar';
+import { useNavigate } from 'react-router-dom'
 
 
 export const AccountPage = () => {
@@ -22,6 +23,7 @@ export const AccountPage = () => {
     const [editBtnCLicked, setEditBtnCLicked] = useState(false);
     const [editBtnCLickedAcc, setEditBtnCLickedAcc] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const formData = new FormData();
     formData.append("_id", user._id);
@@ -82,6 +84,11 @@ export const AccountPage = () => {
         setUserDetails({
             _id: user._id, fullname: user.fullname, username: user.username, occupation: user.occupation, location: user.location, bio: user.bio
         })
+    }
+
+    const logoutFunc = () => {
+        dispatch(setLogout());
+        navigate("/welcome");
     }
 
 
@@ -325,6 +332,7 @@ export const AccountPage = () => {
                                         justify={"space-between"}
                                         align={"center"}
                                         marginBottom={"2rem"}
+                                        padding={"0 1rem"}
                                     >
                                         <FormControl
                                             width={"45%"}
@@ -405,6 +413,7 @@ export const AccountPage = () => {
                                         justify={"space-between"}
                                         align={"center"}
                                         marginBottom={"2rem"}
+                                        padding={"0 1rem"}
                                     >
                                         <FormControl
                                             width={"45%"}
@@ -484,6 +493,7 @@ export const AccountPage = () => {
                                         width={"100%"}
                                         justify={"space-between"}
                                         align={"center"}
+                                        padding={"0 1rem"}
                                     >
                                         <FormControl
                                             width={"100%"}
@@ -495,36 +505,38 @@ export const AccountPage = () => {
                                             </FormLabel>
 
                                             {editBtnCLickedAcc &&
-                                                <Input
+                                                <Textarea
                                                     name={"bio"}
                                                     onChange={(e) => handleInput(e)}
                                                     value={userDetails.bio}
                                                     fontSize={"h6"}
-                                                    padding={"2rem 1rem"}
+                                                    padding={"1rem 1rem"}
                                                     borderRadius={"5px"}
                                                     bgColor={"#d2cdcd"}
-                                                    // overflowY={"auto"}
-                                                    // rows={"3"}
+                                                    overflowY={"auto"}
+                                                    rows={"3"}
                                                     focusBorderColor={"none"}
                                                     border={"2px solid #d2cdcd"}
 
                                                 >
-                                                </Input>
+                                                </Textarea>
                                             }
 
                                             {!editBtnCLickedAcc &&
-                                                <Input
+                                                <Textarea
                                                     contentEditable={"false"}
                                                     name={"bio"}
                                                     fontSize={"h6"}
                                                     value={user.bio}
-                                                    padding={"2rem 1rem"}
+                                                    padding={"1rem 1rem"}
                                                     borderRadius={"5px"}
                                                     bgColor={"#d2cdcd"}
+                                                    overflowY={"auto"}
+                                                    rows={"3"}
                                                     focusBorderColor={"none"}
                                                     border={"2px solid #d2cdcd"}
                                                 >
-                                                </Input>
+                                                </Textarea>
                                             }
 
 
@@ -576,6 +588,50 @@ export const AccountPage = () => {
                                 </Flex>
 
                             </Flex>
+                        }
+
+                        {option === "logout" &&
+                            (<Flex className='logout-section'
+                                flexDir={"column"}
+                            >
+                                <Box className='question'>
+                                    <Text
+                                        fontSize={"h5"}
+                                        textAlign={"center"}
+                                        paddingTop={"1rem"}
+                                    >
+                                        Are you sure you wan't to Logout ?
+                                    </Text>
+                                </Box>
+                                <Flex className='btns'
+                                    width={"100%"}
+                                    justify={"center"}
+                                    align={"center"}
+                                    marginTop={"3rem"}
+                                >
+                                    <Box
+                                        width={"20%"}
+                                        marginRight={"1rem"}
+                                        onClick={() => {
+                                            logoutFunc();
+                                        }}
+                                    >
+                                        <EmptyButton name="yes" fs="h6" pd="2rem 0" width="100%"></EmptyButton>
+
+                                    </Box>
+                                    <Box
+                                        width={"20%"}
+                                        marginLeft={"1rem"}
+                                        onClick={() => {
+                                            navigate("/home");
+                                        }}
+                                    >
+                                        <FillButton name="no" fs="h6" pd="2.2rem 0" width="100%"></FillButton>
+                                    </Box>
+                                </Flex>
+
+                            </Flex>)
+
                         }
                     </Flex>
                 </Flex>
