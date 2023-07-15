@@ -5,6 +5,7 @@ const initialState = {
     user: null,
     token: null,
     posts: [],
+    viewProfile: null,
 };
 
 export const authSlice = createSlice({
@@ -39,11 +40,14 @@ export const authSlice = createSlice({
                 return post;
             });
             state.posts = updatedPosts;
+        },
+        setViewProfile: (state, action) => {
+            state.viewProfile = action.payload;
         }
     }
 });
 
-export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } = authSlice.actions;
+export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost, setViewProfile } = authSlice.actions;
 export default authSlice.reducer;
 
 

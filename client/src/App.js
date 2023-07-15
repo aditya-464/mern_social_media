@@ -16,13 +16,7 @@ function App() {
         <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
         <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
         <Route path="/account" element={<UserAccountPage></UserAccountPage>}></Route>
-
-
-
       </Routes>
-      {/* <WelcomePage></WelcomePage> */}
-      {/* <LoginPage></LoginPage> */}
-      {/* <LoginForm width="35%"></LoginForm> */}
     </>
   );
 }
