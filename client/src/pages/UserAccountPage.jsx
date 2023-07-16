@@ -1,9 +1,11 @@
 import { Box, Flex } from '@chakra-ui/react'
 import MemoizedAccountPage from 'components/AccountPage'
 import MemoizedNavbar from 'components/Navbar'
-import React, {memo} from 'react'
+import React, { memo } from 'react'
+import { useSelector } from 'react-redux'
 
 const UserAccountPage = () => {
+    const mode = useSelector((state)=>state.mode)
     return (
         <>
             <Box className='navbar'
@@ -15,12 +17,13 @@ const UserAccountPage = () => {
             <Flex className='account-page-outer-container'
                 maxWidth={"100vw"}
                 height={"100vh"}
-                bgColor={"primaryLight"}
+                bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
                 flexDir={"column"}
                 justify={"center"}
                 align={"center"}
             >
                 <Box className='account-page-inner-container'
+                    bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
                     margin={"auto"}
                 >
                     <Box className='account-page'
