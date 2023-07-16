@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setMode } from 'state';
 import { VerticalNavIcons } from './VerticalNavIcons';
+import { IoSettingsSharp } from 'react-icons/io5';
 
 
 export const Navbar = () => {
@@ -38,7 +39,7 @@ export const Navbar = () => {
         <>
             <Flex className='navbar-container'
                 maxWidth={"100vw"}
-                padding={"1vh 5vw"}
+                padding={{ base: "1vh 5vw", "3xl": "1.5vh 10vw" }}
                 bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 color={mode === "light" ? "primaryDark" : "primaryLight"}
                 fontFamily={"Poppins, sans-serif"}
@@ -51,7 +52,7 @@ export const Navbar = () => {
                         textAlign={"center"}
                     >
                         <Text
-                            fontSize={{ base: "20px", sm: "28px", lg: "28px" }}
+                            fontSize={{ base: "20px", sm: "28px", lg: "28px", "3xl": "36px" }}
                             fontWeight={600}
                             letterSpacing={"1px"}
                             bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
@@ -76,13 +77,15 @@ export const Navbar = () => {
                             justifyContent={"center"}
                             alignItems={"center"}
                             padding={"0.5rem 1rem"}
+                            paddingRight={{ base: "1rem", "3xl": "1.5rem" }}
+                            paddingLeft={{ base: "0.5rem", lg: "1rem" }}
                             borderRadius={"5px"}
                             bgColor={mode === "light" ? "lightHover" : "darkHover"}
                             color={mode === "light" ? "primaryDark" : "primaryLight"}
                         >
                             <Input
-                                width={{ base: "10rem", sm:"15rem", lg: "15rem" }}
-                                fontSize={"14px"}
+                                width={{ base: "10rem", sm: "15rem", lg: "15rem", "3xl": "20rem" }}
+                                fontSize={{ base: "14px", "3xl": "18px" }}
                                 _placeholder={{
                                     color: mode === "light" ? "primaryDark" : "primaryLight",
                                     opacity: "0.7",
@@ -91,11 +94,11 @@ export const Navbar = () => {
                                 outline={"none"}
                                 border={"none"}
                                 marginRight={"1rem"}
-                                padding={"1rem 0.5rem"}
+                                padding={{ lg: "1rem 0.5rem", "3xl": "1.5rem 1rem" }}
                                 focusBorderColor={"transparent"}
                             >
                             </Input>
-                            <FaSearch fontSize={"16px"} />
+                            <FaSearch fontSize={screenSize.width < 1900 ? "16px" : "20px"} />
                         </Flex>
                     </Flex>
                 </Flex>
@@ -118,7 +121,7 @@ export const Navbar = () => {
                                 borderRadius={"5px"}
                                 onClick={(toggleMode)}
                             >
-                                {mode === "light" ? (<FaMoon fontSize={"18px"}></FaMoon>) : (<FaSun fontSize={"18px"}></FaSun>)}
+                                {mode === "light" ? (<FaMoon fontSize={screenSize.width < 1900 ? "18px" : "24px"}></FaMoon>) : (<FaSun fontSize={screenSize.width < 1900 ? "18px" : "24px"}></FaSun>)}
                             </Box>
 
                             <Box className='message'
@@ -126,7 +129,7 @@ export const Navbar = () => {
                                 _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                                 padding={"0.7rem"}
                                 borderRadius={"5px"}>
-                                <MdChat fontSize={"18px"}></MdChat>
+                                <MdChat fontSize={screenSize.width < 1900 ? "18px" : "24px"}></MdChat>
                             </Box>
 
                             <Box className='notification'
@@ -134,7 +137,7 @@ export const Navbar = () => {
                                 _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                                 padding={"0.7rem"}
                                 borderRadius={"5px"}>
-                                <FaBell fontSize={"18px"}></FaBell>
+                                <FaBell fontSize={screenSize.width < 1900 ? "18px" : "24px"}></FaBell>
                             </Box>
 
                             <Box className='help'
@@ -142,20 +145,20 @@ export const Navbar = () => {
                                 _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                                 padding={"0.7rem"}
                                 borderRadius={"5px"}>
-                                <FaQuestionCircle fontSize={"18px"}></FaQuestionCircle>
+                                <FaQuestionCircle fontSize={screenSize.width < 1900 ? "18px" : "24px"}></FaQuestionCircle>
                             </Box>
 
                             <Box className='settings'
                                 margin={"0 1.5rem"}
                                 _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
-                                padding={"0.5rem"}
+                                padding={"0.7rem"}
                                 borderRadius={"5px"}
                                 marginRight={"0"}
                                 onClick={() => {
                                     navigate("/account");
                                 }}
                             >
-                                <MdManageAccounts fontSize={"24px"}></MdManageAccounts>
+                                <IoSettingsSharp fontSize={screenSize.width < 1900 ? "18px" : "24px"}></IoSettingsSharp>
                             </Box>
                         </Flex>) :
                         (<VerticalNavIcons></VerticalNavIcons>)}

@@ -42,7 +42,8 @@ export const UserCard = (props) => {
     return (
         <>
             <Box className='user-card-container'
-                width={"25vw"}
+                width={{ base: "80vw", sm: "60vw", md: "50vw", lg: "25vw", "3xl": "20vw" }}
+                margin={{ base: "auto", lg: "0" }}
                 bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 borderRadius={"10px"}
                 padding={"1rem"}
@@ -75,7 +76,7 @@ export const UserCard = (props) => {
                         paddingLeft={"1.5rem"}
                     >
                         <Text className='name'
-                            fontSize={"20px"}
+                            fontSize={{ base: "20px", md: "22px", lg: "20px", "3xl": "24px" }}
                             fontWeight={"500"}
                             onClick={() => {
                                 dispatch(setViewProfile(userId));
@@ -89,7 +90,7 @@ export const UserCard = (props) => {
                             {fullname}
                         </Text>
                         <Text className='bio'
-                            fontSize={"14px"}
+                            fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl": "18px" }}
                         >
                             {bio}
                         </Text>
@@ -114,7 +115,7 @@ export const UserCard = (props) => {
                     >
                         <IoLocationSharp></IoLocationSharp>
                         <Text
-                            fontSize={"14px"}
+                            fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl" : "18px" }}
                             marginLeft={"1rem"}
                         >
                             {location}
@@ -127,7 +128,7 @@ export const UserCard = (props) => {
                     >
                         <MdWork></MdWork>
                         <Text
-                            fontSize={"14px"}
+                            fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl" : "18px" }}
                             marginLeft={"1rem"}
                         >
                             {occupation}
@@ -143,7 +144,7 @@ export const UserCard = (props) => {
                 ></Box>
 
                 <Box className='user-profile-post-detail'
-                    fontSize={"14px"}
+                    fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl" : "18px" }}
                     padding={"0.5rem 2rem"}
                     marginBottom={"1rem"}
                 >
