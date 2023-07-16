@@ -12,6 +12,7 @@ import MemoizedAdvertisement from 'components/Advertisement';
 
 const HomePage = () => {
   const user = useSelector((state) => state.user);
+  const mode = useSelector((state) => state.mode);
   const { _id, picturePath } = user;
   return (
     <>
@@ -20,12 +21,12 @@ const HomePage = () => {
       <Box className='home-page-outer-container'
         maxWidth={"100vw"}
         paddingX={"5vw"}
-        bgColor={"primaryLight"}
+        bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
       >
         <Flex className='home-page-inner-container'
           maxWidth={"100%"}
           justify={"space-between"}
-          bgColor={"primaryLight"}
+          bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
           margin={"auto"}
         >
           <Box className='user-card-and-friends-list-component'>

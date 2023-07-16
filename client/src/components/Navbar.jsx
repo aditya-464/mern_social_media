@@ -33,7 +33,7 @@ export const Navbar = () => {
                         textAlign={"center"}
                     >
                         <Text
-                            fontSize={"h4"}
+                            fontSize={"28px"}
                             fontWeight={600}
                             letterSpacing={"1px"}
                             bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
