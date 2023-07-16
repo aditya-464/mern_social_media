@@ -10,6 +10,7 @@ export const FriendsList = (props) => {
     const dispatch = useDispatch();
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
+    const mode = useSelector((state) => state.mode);
     const viewProfileId = useSelector((state) => state.viewProfile);
 
     const getFriendsList = async () => {
@@ -54,7 +55,8 @@ export const FriendsList = (props) => {
                 fontFamily={"Poppins, sans-serif"}
                 padding={"0.5rem 1.5rem"}
                 paddingBottom={"1.5rem"}
-                bgColor={"secondaryLight"}
+                bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
+                color={mode === "light" ? "primaryDark" : "primaryLight"}
                 borderRadius={"10px"}
             >
                 <Text

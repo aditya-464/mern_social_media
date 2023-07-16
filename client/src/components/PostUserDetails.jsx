@@ -13,6 +13,7 @@ export const PostUserDetails = (props) => {
     const navigate = useNavigate();
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
+    const mode = useSelector((state) => state.mode);
     const friends = useSelector((state) => state.user.friends);
 
     const patchFriend = async () => {
@@ -39,8 +40,8 @@ export const PostUserDetails = (props) => {
         <>
             <Flex className="view-post-name-image"
                 width={"100%"}
-                bgColor={"secondaryLight"}
-                color={"primaryDark"}
+                bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
+                color={mode === "light" ? "primaryDark" : "primaryLight"}
                 borderRadius={"10px"}
             >
                 <Flex className='view-post-image'
