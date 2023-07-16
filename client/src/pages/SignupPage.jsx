@@ -1,5 +1,5 @@
 import { SignupForm } from 'components/SignupForm'
-import React, {memo} from 'react'
+import React, { memo } from 'react'
 import image1 from "../assets/login-signup-page.webp"
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
 
@@ -9,7 +9,8 @@ const SignupPage = () => {
       <Flex className="login-page-container"
         maxWidth={"100vw"}
         height={"100vh"}
-        bgColor={"primaryLight"}>
+        bgColor={"white"}
+      >
         <Box className="login-image-container"
           width={"40%"}
           height={"100%"}>
@@ -33,7 +34,7 @@ const SignupPage = () => {
               bgColor={"white"}
               borderRadius={"10px"}
               padding={"1rem 0"}
-              >
+            >
               <Text
                 fontSize={"h2"}
                 fontWeight={600}

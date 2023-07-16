@@ -13,9 +13,9 @@ export const FillButton = (props) => {
                 fontSize={fs}
                 fontWeight={"semibold"}
                 padding={pd}
-                color={"primaryLight"}
+                color={"white"}
                 _hover={{
-                    color : "primaryLight",
+                    color : "white",
                     borderRadius: br == null ? "4px" : `${br}`
                 }}
                 _active={{

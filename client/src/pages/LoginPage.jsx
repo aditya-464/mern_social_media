@@ -9,7 +9,7 @@ const LoginPage = () => {
       <Flex className="login-page-container"
         maxWidth={"100vw"}
         height={"100vh"}
-        bgColor={"primaryLight"}>
+        bgColor={"white"}>
         <Box className="login-image-container"
           width={"40%"}
           height={"100%"}>

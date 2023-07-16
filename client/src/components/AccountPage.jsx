@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom'
 export const AccountPage = () => {
     const user = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
+    const mode = useSelector((state) => state.mode);
 
     const [userDetails, setUserDetails] = useState({
         _id: user._id, fullname: user.fullname, username: user.username, occupation: user.occupation, location: user.location, bio: user.bio
@@ -96,8 +97,8 @@ export const AccountPage = () => {
         <>
             <Box className='account-page-container'
                 width={"50vw"}
-                bgColor={"secondaryLight"}
-                color={"primaryDark"}
+                bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
+                color={mode === "light" ? "primaryDark" : "primaryLight"}
                 borderRadius={"10px"}
                 height={"70vh"}
                 padding={"1.5rem"}
@@ -119,12 +120,10 @@ export const AccountPage = () => {
                             padding={"0.5rem 1rem"}
                             borderRadius={"5px"}
                             _hover={{
-                                bgColor: "#d2cdcd",
-                                color: "primaryDark",
-                                cursor: "pointer",
-
+                                backgroundColor: mode === "light" ? "lightHover" : "darkHover",
+                                cursor: "pointer"
                             }}
-                            border={option === "user-image" ? "2px solid #d2cdcd" : "2px solid transparent"}
+                            border={option === "user-image" ? mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050" : "2px solid transparent"}
                             transitionDuration={"100ms"}
                             onClick={() => {
                                 setOption("user-image");
@@ -137,12 +136,10 @@ export const AccountPage = () => {
                             padding={"0.5rem 1rem"}
                             borderRadius={"5px"}
                             _hover={{
-                                bgColor: "#d2cdcd",
-                                color: "primaryDark",
-                                cursor: "pointer",
-
+                                backgroundColor: mode === "light" ? "lightHover" : "darkHover",
+                                cursor: "pointer"
                             }}
-                            border={option === "account-details" ? "2px solid #d2cdcd" : "2px solid transparent"}
+                            border={option === "account-details" ? mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050" : "2px solid transparent"}
                             transitionDuration={"100ms"}
                             onClick={() => {
                                 setOption("account-details");
@@ -155,11 +152,10 @@ export const AccountPage = () => {
                             padding={"0.5rem 1rem"}
                             borderRadius={"5px"}
                             _hover={{
-                                bgColor: "#d2cdcd",
-                                color: "primaryDark",
-                                cursor: "pointer",
+                                backgroundColor: mode === "light" ? "lightHover" : "darkHover",
+                                cursor: "pointer"
                             }}
-                            border={option === "logout" ? "2px solid #d2cdcd" : "2px solid transparent"}
+                            border={option === "logout" ? mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050" : "2px solid transparent"}
                             transitionDuration={"100ms"}
                             onClick={() => {
                                 setOption("logout");
@@ -225,7 +221,7 @@ export const AccountPage = () => {
                                                 <Flex
                                                     width={"100%"}
                                                     fontSize={"h6"}
-                                                    border={image ? "1px dashed #DB005B" : "1px dashed black"}
+                                                    border={image ? "1px dashed #DB005B" : mode === "light" ? "1px dashed black" : "1px dashed white"}
                                                     borderRadius={"10px"}
                                                     margin={"1rem 0"}
                                                 >
@@ -255,8 +251,8 @@ export const AccountPage = () => {
                                                             borderRadius={"5px"}
                                                             onClick={() => { setImage(null) }}
                                                             _hover={{
-                                                                bgColor: "#d2cdcd",
-                                                                cursor: "pointer"
+                                                                backgroundColor: mode === "light" ? "lightHover" : "darkHover",
+                                                                cursor: "pointer",
                                                             }}
                                                         >
                                                             <MdDeleteOutline></MdDeleteOutline>
@@ -354,9 +350,17 @@ export const AccountPage = () => {
                                                 fontSize={"h6"}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
-                                                bgColor={"#d2cdcd"}
+                                                bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                _placeholder={{
+                                                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                    opacity: "0.8",
+                                                }}
+                                                color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                _hover={{
+                                                    outline: "none",
+                                                }}
                                                 focusBorderColor={"none"}
-                                                border={"2px solid #d2cdcd"}
+                                                border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}
                                             >
                                             </Input>}
 
@@ -367,10 +371,17 @@ export const AccountPage = () => {
                                                 fontSize={"h6"}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
-                                                bgColor={"#d2cdcd"}
+                                                bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                _placeholder={{
+                                                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                    opacity: "0.8",
+                                                }}
+                                                color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                _hover={{
+                                                    outline: "none",
+                                                }}
                                                 focusBorderColor={"none"}
-                                                border={"2px solid #d2cdcd"}
-                                            >
+                                                border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}                                            >
                                             </Input>}
                                         </FormControl>
 
@@ -390,10 +401,17 @@ export const AccountPage = () => {
                                                 fontSize={"h6"}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
-                                                bgColor={"#d2cdcd"}
+                                                bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                _placeholder={{
+                                                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                    opacity: "0.8",
+                                                }}
+                                                color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                _hover={{
+                                                    outline: "none",
+                                                }}
                                                 focusBorderColor={"none"}
-                                                border={"2px solid #d2cdcd"}
-
+                                                border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}
                                             >
                                             </Input>}
 
@@ -404,10 +422,17 @@ export const AccountPage = () => {
                                                 value={user.username}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
-                                                bgColor={"#d2cdcd"}
+                                                bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                _placeholder={{
+                                                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                    opacity: "0.8",
+                                                }}
+                                                color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                _hover={{
+                                                    outline: "none",
+                                                }}
                                                 focusBorderColor={"none"}
-                                                border={"2px solid #d2cdcd"}
-                                            >
+                                                border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}                                            >
 
                                             </Input>}
                                         </FormControl>
@@ -435,10 +460,17 @@ export const AccountPage = () => {
                                                 fontSize={"h6"}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
-                                                bgColor={"#d2cdcd"}
+                                                bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                _placeholder={{
+                                                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                    opacity: "0.8",
+                                                }}
+                                                color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                _hover={{
+                                                    outline: "none",
+                                                }}
                                                 focusBorderColor={"none"}
-                                                border={"2px solid #d2cdcd"}
-                                            >
+                                                border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}                                            >
                                             </Input>}
 
                                             {!editBtnCLickedAcc && <Input
@@ -448,10 +480,17 @@ export const AccountPage = () => {
                                                 fontSize={"h6"}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
-                                                bgColor={"#d2cdcd"}
+                                                bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                _placeholder={{
+                                                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                    opacity: "0.8",
+                                                }}
+                                                color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                _hover={{
+                                                    outline: "none",
+                                                }}
                                                 focusBorderColor={"none"}
-                                                border={"2px solid #d2cdcd"}
-                                            >
+                                                border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}                                            >
 
                                             </Input>}
                                         </FormControl>
@@ -472,10 +511,17 @@ export const AccountPage = () => {
                                                 fontSize={"h6"}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
-                                                bgColor={"#d2cdcd"}
+                                                bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                _placeholder={{
+                                                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                    opacity: "0.8",
+                                                }}
+                                                color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                _hover={{
+                                                    outline: "none",
+                                                }}
                                                 focusBorderColor={"none"}
-                                                border={"2px solid #d2cdcd"}
-                                            >
+                                                border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}                                            >
                                             </Input>}
 
                                             {!editBtnCLickedAcc && <Input
@@ -485,10 +531,17 @@ export const AccountPage = () => {
                                                 value={user.location}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
-                                                bgColor={"#d2cdcd"}
+                                                bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                _placeholder={{
+                                                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                    opacity: "0.8",
+                                                }}
+                                                color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                _hover={{
+                                                    outline: "none",
+                                                }}
                                                 focusBorderColor={"none"}
-                                                border={"2px solid #d2cdcd"}
-                                            >
+                                                border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}                                            >
 
                                             </Input>}
                                         </FormControl>
@@ -517,12 +570,19 @@ export const AccountPage = () => {
                                                     fontSize={"h6"}
                                                     padding={"1rem 1rem"}
                                                     borderRadius={"5px"}
-                                                    bgColor={"#d2cdcd"}
+                                                    bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                    _placeholder={{
+                                                        color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                        opacity: "0.8",
+                                                    }}
+                                                    color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                    _hover={{
+                                                        outline: "none",
+                                                    }}
                                                     overflowY={"auto"}
                                                     rows={"3"}
                                                     focusBorderColor={"none"}
-                                                    border={"2px solid #d2cdcd"}
-
+                                                    border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}
                                                 >
                                                 </Textarea>
                                             }
@@ -535,12 +595,19 @@ export const AccountPage = () => {
                                                     value={user.bio}
                                                     padding={"1rem 1rem"}
                                                     borderRadius={"5px"}
-                                                    bgColor={"#d2cdcd"}
+                                                    bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                                                    _placeholder={{
+                                                        color: mode === "light" ? "primaryDark" : "primaryLight",
+                                                        opacity: "0.8",
+                                                    }}
+                                                    color={mode === "light" ? "primaryDark" : "primaryLight"}
+                                                    _hover={{
+                                                        outline: "none",
+                                                    }}
                                                     overflowY={"auto"}
                                                     rows={"3"}
                                                     focusBorderColor={"none"}
-                                                    border={"2px solid #d2cdcd"}
-                                                >
+                                                    border={mode === "light" ? "2px solid #d2cdcd" : "2px solid #505050"}                                                >
                                                 </Textarea>
                                             }
 

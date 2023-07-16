@@ -29,7 +29,7 @@ const WelcomePage = () => {
         maxWidth={"100vw"}
         height={"100vh"}
         fontFamily={"Poppins, sans-serif"}
-        bgColor={"primaryLight"}
+        bgColor={"white"}
       >
         <Box className="welcome-image-container"
           width={"40%"}

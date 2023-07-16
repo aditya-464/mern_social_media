@@ -8,7 +8,8 @@ export const EmptyButton = (props) => {
         <>
             <Button
                 width={width}
-                background={"linear-gradient(#F6FFDE, #F6FFDE) padding-box, linear-gradient(90deg, rgba(219,0,91,1) 0%, rgba(247,147,39,1) 100%, rgba(247,147,39,1) 100%)"}
+                // background={"linear-gradient(#F6FFDE, #F6FFDE) padding-box, linear-gradient(90deg, rgba(219,0,91,1) 0%, rgba(247,147,39,1) 100%, rgba(247,147,39,1) 100%)"}
+                background={"linear-gradient(white, white) padding-box, linear-gradient(90deg, rgba(219,0,91,1) 0%, rgba(247,147,39,1) 100%, rgba(247,147,39,1) 100%)"}
                 border={"2.5px solid transparent"}
                 borderRadius={"10px"}
                 fontSize={fs}
