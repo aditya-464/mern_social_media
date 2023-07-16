@@ -100,8 +100,8 @@ export const PostUserDetails = (props) => {
                         borderRadius={"10px"}
                         padding={"1rem"}
                         _hover={{
-                            bgColor: "#d2cdcd",
-                            cursor: "pointer"
+                            backgroundColor: mode === "light" ? "lightHover" : "darkHover",
+                            cursor: "pointer",
                         }}
                         onClick={() => { patchFriend() }}
                     >

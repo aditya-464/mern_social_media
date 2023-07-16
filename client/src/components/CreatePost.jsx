@@ -17,6 +17,7 @@ export const CreatePost = () => {
     const user = useSelector((state) => state.user);
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
+    const mode = useSelector((state) => state.mode);
 
     const handlePost = async () => {
         const formData = new FormData();
@@ -42,8 +43,8 @@ export const CreatePost = () => {
         <>
             <Box className='create-post-container'
                 width={"35vw"}
-                bgColor={"secondaryLight"}
-                color={"primaryDark"}
+                bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
+                color={mode === "light" ? "primaryDark" : "primaryLight"}
                 borderRadius={"10px"}
                 padding={"1.5rem"}
             >
@@ -68,9 +69,13 @@ export const CreatePost = () => {
                             value={post || ""}
                             placeholder={'Write your post...'}
                             fontSize={"h6"}
-                            bgColor={"#d2cdcd"}
-                            color={"primaryDark"}
                             focusBorderColor={"none"}
+                            bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                            _placeholder={{
+                                color: mode === "light" ? "primaryDark" : "primaryLight",
+                                opacity: "0.8",
+                            }}
+                            color={mode === "light" ? "primaryDark" : "primaryLight"}
                             width={"100%"}
                             padding={"2rem 1.5rem"}
                             marginLeft={"1rem"}
@@ -96,7 +101,7 @@ export const CreatePost = () => {
                                 <Flex
                                     width={"100%"}
                                     fontSize={"h6"}
-                                    border={image ? "1px dashed #DB005B" : "1px dashed black"}
+                                    border={image ? "1px dashed #DB005B" : mode === "light" ? "1px dashed black" : "1px dashed white"}
                                     borderRadius={"10px"}
                                     margin={"1rem 0"}
                                 >
@@ -126,9 +131,10 @@ export const CreatePost = () => {
                                             borderRadius={"5px"}
                                             onClick={() => { setImage(null) }}
                                             _hover={{
-                                                bgColor: "#d2cdcd",
-                                                cursor: "pointer"
+                                                backgroundColor: mode === "light" ? "lightHover" : "darkHover",
+                                                cursor: "pointer",
                                             }}
+
                                         >
                                             <MdDeleteOutline></MdDeleteOutline>
                                         </Flex>
@@ -152,16 +158,14 @@ export const CreatePost = () => {
                     justify={"space-between"}
                 >
                     <Flex className='button-grp'
-                        color={"primaryDark"}
+                        color={mode === "light" ? "primaryDark" : "primaryLight"}
                         width={"20%"}
                         fontSize={"h5"}
                         justify={"center"}
                         align={"center"}
                         borderRadius={"20px"}
-                        _hover={{
-                            bgColor: "#d2cdcd",
-                            cursor: "pointer"
-                        }}
+                        _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
+
                         onClick={() => { setIsImage(!isImage) }}
                     >
                         <MdOutlineImage></MdOutlineImage>
@@ -169,32 +173,28 @@ export const CreatePost = () => {
                     </Flex>
 
                     <Flex className='button-grp'
-                        color={"primaryDark"}
+                        color={mode === "light" ? "primaryDark" : "primaryLight"}
                         width={"20%"}
                         fontSize={"h5"}
                         justify={"center"}
                         align={"center"}
                         borderRadius={"20px"}
-                        _hover={{
-                            bgColor: "#d2cdcd",
-                            cursor: "pointer"
-                        }}
+                        _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
+
                     >
                         <MdOutlineGifBox></MdOutlineGifBox>
                         <Text padding={"0.5rem"} fontSize={"h6"}>Clip</Text>
                     </Flex>
 
                     <Flex className='button-grp'
-                        color={"primaryDark"}
+                        color={mode === "light" ? "primaryDark" : "primaryLight"}
                         width={"20%"}
                         fontSize={"h5"}
                         justify={"center"}
                         align={"center"}
                         borderRadius={"20px"}
-                        _hover={{
-                            bgColor: "#d2cdcd",
-                            cursor: "pointer"
-                        }}
+                        _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
+
                     >
                         <MdOutlineMicNone></MdOutlineMicNone>
                         <Text padding={"0.5rem"} fontSize={"h6"}>Audio</Text>
