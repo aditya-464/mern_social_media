@@ -1,5 +1,6 @@
 import HomePage from "pages/HomePage";
 import LoginPage from "pages/LoginPage";
+import { PracticePage } from "pages/PracticePage";
 import ProfilePage from "pages/ProfilePage";
 import SignupPage from "pages/SignupPage";
 import UserAccountPage from "pages/UserAccountPage";
@@ -26,6 +27,10 @@ function App() {
         <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
         <Route path="/profile/:id" element={<ProfilePage></ProfilePage>}></Route>
         <Route path="/account" element={<UserAccountPage></UserAccountPage>}></Route>
+
+        {/* practice pages */}
+        <Route path="/practice" element={<PracticePage></PracticePage>}></Route>
+
       </Routes>
     </>
   );
