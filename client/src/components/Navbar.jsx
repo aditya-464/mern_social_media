@@ -21,7 +21,7 @@ export const Navbar = () => {
             <Flex className='navbar-container'
                 maxWidth={"100vw"}
                 padding={"1vh 5vw"}
-                bgColor={mode === "light" ? "secondaryLight" : "primaryDark"}
+                bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 color={mode === "light" ? "primaryDark" : "primaryLight"}
                 fontFamily={"Poppins, sans-serif"}
             >

@@ -74,7 +74,7 @@ export const PostUserDetails = (props) => {
                     >
                         <Text className="name"
                             fontSize={"h6"}
-                            fontWeight={"bold"}
+                            fontWeight={"500"}
                             onClick={() => {
                                 dispatch(setViewProfile(friendId));
                                 navigate(`/profile/${friendId}`);

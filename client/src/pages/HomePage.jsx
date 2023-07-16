@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
-import React, {memo} from 'react'
+import React, { memo } from 'react'
 import { useSelector } from 'react-redux';
 import MemoizedNavbar from 'components/Navbar';
 import MemoizedUserCard from 'components/UserCard'
@@ -16,8 +16,8 @@ const HomePage = () => {
   return (
     <>
       <MemoizedNavbar></MemoizedNavbar>
-      
-      {/* <Box className='home-page-outer-container'
+
+      <Box className='home-page-outer-container'
         maxWidth={"100vw"}
         paddingX={"5vw"}
         bgColor={"primaryLight"}
@@ -60,7 +60,7 @@ const HomePage = () => {
             </Box>
           </Box>
         </Flex>
-      </Box> */}
+      </Box>
     </>
   )
 }

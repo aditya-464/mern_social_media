@@ -14,6 +14,7 @@ export const UserCard = (props) => {
     const { userId } = props;
     const [user, setUser] = useState(null);
     const token = useSelector((state) => state.token);
+    const mode = useSelector((state) => state.mode);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -42,10 +43,10 @@ export const UserCard = (props) => {
         <>
             <Box className='user-card-container'
                 width={"25vw"}
-                backgroundColor={"secondaryLight"}
+                bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 borderRadius={"10px"}
                 padding={"1rem"}
-                color={"primaryDark"}
+                color={mode === "light" ? "primaryDark" : "primaryLight"}
                 fontFamily={"Poppins, sans-serif"}
             >
                 <Flex className='user-name-image'
@@ -75,7 +76,7 @@ export const UserCard = (props) => {
                     >
                         <Text className='name'
                             fontSize={"20px"}
-                            fontWeight={"bold"}
+                            fontWeight={"500"}
                             onClick={() => {
                                 dispatch(setViewProfile(userId));
                                 navigate(`/profile/${userId}`);
