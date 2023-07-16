@@ -2,21 +2,17 @@ import React from 'react'
 import {
     Drawer,
     DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
     useDisclosure,
-    Button,
-    Input,
     Box,
     Flex,
     Text,
 } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaBell, FaMoon, FaQuestionCircle, FaSun } from 'react-icons/fa';
-import { MdChat, MdManageAccounts } from 'react-icons/md';
+import { MdChat } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { setMode } from 'state';
 import { HiMenu } from 'react-icons/hi';
@@ -58,12 +54,13 @@ export const VerticalNavIcons = () => {
                 <DrawerContent
                     bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                     color={mode === "light" ? "primaryDark" : "primaryLight"}
+                    paddingTop={{ base: "0", sm: "1rem", lg: "0" }}
                 >
-                    <DrawerCloseButton 
-                    fontSize={"h6"} 
-                    padding={"2rem"}
-                    borderRadius={"5px"}
-                    _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
+                    <DrawerCloseButton
+                        fontSize={"h6"}
+                        padding={{ base: "2rem", sm: "3rem", lg: "0" }}
+                        borderRadius={"5px"}
+                        _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                     />
                     <DrawerBody
                         justifyContent={"center"}

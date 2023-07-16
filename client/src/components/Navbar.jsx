@@ -29,8 +29,6 @@ export const Navbar = () => {
             setScreenSize(getCurrentDimension())
         }
         window.addEventListener('resize', updateDimension);
-
-
         return (() => {
             window.removeEventListener('resize', updateDimension);
         })
@@ -53,7 +51,7 @@ export const Navbar = () => {
                         textAlign={"center"}
                     >
                         <Text
-                            fontSize={{ base: "20px", lg: "28px" }}
+                            fontSize={{ base: "20px", sm: "28px", lg: "28px" }}
                             fontWeight={600}
                             letterSpacing={"1px"}
                             bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
@@ -83,6 +81,7 @@ export const Navbar = () => {
                             color={mode === "light" ? "primaryDark" : "primaryLight"}
                         >
                             <Input
+                                width={{ base: "10rem", sm:"15rem", lg: "15rem" }}
                                 fontSize={"14px"}
                                 _placeholder={{
                                     color: mode === "light" ? "primaryDark" : "primaryLight",
