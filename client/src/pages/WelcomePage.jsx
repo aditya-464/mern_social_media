@@ -39,23 +39,13 @@ const WelcomePage = () => {
       {welcome &&
         <Flex className="welcome-container"
           maxWidth={"100vw"}
-          minHeight={"100vh"}
-          overflow={"hidden"}
+          height={"100vh"}
+          overflowY={"hidden"}
           fontFamily={"Poppins, sans-serif"}
           bgColor={"white"}
-          flexDir={{ base: "column", md: "column-reverse", lg: "row" }}
+          flexDir={{ base: "column-reverse", md: "column", lg: "row-reverse" }}
         >
-          <Box className="welcome-image-container"
-            width={{ base: "100%", lg: "40%" }}
-            height={{ lg: "100%" }}
-          >
-            <Img src={welcomePageImage}
-              width={"100%"}
-              height={"100%"}
-              objectFit={"cover"}
-            >
-            </Img>
-          </Box>
+
           <Box className="welcome-text-container"
             width={{ base: "100%", lg: "60%" }}
             height={{ base: "100%", lg: "100%" }}
@@ -90,20 +80,35 @@ const WelcomePage = () => {
               </Box>
 
               <Flex className='welcome-text-buttons'
-                width={{ base: "90%", md :"80%", lg: "60%" }}
+                width={{ base: "90%", md: "80%", lg: "60%" }}
                 margin={"auto"}
                 marginTop={{ base: "10%", md: "5%", lg: "10%" }}
                 justifyContent={"space-around"}
                 alignItems={"center"}>
                 <NavLink to="/login" style={{ display: "inline-block", width: "40%" }}>
-                  <EmptyButton name="log in" fs={{ base: "h6", lg: "h5" }} pd={{ base: "2rem 0", lg: "2.4rem 0" }} width="100%"></EmptyButton>
+                  <EmptyButton name="log in" fs={{ base: "h6", lg: "h5" }} pd={{ base: "2rem 0", md: "2.4rem", lg: "2.4rem 0" }} width="100%"></EmptyButton>
                 </NavLink>
                 <NavLink to="/signup" style={{ display: "inline-block", width: "40%" }}>
-                  <FillButton name="sign up" fs={{ base: "h6", lg: "h5" }} pd={{ base: "2.2rem 0", lg: "2.6rem 0" }} width="100%"></FillButton>
+                  <FillButton name="sign up" fs={{ base: "h6", lg: "h5" }} pd={{ base: "2.2rem 0", md: "2.6rem", lg: "2.6rem 0" }} width="100%"></FillButton>
                 </NavLink>
               </Flex>
             </Box>
           </Box>
+
+
+          <Box className="welcome-image-container"
+            width={{ base: "100%", lg: "40%" }}
+            height={{ lg: "100%" }}
+          >
+            <Img src={welcomePageImage}
+              width={"100%"}
+              height={"100%"}
+              objectFit={"cover"}
+            >
+            </Img>
+          </Box>
+
+
         </Flex >}
     </>
   )
