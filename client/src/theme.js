@@ -20,6 +20,9 @@ const theme = extendTheme({
         h5: "20px",
         h6: "16px",
     },
+    breakpoints:{
+        "3xl" : "1900px"
+    }
 });
 
 export default theme;
