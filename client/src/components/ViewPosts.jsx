@@ -24,6 +24,7 @@ export const ViewPosts = (props) => {
   const [comment, setComment] = useState("");
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
+  const mode = useSelector((state) => state.mode);
   const loggedInUserId = useSelector((state) => state.user._id);
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
@@ -61,8 +62,8 @@ export const ViewPosts = (props) => {
       <Box className='view-post-container'
         width={"35vw"}
         height={"auto"}
-        bgColor={"secondaryLight"}
-        color={"primaryDark"}
+        bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
+        color={mode === "light" ? "primaryDark" : "primaryLight"}
         padding={"1.5rem"}
         borderRadius={"10px"}
         fontFamily={"Poppins, sans-serif"}
@@ -116,10 +117,7 @@ export const ViewPosts = (props) => {
                 <Box
                   padding={"0.8rem"}
                   borderRadius={"10px"}
-                  _hover={{
-                    bgColor: "#d2cdcd",
-                    cursor: "pointer"
-                  }}
+                  _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                   onClick={patchLike}
                 >
                   {isLiked ? (<BiSolidHeart color='#DB005B'></BiSolidHeart>) : (<BiHeart></BiHeart>)}
@@ -137,10 +135,7 @@ export const ViewPosts = (props) => {
                 <Box
                   padding={"0.8rem"}
                   borderRadius={"10px"}
-                  _hover={{
-                    bgColor: "#d2cdcd",
-                    cursor: "pointer"
-                  }}
+                  _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                   onClick={() => {
                     setIsComments(!isComments);
                   }}
@@ -162,10 +157,7 @@ export const ViewPosts = (props) => {
                 <Box
                   padding={"0.8rem"}
                   borderRadius={"10px"}
-                  _hover={{
-                    bgColor: "#d2cdcd",
-                    cursor: "pointer"
-                  }}
+                  _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                 >
                   <BiShareAlt></BiShareAlt>
                 </Box>
@@ -203,8 +195,12 @@ export const ViewPosts = (props) => {
                   value={comment}
                   height={"100%"}
                   outline={"none"}
-                  bgColor={"#d2cdcd"}
+                  bgColor={mode === "light" ? "lightHover" : "darkHover"}
                   border={"1px solid secondaryLight"}
+                  _placeholder={{
+                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                    opacity: "0.7",
+                  }}
                   placeholder='Add a comment'
                   borderRadius={"20px"}
                   fontSize={"13px"}
