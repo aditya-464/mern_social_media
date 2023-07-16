@@ -10,24 +10,18 @@ const SignupPage = () => {
         maxWidth={"100vw"}
         height={"100vh"}
         bgColor={"white"}
+        flexDir={{ base: "column", lg: "row-reverse" }}
       >
-        <Box className="login-image-container"
-          width={"40%"}
-          height={"100%"}>
-          <Img src={image1}
-            width={"100%"}
-            height={"100%"}
-            objectFit={"cover"}>
-          </Img>
-        </Box>
+
         <Box className="login-text-container"
-          width={"60%"}
+          width={{ base: "100%", lg: "60%" }}
           height={"100%"}
-          color={"secondaryDark"}>
+          color={"secondaryDark"}
+        >
           <Box className='login-text-content'
-            width={"70%"}
+            width={{ base: "75%", sm: "65%", md: "60%", lg: "50%", xl: "40%", "3xl": "35%" }}
             margin={"auto"}
-            marginTop={"10%"}
+            marginTop={{ base: "5%", lg: "10%" }}
           >
             <Box className='welcome-text'
               textAlign={"center"}
@@ -36,19 +30,33 @@ const SignupPage = () => {
               padding={"1rem 0"}
             >
               <Text
-                fontSize={"h2"}
+                fontSize={{ base: "h3", sm: "h2", lg: "h2", "3xl" : "h1" }}
                 fontWeight={600}
-                letterSpacing={"3px"}
-                marginBottom={"1%"}
+                letterSpacing={{ base: "1px", lg: "3px" }}
+                marginBottom={{base:"3%", lg:"1%"}}
               >
                 Sign Up
               </Text>
 
-              <SignupForm width="55%"></SignupForm>
+              <SignupForm width="100%"></SignupForm>
 
             </Box>
           </Box>
         </Box>
+
+        <Box className="login-image-container"
+          width={{ base: "0", lg: "40%" }}
+          height={"100%"}
+        >
+          <Img src={image1}
+            width={"100%"}
+            height={"100%"}
+            objectFit={"cover"}
+          >
+          </Img>
+        </Box>
+
+
       </Flex>
     </>
   )

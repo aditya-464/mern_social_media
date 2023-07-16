@@ -81,7 +81,7 @@ export const SignupForm = (props) => {
                             marginBottom={"1rem"}
                             isInvalid={errors.fullname && touched.fullname}>
                             <FormLabel
-                                fontSize={"h5"}
+                                fontSize={{ base: "h6", sm: "h4", lg: "h5", "3xl": "h3" }}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Full Name
@@ -91,7 +91,7 @@ export const SignupForm = (props) => {
                                 onChange={handleChange}
                                 value={values.fullname}
                                 name='fullname'
-                                fontSize={"h6"}
+                                fontSize={{ base: "14px", sm: "h5", lg: "h6", "3xl": "h4" }}
                                 padding={"1rem 0.5rem"}
                                 height={"5%"}
                                 outline={"1px solid #DB005B"}
@@ -104,7 +104,7 @@ export const SignupForm = (props) => {
                             marginBottom={"1rem"}
                             isInvalid={errors.email && touched.email}>
                             <FormLabel
-                                fontSize={"h5"}
+                                fontSize={{ base: "h6", sm: "h4", lg: "h5", "3xl": "h3" }}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Email
@@ -114,7 +114,7 @@ export const SignupForm = (props) => {
                                 onChange={handleChange}
                                 value={values.email}
                                 name='email'
-                                fontSize={"h6"}
+                                fontSize={{ base: "14px", sm: "h5", lg: "h6", "3xl": "h4" }}
                                 padding={"1rem 0.5rem"}
                                 height={"5%"}
                                 outline={"1px solid #DB005B"}
@@ -127,7 +127,7 @@ export const SignupForm = (props) => {
                             marginBottom={"10%"}
                             isInvalid={errors.password && touched.password}>
                             <FormLabel
-                                fontSize={"h5"}
+                                fontSize={{ base: "h6", sm: "h4", lg: "h5", "3xl": "h3" }}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Password
@@ -138,7 +138,7 @@ export const SignupForm = (props) => {
                                 value={values.password}
                                 type='password'
                                 name='password'
-                                fontSize={"h6"}
+                                fontSize={{ base: "14px", sm: "h5", lg: "h6", "3xl": "h4" }}
                                 padding={"1rem 0.5rem"}
                                 height={"5%"}
                                 outline={"1px solid #DB005B"}
@@ -147,11 +147,11 @@ export const SignupForm = (props) => {
                                 }}></Input>
                             <FormErrorMessage fontSize={"larger"}>{errors.password}</FormErrorMessage>
                         </FormControl>
-                        <FillButton name="sign up" fs="h5" pd="8% 0" width="100%"></FillButton>
+                        <FillButton name="sign up" fs={{ base: "h6", sm: "h5", lg: "h5", "3xl": "h4" }} pd={{ base: "10% 0", sm: "8% 0" }} width="100%"></FillButton>
                         {signupError
                             && <Text
                                 marginTop={"5%"}
-                                fontSize={"h6"}
+                                fontSize={{base :"h6", sm:"h5", lg:"h6", "3xl" : "h4"}}
                                 color={"red"} letterSpacing={"1px"}
                                 textAlign={"center"}>
                                 * {signupError} *
@@ -159,7 +159,7 @@ export const SignupForm = (props) => {
                         }
                         <Text
                             color={"primaryDark"}
-                            fontSize={"h6"}
+                            fontSize={{base :"h6", sm:"h5", lg:"h6", "3xl" : "h4"}}
                             marginTop={"5%"}
                             display={"inline-block"}>
                             Already have an account? <span className='login-link'><NavLink to="/login" > Log In</NavLink></span>

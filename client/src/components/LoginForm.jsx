@@ -84,7 +84,7 @@ export const LoginForm = (props) => {
                             marginBottom={"1rem"}
                             isInvalid={errors.email && touched.email}>
                             <FormLabel
-                                fontSize={{base :"h5", sm:"h4", lg:"h5", "3xl" : "h3"}}
+                                fontSize={{base :"h6", sm:"h4", lg:"h5", "3xl" : "h3"}}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Email
@@ -94,7 +94,7 @@ export const LoginForm = (props) => {
                                 onChange={handleChange}
                                 value={values.email}
                                 name='email'
-                                fontSize={{base :"h5", sm:"h5", lg:"h6", "3xl" : "h4"}}
+                                fontSize={{base :"14px", sm:"h5", lg:"h6", "3xl" : "h4"}}
                                 padding={"1rem 0.5rem"}
                                 height={"5%"}
                                 outline={"1px solid #DB005B"}
@@ -107,7 +107,7 @@ export const LoginForm = (props) => {
                             marginBottom={"10%"}
                             isInvalid={errors.password && touched.password}>
                             <FormLabel
-                                fontSize={{base :"h5", sm:"h4", lg:"h5", "3xl" : "h3"}}
+                                fontSize={{base :"h6", sm:"h4", lg:"h5", "3xl" : "h3"}}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Password
@@ -118,7 +118,7 @@ export const LoginForm = (props) => {
                                 value={values.password}
                                 type='password'
                                 name='password'
-                                fontSize={{base :"h5", sm:"h5", lg:"h6", "3xl" : "h4"}}
+                                fontSize={{base :"14px", sm:"h5", lg:"h6", "3xl" : "h4"}}
                                 padding={"1rem 0.5rem"}
                                 height={"5%"}
                                 outline={"1px solid #DB005B"}
