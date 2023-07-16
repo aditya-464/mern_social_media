@@ -30,7 +30,7 @@ const WelcomePage = () => {
       getWindowDimensions();
       setWelcome(true);
     }
-  }, [winHt])
+  }, [])
 
 
 

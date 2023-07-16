@@ -18,6 +18,7 @@ const initialValuesLogin = {
 };
 
 export const LoginForm = (props) => {
+    console.log(props.width);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [invalidCredentials, setInvalidCredentials] = useState(false);
@@ -77,12 +78,13 @@ export const LoginForm = (props) => {
                 }) => (
 
                     <form style={{
-                        width: props.width, padding: "1rem", margin: "auto", color: "primaryDark", textAlign: "center", fontFamily: "Poppins, sans-serif"}} onSubmit={handleSubmit}>
+                        width: props.width, padding: "1rem", margin: "auto", color: "primaryDark", textAlign: "center", fontFamily: "Poppins, sans-serif"
+                    }} onSubmit={handleSubmit}>
                         <FormControl
                             marginBottom={"1rem"}
                             isInvalid={errors.email && touched.email}>
                             <FormLabel
-                                fontSize={"h5"}
+                                fontSize={{base :"h5", sm:"h4", lg:"h5", "3xl" : "h3"}}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Email
@@ -92,7 +94,7 @@ export const LoginForm = (props) => {
                                 onChange={handleChange}
                                 value={values.email}
                                 name='email'
-                                fontSize={"h6"}
+                                fontSize={{base :"h5", sm:"h5", lg:"h6", "3xl" : "h4"}}
                                 padding={"1rem 0.5rem"}
                                 height={"5%"}
                                 outline={"1px solid #DB005B"}
@@ -105,7 +107,7 @@ export const LoginForm = (props) => {
                             marginBottom={"10%"}
                             isInvalid={errors.password && touched.password}>
                             <FormLabel
-                                fontSize={"h5"}
+                                fontSize={{base :"h5", sm:"h4", lg:"h5", "3xl" : "h3"}}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Password
@@ -116,7 +118,7 @@ export const LoginForm = (props) => {
                                 value={values.password}
                                 type='password'
                                 name='password'
-                                fontSize={"h6"}
+                                fontSize={{base :"h5", sm:"h5", lg:"h6", "3xl" : "h4"}}
                                 padding={"1rem 0.5rem"}
                                 height={"5%"}
                                 outline={"1px solid #DB005B"}
@@ -125,11 +127,11 @@ export const LoginForm = (props) => {
                                 }}></Input>
                             <FormErrorMessage fontSize={"larger"}>{errors.password}</FormErrorMessage>
                         </FormControl>
-                        <FillButton name="log in" fs="h5" pd="8% 0" width="100%"></FillButton>
+                        <FillButton name="log in" fs={{ base: "h6", sm: "h5", lg: "h5", "3xl" : "h4" }} pd={{base : "10% 0", sm : "8% 0"}} width="100%"></FillButton>
                         {invalidCredentials
                             && <Text
                                 marginTop={"5%"}
-                                fontSize={"h6"}
+                                fontSize={{base :"h6", sm:"h5", lg:"h6", "3xl" : "h4"}}
                                 color={"red"} letterSpacing={"1px"}
                                 textAlign={"center"}>
                                 * Invalid Credentials *
@@ -137,7 +139,7 @@ export const LoginForm = (props) => {
                         }
                         <Text
                             color={"primaryDark"}
-                            fontSize={"h6"}
+                            fontSize={{base :"h6", sm:"h5", lg:"h6", "3xl" : "h4"}}
                             marginTop={"5%"}
                             display={"inline-block"}>
                             Don't have an account? <span className='signup-link'><NavLink to="/signup" > Sign Up</NavLink></span>
