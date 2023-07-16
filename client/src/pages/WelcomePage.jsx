@@ -8,14 +8,19 @@ import { useSelector } from 'react-redux'
 
 const WelcomePage = () => {
   const [welcome, setWelcome] = useState(false);
-  const [winHt, setWinHt] = useState(0);
+  const [winHt, setWinHt] = useState({
+    height: 0, width: 0
+  });
   const navigate = useNavigate();
   const user = useSelector((state => state.user));
   const token = useSelector((state) => state.token);
 
   const getWindowDimensions = () => {
     let val = window.innerHeight;
-    setWinHt(val);
+    let val2 = window.innerWidth;
+    setWinHt({
+      height: val, width: val2
+    });
   }
   useEffect(() => {
     if (user && token) {
@@ -34,14 +39,15 @@ const WelcomePage = () => {
       {welcome &&
         <Flex className="welcome-container"
           maxWidth={"100vw"}
-          height={"100vh"}
+          minHeight={"100vh"}
+          overflow={"hidden"}
           fontFamily={"Poppins, sans-serif"}
           bgColor={"white"}
-          flexDir={{ base: "column", lg: "row" }}
+          flexDir={{ base: "column", md: "column-reverse", lg: "row" }}
         >
           <Box className="welcome-image-container"
             width={{ base: "100%", lg: "40%" }}
-            height={{ base: "auto", lg: "100%" }}
+            height={{ lg: "100%" }}
           >
             <Img src={welcomePageImage}
               width={"100%"}
@@ -56,16 +62,17 @@ const WelcomePage = () => {
             color={"secondaryDark"}
           >
             <Box className='welcome-text-content'
-              width={{ base: "90%", lg: "70%" }}
+              width={{ base: "90%", md: "80%", lg: "70%" }}
               height={{ base: "auto", lg: "auto" }}
               margin={"auto"}
-              marginTop={{ base: winHt <= 700 ? "5%" : "15%", lg: "15%" }}
+              marginTop={{ base: winHt.height <= 700 ? "5%" : "15%", md: "3%", lg: "15%" }}
+              marginBottom={{ md: "5%", lg: "0" }}
             >
               <Box className='welcome-text'
                 textAlign={"center"}
               >
                 <Text
-                  fontSize={{ base: "40px", lg: "h1" }}
+                  fontSize={{ base: "40px", md: "h1", lg: "h1" }}
                   fontWeight={600}
                   letterSpacing={"3px"}
                   bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
@@ -74,8 +81,8 @@ const WelcomePage = () => {
                   Vakya
                 </Text>
                 <Text
-                  fontSize={{ base: "14px", lg: "h5" }}
-                  letterSpacing={{ base: "1px", lg: "1.5px" }}
+                  fontSize={{ base: "14px", md: "h5", lg: "h5" }}
+                  letterSpacing={{ base: "1px", md: "1.5px", lg: "1.5px" }}
                   marginTop={"2%"}
                 >
                   Social media app designed to ignite substantial conversations and bring people closer like never before.
@@ -83,9 +90,9 @@ const WelcomePage = () => {
               </Box>
 
               <Flex className='welcome-text-buttons'
-                width={{ base: "90%", lg: "60%" }}
+                width={{ base: "90%", md :"80%", lg: "60%" }}
                 margin={"auto"}
-                marginTop={{ base: "10%", lg: "10%" }}
+                marginTop={{ base: "10%", md: "5%", lg: "10%" }}
                 justifyContent={"space-around"}
                 alignItems={"center"}>
                 <NavLink to="/login" style={{ display: "inline-block", width: "40%" }}>
