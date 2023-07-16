@@ -16,6 +16,7 @@ const ProfilePage = () => {
   const user = useSelector((state) => state.user);
   const { _id } = user;
   const token = useSelector((state) => state.token);
+  const mode = useSelector((state) => state.mode);
   const getUserDetails = async () => {
     const response = await fetch(`http://127.0.0.1:3300/users/${id}`, {
       method: "GET",
@@ -53,8 +54,8 @@ const ProfilePage = () => {
       {viewData.id !== "" &&
         <Box className='profile-page-outer-container'
           maxWidth={"100vw"}
-          bgColor={"primaryLight"}
-        >
+          bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
+          >
           <Flex className='profile-page-inner-container'
             width={"62.5vw"}
             height={"auto"}

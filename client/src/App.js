@@ -4,9 +4,19 @@ import ProfilePage from "pages/ProfilePage";
 import SignupPage from "pages/SignupPage";
 import UserAccountPage from "pages/UserAccountPage";
 import WelcomePage from "pages/WelcomePage.jsx";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
+  const mode = useSelector((state) => state.mode);
+  const changeBodyColor = () => {
+    document.documentElement.style.setProperty("--html-color", mode === "light" ? "#dfdddd" : "#181818");
+  }
+  useEffect(() => {
+    changeBodyColor();
+  }, [mode])
+  
   return (
     <>
       <Routes>

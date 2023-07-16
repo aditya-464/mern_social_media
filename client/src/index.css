@@ -1,5 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Nanum+Gothic&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Nanum+Gothic&family=Poppins&display=swap');
 
 * {
@@ -8,16 +6,15 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-  /* font-family: 'Nanum Gothic', sans-serif; */
-  font-family: 'Poppins', sans-serif !important;
-  scroll-behavior: smooth;
-  background-color: #e7e7e7;
+:root{
+  --html-color : "#dfdddd";
 }
 
-body {
-  background-color: #e7e7e7;
+html {
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif !important;
+  scroll-behavior: smooth;
+  background-color: var(--html-color);
 }
 
 .signup-link,
