@@ -3,18 +3,26 @@ import { FaSearch, FaMoon, FaSun, FaBell, FaQuestionCircle } from "react-icons/f
 import { MdChat, MdManageAccounts } from "react-icons/md";
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setMode } from 'state';
 
 
 export const Navbar = () => {
+    const mode = useSelector((state) => state.mode);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const toggleMode = () => {
+        dispatch(setMode());
+    }
+
     return (
         <>
             <Flex className='navbar-container'
                 maxWidth={"100vw"}
                 padding={"1vh 5vw"}
-                bgColor={"secondaryLight"}
-                color={"primaryDark"}
-                borderRadius={"5px"}
+                bgColor={mode === "light" ? "secondaryLight" : "primaryDark"}
+                color={mode === "light" ? "primaryDark" : "primaryLight"}
                 fontFamily={"Poppins, sans-serif"}
             >
                 <Flex className='navbar-left-container'
@@ -31,12 +39,12 @@ export const Navbar = () => {
                             bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
                             bgClip={"text"}
                             _hover={{
-                                cursor : "pointer",
+                                cursor: "pointer",
                             }}
-                            onClick={()=>{
+                            onClick={() => {
                                 navigate("/home");
                             }}
-                            >
+                        >
                             Vakya
                         </Text>
                     </Flex>
@@ -51,10 +59,15 @@ export const Navbar = () => {
                             alignItems={"center"}
                             padding={"0.5rem 1rem"}
                             borderRadius={"5px"}
-                            bgColor={"#d2cdcd"}
+                            bgColor={mode === "light" ? "lightHover" : "darkHover"}
+                            color={mode === "light" ? "primaryDark" : "primaryLight"}
                         >
                             <Input
                                 fontSize={"14px"}
+                                _placeholder={{
+                                    color: mode === "light" ? "primaryDark" : "primaryLight",
+                                    opacity: "0.7",
+                                }}
                                 placeholder='Search...'
                                 outline={"none"}
                                 border={"none"}
@@ -74,39 +87,41 @@ export const Navbar = () => {
                 >
                     <Box className='display-mode'
                         margin={"0 0.5rem"}
-                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
+                        _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                         padding={"0.7rem"}
-                        borderRadius={"5px"}>
-                        <FaMoon fontSize={"18px"}></FaMoon>
+                        borderRadius={"5px"}
+                        onClick={(toggleMode)}
+                    >
+                        {mode === "light" ? (<FaMoon fontSize={"18px"}></FaMoon>) : (<FaSun fontSize={"18px"}></FaSun>)}
                     </Box>
                     <Box className='message'
                         margin={"0 0.5rem"}
-                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
+                        _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                         padding={"0.7rem"}
                         borderRadius={"5px"}>
                         <MdChat fontSize={"18px"}></MdChat>
                     </Box>
                     <Box className='notification'
                         margin={"0 0.5rem"}
-                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
+                        _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                         padding={"0.7rem"}
                         borderRadius={"5px"}>
                         <FaBell fontSize={"18px"}></FaBell>
                     </Box>
                     <Box className='help'
                         margin={"0 0.5rem"}
-                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
+                        _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                         padding={"0.7rem"}
                         borderRadius={"5px"}>
                         <FaQuestionCircle fontSize={"18px"}></FaQuestionCircle>
                     </Box>
                     <Box className='settings'
                         margin={"0 1.5rem"}
-                        _hover={{ backgroundColor: "#d2cdcd", cursor: "pointer" }}
-                        padding={"0.7rem"}
+                        _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
+                        padding={"0.5rem"}
                         borderRadius={"5px"}
                         marginRight={"0"}
-                        onClick={()=>{
+                        onClick={() => {
                             navigate("/account");
                         }}
                     >

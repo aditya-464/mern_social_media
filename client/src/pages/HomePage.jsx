@@ -16,7 +16,8 @@ const HomePage = () => {
   return (
     <>
       <MemoizedNavbar></MemoizedNavbar>
-      <Box className='home-page-outer-container'
+      
+      {/* <Box className='home-page-outer-container'
         maxWidth={"100vw"}
         paddingX={"5vw"}
         bgColor={"primaryLight"}
@@ -59,7 +60,7 @@ const HomePage = () => {
             </Box>
           </Box>
         </Flex>
-      </Box>
+      </Box> */}
     </>
   )
 }
