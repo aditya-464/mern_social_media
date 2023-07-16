@@ -2,16 +2,20 @@ import { Flex, Box, Text, Img } from '@chakra-ui/react'
 import { HiOutlineSparkles } from "react-icons/hi"
 import React from 'react'
 import MemoizedImageSlider from './ImageSlider'
+import { useSelector } from 'react-redux'
 
 
 
 export const Advertisement = () => {
+
+    const mode = useSelector((state) => state.mode);
+
     return (
         <>
             <Flex className='advertisement-container'
                 width={"20vw"}
-                bgColor={"secondaryLight"}
-                color={"primaryDark"}
+                bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
+                color={mode === "light" ? "primaryDark" : "primaryLight"}
                 padding={"1.5rem"}
                 marginBottom={"2rem"}
                 borderRadius={"10px"}
@@ -23,9 +27,10 @@ export const Advertisement = () => {
                 >
                     <Text
                         fontSize={"h6"}
-                        fontWeight={"bold"}
-
-                    >What's New</Text>
+                        fontWeight={"500"}
+                    >
+                        What's New
+                    </Text>
                     <Box className='sparkle-icon'
                         fontSize={"20px"}
                         paddingLeft={"1rem"}
@@ -46,6 +51,6 @@ export const Advertisement = () => {
     )
 }
 
-var MemoizedAdvertisement =null ;
+var MemoizedAdvertisement = null;
 export default MemoizedAdvertisement = React.memo(Advertisement);
 
