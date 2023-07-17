@@ -42,7 +42,7 @@ export const UserCard = (props) => {
     return (
         <>
             <Box className='user-card-container'
-                width={{ base: "80vw", sm: "60vw", md: "50vw", lg: "25vw", "3xl": "20vw" }}
+                width={{ base: "80vw", sm: "60vw", md: "50vw", lg: "30vw", xl: "25vw", "3xl": "20vw" }}
                 margin={{ base: "auto", lg: "0" }}
                 bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 borderRadius={"10px"}

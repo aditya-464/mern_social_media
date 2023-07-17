@@ -51,7 +51,8 @@ export const FriendsList = (props) => {
     return (
         <>
             <Box className='friends-list-container'
-                width={"25vw"}
+                width={{ base: "80vw", sm: "60vw", md: "50vw", lg: "30vw", xl: "25vw", "3xl": "20vw" }}
+                margin={{ base: "auto", lg: "0" }}
                 fontFamily={"Poppins, sans-serif"}
                 padding={"0.5rem 1.5rem"}
                 paddingBottom={"1.5rem"}
@@ -66,24 +67,38 @@ export const FriendsList = (props) => {
                 >
                     Friends List
                 </Text>
-                {!friends ?
-                    (<Text margin={"1rem 0"}>User has no friends...</Text>)
-                    : (Array.isArray(friends) && friends.length > 0 && friends.map((friend, ind) => (
-                        <Box
+
+                <Box className='friends-list'
+                    maxH={{ base: "25vh", sm: "27vh", md: "20vh", lg: "30vh" }}
+                    overflowY={"auto"}
+                    scrollBehavior={"smooth"}
+                    paddingRight={"0.5rem"}
+                >
+                    {!friends ?
+                        (<Text
                             margin={"1rem 0"}
-                            key={`${friend._id}+${friend.fullname}+${ind}`}
+                            fontSize={{ base: "14px", lg: "16px" }}
+                            opacity={"0.7"}
                         >
-                            <PostUserDetails
-                                friendId={friend._id}
-                                name={friend.fullname}
-                                subtitle={friend.location}
-                                userPicturePath={friend.picturePath}
-                                self={self}
-                                homepage={homepage}
-                            ></PostUserDetails>
-                        </Box>
-                    )))
-                }
+                            User has no friends...
+                        </Text>)
+                        : (Array.isArray(friends) && friends.length > 0 && friends.map((friend, ind) => (
+                            <Box
+                                margin={"1rem 0"}
+                                key={`${friend._id}+${friend.fullname}+${ind}`}
+                            >
+                                <PostUserDetails
+                                    friendId={friend._id}
+                                    name={friend.fullname}
+                                    subtitle={friend.location}
+                                    userPicturePath={friend.picturePath}
+                                    self={self}
+                                    homepage={homepage}
+                                ></PostUserDetails>
+                            </Box>
+                        )))
+                    }
+                </Box>
             </Box>
         </>
     )

@@ -74,7 +74,7 @@ export const PostUserDetails = (props) => {
                         paddingLeft={"1rem"}
                     >
                         <Text className="name"
-                            fontSize={"h6"}
+                            fontSize={{ base: "16px", md: "16px", lg: "16px", "3xl": "18px" }}
                             fontWeight={"500"}
                             onClick={() => {
                                 dispatch(setViewProfile(friendId));
@@ -89,12 +89,13 @@ export const PostUserDetails = (props) => {
                         </Text>
                         <Text className="location"
                             fontSize={"12px"}
+                            opacity={"0.7"}
                         >
                             {subtitle}
                         </Text>
                     </Flex>
                     {(_id !== friendId) && !hideIcons && (homepage == true) && <Flex className='friend-icon'
-                        fontSize={"22px"}
+                        fontSize={{ base: "20px", lg: "22px" }}
                         justifyContent={"center"}
                         alignItems={"center"}
                         borderRadius={"10px"}

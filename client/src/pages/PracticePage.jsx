@@ -1,3 +1,4 @@
+import FriendsList from 'components/FriendsList'
 import Navbar from 'components/Navbar'
 import UserCard from 'components/UserCard'
 import { VerticalNavIcons } from 'components/VerticalNavIcons'
@@ -10,6 +11,7 @@ export const PracticePage = () => {
     <>
     <Navbar></Navbar>
     <UserCard userId={user._id}></UserCard>
+    <FriendsList></FriendsList>
     {/* <VerticalNavIcons></VerticalNavIcons> */}
     </>
     )
