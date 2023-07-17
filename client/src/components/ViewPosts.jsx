@@ -25,6 +25,7 @@ export const ViewPosts = (props) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const mode = useSelector((state) => state.mode);
+  const viewportSize = useSelector((state) => state.viewportSize);
   const loggedInUserId = useSelector((state) => state.user._id);
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
@@ -60,7 +61,7 @@ export const ViewPosts = (props) => {
   return (
     <>
       <Box className='view-post-container'
-        width={"35vw"}
+        width={{ base: "90vw", sm: "60vw", md: "55vw", lg: "35vw", xl: "35vw", "3xl": "30vw" }}
         height={"auto"}
         bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
         color={mode === "light" ? "primaryDark" : "primaryLight"}
@@ -87,7 +88,7 @@ export const ViewPosts = (props) => {
             marginY={"1.5rem"}
           >
             <Text
-              fontSize={"14px"}
+              fontSize={{base : "14px", "3xl":"18px"}}
             >
               {description}
             </Text>
@@ -104,7 +105,7 @@ export const ViewPosts = (props) => {
 
           <Flex className='post-action-box'
             width={"100%"}
-            fontSize={"24px"}
+            fontSize={{ base: "20px", lg: "24px" }}
             marginTop={"1.5rem"}
             align={"center"}
             justify={"space-between"}
@@ -169,26 +170,36 @@ export const ViewPosts = (props) => {
             <>
 
               <Flex className='comments-section'
-                fontSize={"13px"}
+                fontSize={{base :"13px", "3xl":"14px"}}
                 marginTop={"1rem"}
-                maxHeight={"20vh"}
+                maxHeight={{ base: "15vh", lg: "20vh" }}
                 overflowY={"auto"}
                 flexDir={"column"}
                 scrollBehavior={"smooth"}
               >
                 {Array.isArray(comments) && comments.map((comment, i) => (
-                  <Flex className='individual-comment' key={`${comment.name}+${i}`}>
+                  <Flex className='individual-comment'
+                    key={`${comment.name}+${i}`}
+                    marginBottom={"0.7rem"}
+                  >
                     <Text
-                      fontWeight={"bold"}
+                      fontWeight={"500"}
                       marginRight={"1.5rem"}
-                    >{comment.name}</Text>
-                    <Text>{comment.comment}</Text>
+                      minWidth={{ base: "15vw", lg: "5vw" }}
+                    >
+                      {comment.name}
+                    </Text>
+                    <Text
+                      opacity={"0.7"}
+                    >
+                      {comment.comment}
+                    </Text>
                   </Flex>
                 ))}
               </Flex>
               <Flex className='add-comment'
                 padding={"1.5rem 0 1rem 0"}
-                height={"9vh"}
+                height={{ base: (viewportSize.height <= 700) ? "10vh" : "8vh", md:"7vh", lg: "9vh", "3xl":"8vh" }}
               >
                 <Input
                   onChange={(e) => setComment(e.target.value)}
@@ -201,8 +212,8 @@ export const ViewPosts = (props) => {
                     color: mode === "light" ? "primaryDark" : "primaryLight",
                     opacity: "0.7",
                   }}
-                  placeholder='Add a comment'
-                  borderRadius={"20px"}
+                  placeholder={'Add a comment'}
+                  borderRadius={"10px"}
                   fontSize={"13px"}
                   padding={"0 1.5rem"}
                   focusBorderColor={"transaprent"}

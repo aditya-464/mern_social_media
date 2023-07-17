@@ -4,7 +4,7 @@ import { MdChat, MdManageAccounts } from "react-icons/md";
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setMode } from 'state';
+import { setMode, setViewportSize } from 'state';
 import { VerticalNavIcons } from './VerticalNavIcons';
 import { IoSettingsSharp } from 'react-icons/io5';
 
@@ -14,7 +14,7 @@ export const Navbar = () => {
     const mode = useSelector((state) => state.mode);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
+    
     const toggleMode = () => {
         dispatch(setMode());
     }
@@ -30,6 +30,7 @@ export const Navbar = () => {
             setScreenSize(getCurrentDimension())
         }
         window.addEventListener('resize', updateDimension);
+        dispatch(setViewportSize(screenSize));
         return (() => {
             window.removeEventListener('resize', updateDimension);
         })

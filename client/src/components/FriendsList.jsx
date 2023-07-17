@@ -51,7 +51,7 @@ export const FriendsList = (props) => {
     return (
         <>
             <Box className='friends-list-container'
-                width={{ base: "80vw", sm: "60vw", md: "50vw", lg: "30vw", xl: "25vw", "3xl": "20vw" }}
+                width={{ base: "90vw", sm: "60vw", md: "55vw", lg: "30vw", xl: "25vw", "3xl": "20vw" }}
                 margin={{ base: "auto", lg: "0" }}
                 fontFamily={"Poppins, sans-serif"}
                 padding={"0.5rem 1.5rem"}
@@ -62,7 +62,7 @@ export const FriendsList = (props) => {
             >
                 <Text
                     marginTop={"1rem"}
-                    fontSize={"h5"}
+                    fontSize={{base : "h5", "3xl":"24px"}}
                     fontWeight={"500"}
                 >
                     Friends List
@@ -77,7 +77,7 @@ export const FriendsList = (props) => {
                     {!friends ?
                         (<Text
                             margin={"1rem 0"}
-                            fontSize={{ base: "14px", lg: "16px" }}
+                            fontSize={{ base: "14px", lg: "16px", "3xl" : "18px" }}
                             opacity={"0.7"}
                         >
                             User has no friends...

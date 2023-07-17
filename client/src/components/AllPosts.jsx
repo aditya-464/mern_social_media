@@ -46,7 +46,8 @@ export const AllPosts = (props) => {
     return (
         <>
             <Box className='all-posts-container'
-                width={"35vw"}
+                width={{ base: "90vw", sm: "60vw", md: "55vw", lg: "35vw", xl: "25vw", "3xl": "30vw" }}
+                margin={{base:"auto", lg:"0"}}
                 height={"auto"}
             >
                 {posts.length === 0 && isProfile &&

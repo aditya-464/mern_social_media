@@ -74,7 +74,7 @@ export const PostUserDetails = (props) => {
                         paddingLeft={"1rem"}
                     >
                         <Text className="name"
-                            fontSize={{ base: "16px", md: "16px", lg: "16px", "3xl": "18px" }}
+                            fontSize={{ base: "16px", md: "16px", lg: "16px", "3xl": "21px" }}
                             fontWeight={"500"}
                             onClick={() => {
                                 dispatch(setViewProfile(friendId));
@@ -88,7 +88,7 @@ export const PostUserDetails = (props) => {
                             {name}
                         </Text>
                         <Text className="location"
-                            fontSize={"12px"}
+                            fontSize={{base :"12px", lg:"14px", "3xl":"16px"}}
                             opacity={"0.7"}
                         >
                             {subtitle}
