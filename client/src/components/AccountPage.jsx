@@ -1,4 +1,4 @@
-import { Box, Flex, FormControl, FormLabel, Img, Input, Text, Textarea } from '@chakra-ui/react'
+import { Box, Flex, FormControl, FormLabel, Img, Input, Text, Textarea, useSlider } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
@@ -15,6 +15,8 @@ export const AccountPage = () => {
     const user = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
     const mode = useSelector((state) => state.mode);
+    const viewportSize = useSelector((state) => state.viewportSize);
+
 
     const [userDetails, setUserDetails] = useState({
         _id: user._id, fullname: user.fullname, username: user.username, occupation: user.occupation, location: user.location, bio: user.bio
@@ -96,24 +98,28 @@ export const AccountPage = () => {
     return (
         <>
             <Box className='account-page-container'
-                width={"50vw"}
+                width={{ base: "90vw", sm: "70vw", lg: "65vw", xl: "50vw", "3xl": "40vw" }}
+                height={{ base: "auto", lg: "70vh", "3xl": "60vh" }}
                 bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 color={mode === "light" ? "primaryDark" : "primaryLight"}
                 borderRadius={"10px"}
-                height={"70vh"}
                 padding={"1.5rem"}
             >
                 <Flex className="account-page-box"
                     width={"100%"}
-                    height={"100%"}
+                    height={{ base: "auto", lg: "100%" }}
+                    flexDir={{ base: "column", lg: "row" }}
                 >
                     <Box className='left-side'
-                        width={"35%"}
-                        height={"100%"}
-                        borderRight={"2px solid #d2cdcd"}
+                        width={{ base: "100%", lg: "35%" }}
+                        height={{ base: "auto", lg: "100%" }}
+                        borderRight={{ base: "none", lg: "2px solid #d2cdcd" }}
+                        borderBottom={{ base: "2px solid #d2cdcd", lg: "none" }}
                         fontFamily={"Poppins, sans-serif"}
-                        fontSize={"h5"}
-                        paddingRight={"2rem"}
+                        fontSize={{ base: "h6", lg: "h5", "3xl": "24px" }}
+                        paddingRight={{ base: "0", lg: "2rem" }}
+                        paddingBottom={{ base: "2rem", lg: "0" }}
+                        marginBottom={{ base: "2rem", lg: "0" }}
                     >
                         <Box className='left-side-row'
                             width={"100%"}
@@ -166,8 +172,8 @@ export const AccountPage = () => {
                     </Box>
 
                     <Flex className='right-side'
-                        width={"65%"}
-                        height={"100%"}
+                        width={{ base: "100%", lg: "65%" }}
+                        height={{ base: "55vh", lg: "100%" }}
                         flexDir={"column"}
                         justify={"space-between"}
                         paddingLeft={"1rem"}
@@ -192,12 +198,12 @@ export const AccountPage = () => {
                                     >
                                         <Avatar
                                             src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
-                                            size={180}
+                                            size={(viewportSize.width < 480) ? 150 : (viewportSize.width < 1900) ? 180 : 220}
                                             round={true}
                                         />
                                     </Flex>
                                     <Text
-                                        fontSize={"h5"}
+                                        fontSize={{ base: "h6", lg: "h5", "3xl": "24px" }}
                                         textAlign={"center"}
                                         padding={"1rem 0"}
                                     >
@@ -219,11 +225,12 @@ export const AccountPage = () => {
                                         >
                                             {({ getRootProps, getInputProps }) => (
                                                 <Flex
-                                                    width={"100%"}
-                                                    fontSize={"h6"}
+                                                    width={"90%"}
+                                                    fontSize={{ base: "h6", lg: "h5", "3xl": "22px" }}
                                                     border={image ? "1px dashed #DB005B" : mode === "light" ? "1px dashed black" : "1px dashed white"}
                                                     borderRadius={"10px"}
-                                                    margin={"1rem 0"}
+                                                    margin={"auto"}
+                                                    marginY={"1rem"}
                                                 >
                                                     <Flex
                                                         {...getRootProps()}
@@ -273,7 +280,7 @@ export const AccountPage = () => {
                                 >
 
                                     {editBtnCLicked && image && <Box
-                                        width={"20%"}
+                                        width={{ base: "30%", lg: "20%" }}
                                         onClick={() => {
                                             updateUserImage();
                                             setEditBtnCLicked(false);
@@ -281,28 +288,28 @@ export const AccountPage = () => {
                                         }}
                                         marginLeft={"2rem"}
                                     >
-                                        <FillButton name="save" fs="h6" pd="2.2rem 0" width="100%"></FillButton>
+                                        <FillButton name="save" fs={{ base: "h6", "3xl": "18px" }} pd="2.2rem 0" width="100%"></FillButton>
                                     </Box>}
 
                                     {!editBtnCLicked && <Box
-                                        width={"20%"}
+                                        width={{ base: "30%", lg: "20%" }}
                                         onClick={() => {
                                             setEditBtnCLicked(true);
                                         }}
                                         marginLeft={"2rem"}
                                     >
-                                        <FillButton name="edit" fs="h6" pd="2.2rem 0" width="100%"></FillButton>
+                                        <FillButton name="edit" fs={{ base: "h6", "3xl": "18px" }} pd="2.2rem 0" width="100%"></FillButton>
                                     </Box>}
 
                                     {editBtnCLicked && <Box
-                                        width={"20%"}
+                                        width={{ base: "30%", lg: "20%" }}
                                         onClick={() => {
                                             setEditBtnCLicked(false);
                                             setImage(null);
                                         }}
                                         marginLeft={"2rem"}
                                     >
-                                        <EmptyButton name="cancel" fs="h6" pd="2rem 0" width="100%"></EmptyButton>
+                                        <EmptyButton name="cancel" fs={{ base: "h6", "3xl": "18px" }} pd="2rem 0" width="100%"></EmptyButton>
                                     </Box>}
                                 </Flex>
 
@@ -316,7 +323,7 @@ export const AccountPage = () => {
                                 flexDir={"column"}
                                 justify={"space-between"}
                                 marginTop={"1rem"}
-                                marginLeft={"1rem"}
+                                marginLeft={{ base: "0", lg: "1rem" }}
                                 paddingRight={"1rem"}
                             >
                                 <Flex className='input-boxes'
@@ -339,7 +346,7 @@ export const AccountPage = () => {
                                             width={"45%"}
                                         >
                                             <FormLabel
-                                                fontSize={"h5"}
+                                                fontSize={{ base: "h6", lg: "h5", "3xl": "24px" }}
                                             >
                                                 Full Name
                                             </FormLabel>
@@ -347,7 +354,7 @@ export const AccountPage = () => {
                                                 name='fullname'
                                                 onChange={(e) => handleInput(e)}
                                                 value={userDetails.fullname}
-                                                fontSize={"h6"}
+                                                fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
                                                 bgColor={mode === "light" ? "lightHover" : "darkHover"}
@@ -368,7 +375,7 @@ export const AccountPage = () => {
                                                 contentEditable={"false"}
                                                 name={"fullname"}
                                                 value={user.fullname}
-                                                fontSize={"h6"}
+                                                fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
                                                 bgColor={mode === "light" ? "lightHover" : "darkHover"}
@@ -389,7 +396,7 @@ export const AccountPage = () => {
                                             width={"45%"}
                                         >
                                             <FormLabel
-                                                fontSize={"h5"}
+                                                fontSize={{ base: "h6", lg: "h5", "3xl": "24px" }}
                                             >
                                                 Username
                                             </FormLabel>
@@ -398,7 +405,7 @@ export const AccountPage = () => {
                                                 name={"username"}
                                                 onChange={(e) => handleInput(e)}
                                                 value={userDetails.username}
-                                                fontSize={"h6"}
+                                                fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
                                                 bgColor={mode === "light" ? "lightHover" : "darkHover"}
@@ -418,7 +425,7 @@ export const AccountPage = () => {
                                             {!editBtnCLickedAcc && <Input
                                                 contentEditable={"false"}
                                                 name={"location"}
-                                                fontSize={"h6"}
+                                                fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                 value={user.username}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
@@ -449,7 +456,7 @@ export const AccountPage = () => {
                                             width={"45%"}
                                         >
                                             <FormLabel
-                                                fontSize={"h5"}
+                                                fontSize={{ base: "h6", lg: "h5", "3xl": "24px" }}
                                             >
                                                 Occupation
                                             </FormLabel>
@@ -457,7 +464,7 @@ export const AccountPage = () => {
                                                 name={"occupation"}
                                                 onChange={(e) => handleInput(e)}
                                                 value={userDetails.occupation}
-                                                fontSize={"h6"}
+                                                fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
                                                 bgColor={mode === "light" ? "lightHover" : "darkHover"}
@@ -477,7 +484,7 @@ export const AccountPage = () => {
                                                 contentEditable={"false"}
                                                 name={"occupation"}
                                                 value={user.occupation}
-                                                fontSize={"h6"}
+                                                fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
                                                 bgColor={mode === "light" ? "lightHover" : "darkHover"}
@@ -499,7 +506,7 @@ export const AccountPage = () => {
                                             width={"45%"}
                                         >
                                             <FormLabel
-                                                fontSize={"h5"}
+                                                fontSize={{ base: "h6", lg: "h5", "3xl": "24px" }}
                                             >
                                                 Location
                                             </FormLabel>
@@ -508,7 +515,7 @@ export const AccountPage = () => {
                                                 name={"location"}
                                                 onChange={(e) => handleInput(e)}
                                                 value={userDetails.location}
-                                                fontSize={"h6"}
+                                                fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
                                                 bgColor={mode === "light" ? "lightHover" : "darkHover"}
@@ -527,7 +534,7 @@ export const AccountPage = () => {
                                             {!editBtnCLickedAcc && <Input
                                                 contentEditable={"false"}
                                                 name={"location"}
-                                                fontSize={"h6"}
+                                                fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                 value={user.location}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
@@ -557,7 +564,7 @@ export const AccountPage = () => {
                                             width={"100%"}
                                         >
                                             <FormLabel
-                                                fontSize={"h5"}
+                                                fontSize={{ base: "h6", lg: "h5", "3xl": "24px" }}
                                             >
                                                 Bio
                                             </FormLabel>
@@ -567,7 +574,7 @@ export const AccountPage = () => {
                                                     name={"bio"}
                                                     onChange={(e) => handleInput(e)}
                                                     value={userDetails.bio}
-                                                    fontSize={"h6"}
+                                                    fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                     padding={"1rem 1rem"}
                                                     borderRadius={"5px"}
                                                     bgColor={mode === "light" ? "lightHover" : "darkHover"}
@@ -591,7 +598,7 @@ export const AccountPage = () => {
                                                 <Textarea
                                                     contentEditable={"false"}
                                                     name={"bio"}
-                                                    fontSize={"h6"}
+                                                    fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                     value={user.bio}
                                                     padding={"1rem 1rem"}
                                                     borderRadius={"5px"}
@@ -627,35 +634,35 @@ export const AccountPage = () => {
                                 >
 
                                     {editBtnCLickedAcc && <Box
-                                        width={"20%"}
+                                        width={{ base: "30%", lg: "20%" }}
                                         onClick={() => {
                                             setEditBtnCLickedAcc(false);
                                             updateUser();
                                         }}
                                         marginLeft={"2rem"}
                                     >
-                                        <FillButton name="save" fs="h6" pd="2.2rem 0" width="100%"></FillButton>
+                                        <FillButton name="save" fs={{ base: "h6", "3xl": "18px" }} pd="2.2rem 0" width="100%"></FillButton>
                                     </Box>}
 
                                     {!editBtnCLickedAcc && <Box
-                                        width={"20%"}
+                                        width={{ base: "30%", lg: "20%" }}
                                         onClick={() => {
                                             setEditBtnCLickedAcc(true);
                                         }}
                                         marginLeft={"2rem"}
                                     >
-                                        <FillButton name="edit" fs="h6" pd="2.2rem 0" width="100%"></FillButton>
+                                        <FillButton name="edit" fs={{ base: "h6", "3xl": "18px" }} pd="2.2rem 0" width="100%"></FillButton>
                                     </Box>}
 
                                     {editBtnCLickedAcc && <Box
-                                        width={"20%"}
+                                        width={{ base: "30%", lg: "20%" }}
                                         onClick={() => {
                                             setEditBtnCLickedAcc(false);
                                             reloadInputs();
                                         }}
                                         marginLeft={"2rem"}
                                     >
-                                        <EmptyButton name="cancel" fs="h6" pd="2rem 0" width="100%"></EmptyButton>
+                                        <EmptyButton name="cancel" fs={{ base: "h6", "3xl": "18px" }} pd="2rem 0" width="100%"></EmptyButton>
                                     </Box>}
                                 </Flex>
 
@@ -668,11 +675,11 @@ export const AccountPage = () => {
                             >
                                 <Box className='question'>
                                     <Text
-                                        fontSize={"h5"}
+                                        fontSize={{ base: "h6", lg: "h5" }}
                                         textAlign={"center"}
                                         paddingTop={"1rem"}
                                     >
-                                        Are you certain you wish to log out?
+                                        Are you certain you wish to Logout?
                                     </Text>
                                 </Box>
                                 <Flex className='btns'
@@ -682,23 +689,23 @@ export const AccountPage = () => {
                                     marginTop={"3rem"}
                                 >
                                     <Box
-                                        width={"20%"}
+                                        width={{ base: "30%", lg: "20%" }}
                                         marginRight={"1rem"}
                                         onClick={() => {
                                             logoutFunc();
                                         }}
                                     >
-                                        <EmptyButton name="yes" fs="h6" pd="2rem 0" width="100%"></EmptyButton>
+                                        <EmptyButton name="yes" fs={{ base: "h6", "3xl": "18px" }} pd="2rem 0" width="100%"></EmptyButton>
 
                                     </Box>
                                     <Box
-                                        width={"20%"}
+                                        width={{ base: "30%", lg: "20%" }}
                                         marginLeft={"1rem"}
                                         onClick={() => {
                                             navigate("/home");
                                         }}
                                     >
-                                        <FillButton name="no" fs="h6" pd="2.2rem 0" width="100%"></FillButton>
+                                        <FillButton name="no" fs={{ base: "h6", "3xl": "18px" }} pd="2.2rem 0" width="100%"></FillButton>
                                     </Box>
                                 </Flex>
 

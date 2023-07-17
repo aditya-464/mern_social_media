@@ -4,6 +4,7 @@ import Navbar from 'components/Navbar'
 import UserCard from 'components/UserCard'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import UserAccountPage from './UserAccountPage'
 
 export const PracticePage = () => {
   const user = useSelector((state)=>state.user);
@@ -14,6 +15,7 @@ export const PracticePage = () => {
     {/* <FriendsList></FriendsList> */}
     {/* <AllPosts userId={user._id} isProfile={true} hideIcons={false} homepage={true}></AllPosts> */}
     {/* <VerticalNavIcons></VerticalNavIcons> */}
+    <UserAccountPage></UserAccountPage>
     </>
     )
 }

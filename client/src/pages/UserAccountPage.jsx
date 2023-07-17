@@ -1,16 +1,24 @@
 import { Box, Flex } from '@chakra-ui/react'
 import MemoizedAccountPage from 'components/AccountPage'
 import MemoizedNavbar from 'components/Navbar'
-import React, { memo } from 'react'
+import React, { memo, useLayoutEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 const UserAccountPage = () => {
-    const mode = useSelector((state)=>state.mode)
+    const [height, setHeight] = useState(0);
+    const navRef = useRef(null);
+    const mode = useSelector((state) => state.mode)
+
+    useLayoutEffect(() => {
+        setHeight(navRef.current.offsetHeight);
+    }, [])
+
     return (
         <>
             <Box className='navbar'
                 width={"100vw"}
                 position={"fixed"}
+                ref={navRef}
             >
                 <MemoizedNavbar></MemoizedNavbar>
             </Box>
@@ -27,7 +35,7 @@ const UserAccountPage = () => {
                     margin={"auto"}
                 >
                     <Box className='account-page'
-                        marginTop={"2rem"}
+                        marginTop={{ base: `${(height + 20)/10}` + "rem", lg: "2rem" }}
                     >
                         <MemoizedAccountPage></MemoizedAccountPage>
                     </Box>
