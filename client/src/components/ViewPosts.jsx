@@ -224,7 +224,7 @@ export const ViewPosts = (props) => {
                   fontSize={"28px"}
                   padding={"0 0.8rem"}
                   borderRadius={"7px"}
-                  _hover={{ bgColor: "#d2cdcd" }}
+                  _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
                   cursor={"pointer"}
                   marginLeft={"1rem"}
                   onClick={() => {
