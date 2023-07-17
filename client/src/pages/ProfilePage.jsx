@@ -75,7 +75,7 @@ const ProfilePage = () => {
           marginTop={{ base: `${(height + 20) / 10}` + "rem" }}
         >
           <Flex className='profile-page-inner-container'
-            width={{ base: "100vw", lg: "70vw", xl: "62.5vw" }}
+            width={{ base: "100vw", lg: "70vw", xl: "62.5vw", "3xl": "55vw" }}
             height={"auto"}
             margin={"auto"}
             justify={"space-between"}

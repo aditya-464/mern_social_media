@@ -36,7 +36,7 @@ const HomePage = () => {
 
       <Box className='home-page-outer-container'
         maxWidth={"100vw"}
-        paddingX={{ lg: "2vw", xl: "5vw" }}
+        paddingX={{ lg: "2vw", xl: "5vw", "3xl": "10vw" }}
         bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
         marginTop={{ base: `${(height + 20) / 10}` + "rem" }}
       >
