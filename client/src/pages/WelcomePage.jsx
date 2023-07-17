@@ -62,7 +62,7 @@ const WelcomePage = () => {
                 textAlign={"center"}
               >
                 <Text
-                  fontSize={{ base: "40px", md: "h1", lg: "h2", xl:"h1", '3xl' :"70px" }}
+                  fontSize={{ base: "40px", md: "h1", lg: "h2", xl: "h1", '3xl': "70px" }}
                   fontWeight={600}
                   letterSpacing={"3px"}
                   bgGradient={"linear-gradient(90deg, rgba(219,0,91,1) 45%, rgba(247,147,39,1) 60%, rgba(247,147,39,1) 65%)"}
@@ -71,7 +71,7 @@ const WelcomePage = () => {
                   Vakya
                 </Text>
                 <Text
-                  fontSize={{ base: "14px", md: "h5", lg: "20px", xl:"h5", "3xl" : "h4" }}
+                  fontSize={{ base: "14px", md: "h5", lg: "20px", xl: "h5", "3xl": "h4" }}
                   letterSpacing={{ base: "1px", md: "1.5px", lg: "1.5px" }}
                   marginTop={"2%"}
                 >
@@ -80,16 +80,16 @@ const WelcomePage = () => {
               </Box>
 
               <Flex className='welcome-text-buttons'
-                width={{ base: "90%", md: "80%", lg: "80%", xl : "60%" }}
+                width={{ base: "90%", md: "80%", lg: "80%", xl: "60%" }}
                 margin={"auto"}
-                marginTop={{ base: "10%", md: "5%", lg: "10%", "3xl" : "7%" }}
+                marginTop={{ base: "10%", md: "5%", lg: "10%", "3xl": "7%" }}
                 justifyContent={"space-around"}
                 alignItems={"center"}>
                 <NavLink to="/login" style={{ display: "inline-block", width: "40%" }}>
-                  <EmptyButton name="log in" fs={{ base: "h6", lg: "h5", "3xl": "h4" }} pd={{ base: "2rem 0", md: "2.4rem", lg: "2.4rem 0", "3xl" : "2.8rem 0" }} width="100%"></EmptyButton>
+                  <EmptyButton name="log in" fs={{ base: "h6", lg: "h5", "3xl": "h4" }} pd={{ base: "2rem 0", md: "2.4rem", lg: "2.4rem 0", "3xl": "2.8rem 0" }} width="100%"></EmptyButton>
                 </NavLink>
                 <NavLink to="/signup" style={{ display: "inline-block", width: "40%" }}>
-                  <FillButton name="sign up" fs={{ base: "h6", lg: "h5", "3xl": "h4"  }} pd={{ base: "2.2rem 0", md: "2.6rem", lg: "2.6rem 0", "3xl" : "3rem 0"  }} width="100%"></FillButton>
+                  <FillButton name="sign up" fs={{ base: "h6", lg: "h5", "3xl": "h4" }} pd={{ base: "2.2rem 0", md: "2.6rem", lg: "2.6rem 0", "3xl": "3rem 0" }} width="100%"></FillButton>
                 </NavLink>
               </Flex>
             </Box>

@@ -5,12 +5,14 @@ import { MdOutlineImage, MdOutlineGifBox, MdOutlineMicNone, MdDeleteOutline } fr
 import { FillButton } from './FillButton';
 import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
-import { setPosts } from "state";
+import { setPosts, setViewProfile } from "state";
 import Avatar from 'react-avatar';
+import { useNavigate } from 'react-router-dom';
 
 
 export const CreatePost = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isImage, setIsImage] = useState(false);
     const [image, setImage] = useState(null);
     const [post, setPost] = useState("");
@@ -54,6 +56,13 @@ export const CreatePost = () => {
                     <Flex className='image-box'
                         justifyContent={"center"}
                         alignItems={"center"}
+                        onClick={() => {
+                            dispatch(setViewProfile(_id));
+                            navigate(`/profile/${_id}`);
+                        }}
+                        _hover={{
+                            cursor: "pointer",
+                        }}
                     >
                         <Avatar
                             src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
@@ -110,7 +119,7 @@ export const CreatePost = () => {
                                     <Flex
                                         {...getRootProps()}
                                         width={"100%"}
-                                        height={{ base: viewportSize.height<=700?"7vh":"5vh", lg: "8vh" }}
+                                        height={{ base: viewportSize.height <= 700 ? "7vh" : "5vh", lg: "8vh" }}
                                         _hover={{ cursor: "pointer" }}
                                         flexDir={"column"}
                                         justify={"center"}
