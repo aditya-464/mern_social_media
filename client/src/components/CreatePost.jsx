@@ -70,7 +70,7 @@ export const CreatePost = () => {
                             onChange={(e) => setPost(e.target.value)}
                             value={post || ""}
                             placeholder={'Write your post...'}
-                            fontSize={"h6"}
+                            fontSize={{ base: "h6", "3xl": "h5" }}
                             focusBorderColor={"none"}
                             bgColor={mode === "light" ? "lightHover" : "darkHover"}
                             _placeholder={{
@@ -79,11 +79,11 @@ export const CreatePost = () => {
                             }}
                             color={mode === "light" ? "primaryDark" : "primaryLight"}
                             width={"100%"}
-                            padding={"2rem 1.5rem"}
+                            padding={{ base: "2rem 1.5rem", "3xl": "2.5rem 2rem" }}
                             marginLeft={"1rem"}
                             border={"none"}
                             outline={"none"}
-                            borderRadius={"20px"}
+                            borderRadius={{ base: "20px", "3xl": "35px" }}
                         ></Input>
                     </Flex>
                 </Flex>
@@ -110,7 +110,7 @@ export const CreatePost = () => {
                                     <Flex
                                         {...getRootProps()}
                                         width={"100%"}
-                                        height={{base:"5vh", lg:"8vh"}}
+                                        height={{ base: viewportSize.height<=700?"7vh":"5vh", lg: "8vh" }}
                                         _hover={{ cursor: "pointer" }}
                                         flexDir={"column"}
                                         justify={"center"}
@@ -162,58 +162,58 @@ export const CreatePost = () => {
                     <Flex className='button-grp'
                         color={mode === "light" ? "primaryDark" : "primaryLight"}
                         width={"20%"}
-                        padding={{ base: "1rem 0", lg: "0" }}
-                        fontSize={{ base: "24px", lg: "h5" }}
+                        padding={{ base: "1rem 0", xl: "0", "3xl": "0.5rem" }}
+                        fontSize={{ base: "24px", xl: "h5", "3xl": "21px" }}
                         justify={"center"}
                         align={"center"}
-                        borderRadius={{ base: "10px", lg: "20px" }}
+                        borderRadius={{ base: "10px", xl: "20px", "3xl": "35px" }}
                         _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
 
                         onClick={() => { setIsImage(!isImage) }}
                     >
                         <MdOutlineImage></MdOutlineImage>
-                        {viewportSize.width >= 992 && (<Text padding={"0.5rem"} fontSize={"h6"}>Image</Text>)}
+                        {viewportSize.width >= 1280 && (<Text padding={"0.5rem"} fontSize={"h6"}>Image</Text>)}
                     </Flex>
 
                     <Flex className='button-grp'
                         color={mode === "light" ? "primaryDark" : "primaryLight"}
                         width={"20%"}
-                        padding={{ base: "1rem 0", lg: "0" }}
-                        fontSize={{ base: "24px", lg: "h5" }}
+                        padding={{ base: "1rem 0", xl: "0", "3xl": "0.5rem" }}
+                        fontSize={{ base: "24px", xl: "h5", "3xl": "21px" }}
                         justify={"center"}
                         align={"center"}
-                        borderRadius={{ base: "10px", lg: "20px" }}
+                        borderRadius={{ base: "10px", xl: "20px", "3xl": "35px" }}
                         _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
 
                     >
                         <MdOutlineGifBox></MdOutlineGifBox>
-                        {viewportSize.width >= 992 && (<Text padding={"0.5rem"} fontSize={"h6"}>Clip</Text>)}
+                        {viewportSize.width >= 1280 && (<Text padding={"0.5rem"} fontSize={"h6"}>Clip</Text>)}
                     </Flex>
 
                     <Flex className='button-grp'
                         color={mode === "light" ? "primaryDark" : "primaryLight"}
                         width={"20%"}
-                        padding={{ base: "1rem 0", lg: "0" }}
-                        fontSize={{ base: "24px", lg: "h5" }}
+                        padding={{ base: "1rem 0", xl: "0", "3xl": "0.5rem" }}
+                        fontSize={{ base: "24px", xl: "h5", "3xl": "21px" }}
                         justify={"center"}
                         align={"center"}
-                        borderRadius={{ base: "10px", lg: "20px" }}
+                        borderRadius={{ base: "10px", xl: "20px", "3xl": "35px" }}
                         _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
 
                     >
                         <MdOutlineMicNone></MdOutlineMicNone>
-                        {viewportSize.width >= 992 && (<Text padding={"0.5rem"} fontSize={"h6"}>Audio</Text>)}
+                        {viewportSize.width >= 1280 && (<Text padding={"0.5rem"} fontSize={"h6"}>Audio</Text>)}
                     </Flex>
 
                     <Box className='post-btn'
-                        width={{ base: "25%", lg: "20%" }}
+                        width={{ base: "25%", xl: "20%" }}
                         onClick={() => {
                             if (post) {
                                 handlePost();
                             }
                         }}
                     >
-                        <FillButton name="post" width="100%" fs="h6" pd="1.6rem 0" br="20px"></FillButton>
+                        <FillButton name="post" width="100%" fs={{ base: "h6", "3xl": "20px" }} pd={{ base: "1.6rem 0", "3xl": "2rem 0" }} br="20px"></FillButton>
                     </Box>
                 </Flex>
             </Box>
