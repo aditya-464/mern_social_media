@@ -15,6 +15,7 @@ export const UserCard = (props) => {
     const [user, setUser] = useState(null);
     const token = useSelector((state) => state.token);
     const mode = useSelector((state) => state.mode);
+    const viewportSize = useSelector((state) => state.viewportSize);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -66,7 +67,7 @@ export const UserCard = (props) => {
                     >
                         <Avatar
                             src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
-                            size={70}
+                            size={viewportSize.width >= 992 ? 70 : 60}
                             round={true}
                         />
                     </Flex>

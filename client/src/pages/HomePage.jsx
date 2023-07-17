@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
-import React, { memo } from 'react'
+import React, { memo, useLayoutEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
 import MemoizedNavbar from 'components/Navbar';
 import MemoizedUserCard from 'components/UserCard'
@@ -11,17 +11,34 @@ import MemoizedAdvertisement from 'components/Advertisement';
 
 
 const HomePage = () => {
+  const [height, setHeight] = useState(0);
+  const navRef = useRef(null);
   const user = useSelector((state) => state.user);
   const mode = useSelector((state) => state.mode);
+  const viewportSize = useSelector((state) => state.viewportSize);
   const { _id, picturePath } = user;
+
+  useLayoutEffect(() => {
+    setHeight(navRef.current.offsetHeight);
+  }, []);
+
   return (
     <>
-      <MemoizedNavbar></MemoizedNavbar>
+      <Box className='navbar'
+        width={"100vw"}
+        position={"fixed"}
+        top={0}
+        ref={navRef}
+        zIndex={100}
+      >
+        <MemoizedNavbar></MemoizedNavbar>
+      </Box>
 
       <Box className='home-page-outer-container'
         maxWidth={"100vw"}
-        paddingX={{lg:"2vw" ,xl:"5vw"}}
+        paddingX={{ lg: "2vw", xl: "5vw" }}
         bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
+        marginTop={{ base: `${(height + 20) / 10}` + "rem" }}
       >
         <Flex className='home-page-inner-container'
           maxWidth={"100%"}
@@ -29,9 +46,8 @@ const HomePage = () => {
           bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
           margin={"auto"}
         >
-          <Box className='user-card-and-friends-list-component'>
+          {viewportSize.width >= 992 && (<Box className='user-card-and-friends-list-component'>
             <Box className='user-card'
-              marginTop={"2rem"}
             >
               <MemoizedUserCard userId={_id} picturePath={picturePath} home={true}></MemoizedUserCard>
             </Box>
@@ -40,10 +56,13 @@ const HomePage = () => {
             >
               <MemoizedFriendsList self={true} homepage={true}></MemoizedFriendsList>
             </Box>
-          </Box>
-          <Box className='create-post-and-all-posts-component'>
+          </Box>)}
+
+
+          <Box className='create-post-and-all-posts-component'
+            margin={{ base: "auto", lg: "0" }}
+          >
             <Box className='create-post'
-              marginTop={"2rem"}
             >
               <MemoizedCreatePost></MemoizedCreatePost>
             </Box>
@@ -53,13 +72,14 @@ const HomePage = () => {
               <MemoizedAllPosts userId={_id} isProfile={false} hideIcons={false} self={true} homepage={true}></MemoizedAllPosts>
             </Box>
           </Box>
-          <Box className='advertisement-component'>
+
+
+          {viewportSize.width >= 992 && (<Box className='advertisement-component'>
             <Box className='advertisements'
-              marginTop={"2rem"}
             >
               <MemoizedAdvertisement></MemoizedAdvertisement>
             </Box>
-          </Box>
+          </Box>)}
         </Flex>
       </Box>
     </>

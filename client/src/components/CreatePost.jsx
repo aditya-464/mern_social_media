@@ -15,6 +15,7 @@ export const CreatePost = () => {
     const [image, setImage] = useState(null);
     const [post, setPost] = useState("");
     const user = useSelector((state) => state.user);
+    const viewportSize = useSelector((state) => state.viewportSize);
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
     const mode = useSelector((state) => state.mode);
@@ -42,7 +43,8 @@ export const CreatePost = () => {
     return (
         <>
             <Box className='create-post-container'
-                width={"35vw"}
+                width={{ base: "90vw", sm: "60vw", md: "55vw", lg: "35vw", xl: "35vw", "3xl": "30vw" }}
+                margin={{ base: "auto", lg: "0" }}
                 bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 color={mode === "light" ? "primaryDark" : "primaryLight"}
                 borderRadius={"10px"}
@@ -55,7 +57,7 @@ export const CreatePost = () => {
                     >
                         <Avatar
                             src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
-                            size={70}
+                            size={viewportSize.width >= 992 ? 70 : 60}
                             round={true}
                         />
                     </Flex>
@@ -160,48 +162,51 @@ export const CreatePost = () => {
                     <Flex className='button-grp'
                         color={mode === "light" ? "primaryDark" : "primaryLight"}
                         width={"20%"}
-                        fontSize={"h5"}
+                        padding={{ base: "1rem 0", lg: "0" }}
+                        fontSize={{ base: "24px", lg: "h5" }}
                         justify={"center"}
                         align={"center"}
-                        borderRadius={"20px"}
+                        borderRadius={{ base: "10px", lg: "20px" }}
                         _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
 
                         onClick={() => { setIsImage(!isImage) }}
                     >
                         <MdOutlineImage></MdOutlineImage>
-                        <Text padding={"0.5rem"} fontSize={"h6"}>Image</Text>
+                        {viewportSize.width >= 992 && (<Text padding={"0.5rem"} fontSize={"h6"}>Image</Text>)}
                     </Flex>
 
                     <Flex className='button-grp'
                         color={mode === "light" ? "primaryDark" : "primaryLight"}
                         width={"20%"}
-                        fontSize={"h5"}
+                        padding={{ base: "1rem 0", lg: "0" }}
+                        fontSize={{ base: "24px", lg: "h5" }}
                         justify={"center"}
                         align={"center"}
-                        borderRadius={"20px"}
+                        borderRadius={{ base: "10px", lg: "20px" }}
                         _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
 
                     >
                         <MdOutlineGifBox></MdOutlineGifBox>
-                        <Text padding={"0.5rem"} fontSize={"h6"}>Clip</Text>
+                        {viewportSize.width >= 992 && (<Text padding={"0.5rem"} fontSize={"h6"}>Clip</Text>)}
                     </Flex>
 
                     <Flex className='button-grp'
                         color={mode === "light" ? "primaryDark" : "primaryLight"}
                         width={"20%"}
-                        fontSize={"h5"}
+                        padding={{ base: "1rem 0", lg: "0" }}
+                        fontSize={{ base: "24px", lg: "h5" }}
                         justify={"center"}
                         align={"center"}
-                        borderRadius={"20px"}
+                        borderRadius={{ base: "10px", lg: "20px" }}
                         _hover={{ backgroundColor: mode === "light" ? "lightHover" : "darkHover", cursor: "pointer" }}
 
                     >
                         <MdOutlineMicNone></MdOutlineMicNone>
-                        <Text padding={"0.5rem"} fontSize={"h6"}>Audio</Text>
+                        {viewportSize.width >= 992 && (<Text padding={"0.5rem"} fontSize={"h6"}>Audio</Text>)}
                     </Flex>
 
                     <Box className='post-btn'
-                        width={"20%"}
+                        width={{ base: "25%", lg: "20%" }}
                         onClick={() => {
                             if (post) {
                                 handlePost();
