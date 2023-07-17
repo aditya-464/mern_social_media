@@ -9,10 +9,10 @@ export const PracticePage = () => {
   const user = useSelector((state)=>state.user);
   return (
     <>
-    <Navbar></Navbar>
-    <UserCard userId={user._id}></UserCard>
-    <FriendsList></FriendsList>
-    <AllPosts userId={user._id} isProfile={true} hideIcons={false} homepage={true}></AllPosts>
+    {/* <Navbar></Navbar> */}
+    {/* <UserCard userId={user._id}></UserCard> */}
+    {/* <FriendsList></FriendsList> */}
+    {/* <AllPosts userId={user._id} isProfile={true} hideIcons={false} homepage={true}></AllPosts> */}
     {/* <VerticalNavIcons></VerticalNavIcons> */}
     </>
     )

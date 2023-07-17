@@ -13,7 +13,7 @@ export const Advertisement = () => {
     return (
         <>
             <Flex className='advertisement-container'
-                width={"20vw"}
+                width={{ lg: "25vw", xl: "20vw", "3xl" : "15vw" }}
                 bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 color={mode === "light" ? "primaryDark" : "primaryLight"}
                 padding={"1.5rem"}
@@ -26,7 +26,7 @@ export const Advertisement = () => {
                     align={"center"}
                 >
                     <Text
-                        fontSize={"h6"}
+                        fontSize={{ base: "h6", "3xl": "24px" }}
                         fontWeight={"500"}
                     >
                         What's New

@@ -20,7 +20,7 @@ const HomePage = () => {
 
       <Box className='home-page-outer-container'
         maxWidth={"100vw"}
-        paddingX={"5vw"}
+        paddingX={{lg:"2vw" ,xl:"5vw"}}
         bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
       >
         <Flex className='home-page-inner-container'
