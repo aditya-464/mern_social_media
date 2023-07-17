@@ -110,7 +110,7 @@ export const CreatePost = () => {
                                     <Flex
                                         {...getRootProps()}
                                         width={"100%"}
-                                        height={"8vh"}
+                                        height={{base:"5vh", lg:"8vh"}}
                                         _hover={{ cursor: "pointer" }}
                                         flexDir={"column"}
                                         justify={"center"}
