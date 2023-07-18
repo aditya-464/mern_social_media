@@ -87,18 +87,18 @@ export const updateUser = async (req, res) => {
 }
 
 // Update User Image
-export const updateUserImage = async (req, res) => {
-    try {
-        const { _id } = req.body;
-        let val = req.newFileName;
-        const newUser = await User.findByIdAndUpdate(
-            _id,
-            { picturePath: val },
-            { new: true },
-        );
-        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
-        res.status(201).json({ token, newUser });
-    } catch (error) {
-        return res.status(404).json({ message: error });
-    }
-}
+// export const updateUserImage = async (req, res) => {
+//     try {
+//         const { _id } = req.body;
+//         let val = req.newFileName;
+//         const newUser = await User.findByIdAndUpdate(
+//             _id,
+//             { picturePath: val },
+//             { new: true },
+//         );
+//         const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
+//         res.status(201).json({ token, newUser });
+//     } catch (error) {
+//         return res.status(404).json({ message: error });
+//     }
+// }

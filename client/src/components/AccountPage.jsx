@@ -32,7 +32,6 @@ export const AccountPage = () => {
     formData.append("_id", user._id);
     if (image) {
         formData.append("picture", image);
-        formData.append("picturePath", image.name);
     }
 
     const updateUserImage = async () => {
@@ -197,7 +196,8 @@ export const AccountPage = () => {
                                         align={"center"}
                                     >
                                         <Avatar
-                                            src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
+                                            // src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
+                                            src={user.picturePath === "" || !user.picturePath ? profileDummyImg : user.picturePath}
                                             size={(viewportSize.width < 480) ? 150 : (viewportSize.width < 1900) ? 180 : 220}
                                             round={true}
                                         />

@@ -62,7 +62,7 @@ export const FriendsList = (props) => {
             >
                 <Text
                     marginTop={"1rem"}
-                    fontSize={{base : "h5", "3xl":"24px"}}
+                    fontSize={{ base: "h5", "3xl": "24px" }}
                     fontWeight={"500"}
                 >
                     Friends List
@@ -74,10 +74,10 @@ export const FriendsList = (props) => {
                     scrollBehavior={"smooth"}
                     paddingRight={"0.5rem"}
                 >
-                    {!friends ?
+                    {friends.length == 0 ?
                         (<Text
                             margin={"1rem 0"}
-                            fontSize={{ base: "14px", lg: "16px", "3xl" : "18px" }}
+                            fontSize={{ base: "14px", lg: "16px", "3xl": "18px" }}
                             opacity={"0.7"}
                         >
                             User has no friends...

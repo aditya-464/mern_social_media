@@ -23,6 +23,10 @@ const UserSchema = new mongoose.Schema(
             min: 6,
             max: 20
         },
+        pictureId: {
+            type: String,
+            default: "",
+        },
         picturePath: {
             type: String,
             default: ""

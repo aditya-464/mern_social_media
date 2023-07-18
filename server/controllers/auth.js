@@ -18,7 +18,7 @@ export const register = async (req, res) => {
 
         // Creating and saving user
         const newUser = new User({
-            fullname, username : "dummyUsername" , email, password: hashedPassword, picturePath: "picturePath", friends: [], location: "location", bio: "bio", occupation: "occupation", profileViews: 10, impressions: 10
+            fullname, username : "dummyUsername" , email, password: hashedPassword, pictureId:"", picturePath: "", friends: [], location: "location", bio: "bio", occupation: "occupation", profileViews: 10, impressions: 10
         });
         const savedNewUser = await newUser.save();
 

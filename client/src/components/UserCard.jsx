@@ -66,7 +66,8 @@ export const UserCard = (props) => {
                         }}
                     >
                         <Avatar
-                            src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
+                            // src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
+                            src={user.picturePath === "" || !user.picturePath ? profileDummyImg : user.picturePath}
                             size={viewportSize.width >= 992 ? 70 : 60}
                             round={true}
                         />
@@ -116,7 +117,7 @@ export const UserCard = (props) => {
                     >
                         <IoLocationSharp></IoLocationSharp>
                         <Text
-                            fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl" : "18px" }}
+                            fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl": "18px" }}
                             marginLeft={"1rem"}
                         >
                             {location}
@@ -129,7 +130,7 @@ export const UserCard = (props) => {
                     >
                         <MdWork></MdWork>
                         <Text
-                            fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl" : "18px" }}
+                            fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl": "18px" }}
                             marginLeft={"1rem"}
                         >
                             {occupation}
@@ -145,7 +146,7 @@ export const UserCard = (props) => {
                 ></Box>
 
                 <Box className='user-profile-post-detail'
-                    fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl" : "18px" }}
+                    fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl": "18px" }}
                     padding={"0.5rem 2rem"}
                     marginBottom={"1rem"}
                 >

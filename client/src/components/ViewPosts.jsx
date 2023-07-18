@@ -96,7 +96,8 @@ export const ViewPosts = (props) => {
           <Flex className='post-image'>
             {picturePath &&
               <Img
-                src={`http://127.0.0.1:3300/assets/${picturePath}`}
+                // src={`http://127.0.0.1:3300/assets/${picturePath}`}
+                src={picturePath}
                 width={"100%"}
                 height={"auto"}
                 borderRadius={"10px"}

@@ -28,7 +28,6 @@ export const CreatePost = () => {
         formData.append("description", post);
         if (image) {
             formData.append("picture", image);
-            formData.append("picturePath", image.name);
         }
 
         const response = await fetch(`http://127.0.0.1:3300/posts`, {
@@ -65,7 +64,8 @@ export const CreatePost = () => {
                         }}
                     >
                         <Avatar
-                            src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
+                            // src={user.picturePath === "picturePath" || !user.picturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${user.picturePath}`}
+                            src={user.picturePath === "" || !user.picturePath ? profileDummyImg : user.picturePath}
                             size={viewportSize.width >= 992 ? 70 : 60}
                             round={true}
                         />
