@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Input, Img } from '@chakra-ui/react'
+import { Box, Flex, Text, Input } from '@chakra-ui/react'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import React, { useState } from 'react'
 import { MdOutlineImage, MdOutlineGifBox, MdOutlineMicNone, MdDeleteOutline } from "react-icons/md";

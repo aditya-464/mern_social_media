@@ -1,4 +1,4 @@
-import { Flex, Box, Text, Img } from '@chakra-ui/react'
+import { Flex, Box, Text } from '@chakra-ui/react'
 import { HiOutlineSparkles } from "react-icons/hi"
 import React from 'react'
 import MemoizedImageSlider from './ImageSlider'

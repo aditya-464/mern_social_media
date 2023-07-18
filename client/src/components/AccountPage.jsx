@@ -1,4 +1,4 @@
-import { Box, Flex, FormControl, FormLabel, Img, Input, Text, Textarea, useSlider } from '@chakra-ui/react'
+import { Box, Flex, FormControl, FormLabel, Input, Text, Textarea } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"

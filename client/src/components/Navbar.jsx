@@ -1,6 +1,6 @@
 import { Box, Flex, Input, Text } from '@chakra-ui/react'
 import { FaSearch, FaMoon, FaSun, FaBell, FaQuestionCircle } from "react-icons/fa";
-import { MdChat, MdManageAccounts } from "react-icons/md";
+import { MdChat } from "react-icons/md";
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';

@@ -1,6 +1,6 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo } from 'react'
 import image1 from "../assets/login-signup-page.webp"
-import { Box, Flex, Img, Text, useStatStyles } from '@chakra-ui/react'
+import { Box, Flex, Img, Text } from '@chakra-ui/react'
 import { LoginForm } from 'components/LoginForm'
 
 const LoginPage = () => {

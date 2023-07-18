@@ -1,4 +1,4 @@
-import { Box, Flex, Img, Text } from '@chakra-ui/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import { IoLocationSharp } from "react-icons/io5";
 import { MdWork } from "react-icons/md";

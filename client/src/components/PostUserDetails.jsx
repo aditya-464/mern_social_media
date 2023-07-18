@@ -8,7 +8,7 @@ import React from 'react'
 import Avatar from 'react-avatar';
 
 export const PostUserDetails = (props) => {
-    const { friendId, name, subtitle, userPicturePath, hideIcons, self, homepage } = props;
+    const { friendId, name, subtitle, userPicturePath, hideIcons, homepage } = props;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { _id } = useSelector((state) => state.user);
