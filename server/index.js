@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import multer from "multer";
+// import multer from "multer";
 import helmet from "helmet";
 import morgan from 'morgan'
 import path from "path";
@@ -18,6 +18,7 @@ import fileUpload from "express-fileupload";
 import cloudinary from "cloudinary"
 import User from "./models/user.js";
 import Post from "./models/post.js";
+import * as fs from "fs";
 
 // Configurations
 const __filename = fileURLToPath(import.meta.url);
@@ -97,6 +98,9 @@ const createNewPost = async (req, res) => {
             })
             await newPost.save();
             const post = await Post.find();
+            fs.unlink(file.tempFilePath, (err)=>{
+                if (err) throw err;
+            })
             res.status(201).json(post);
         }
     } catch (error) {
@@ -148,6 +152,9 @@ const updateNewUserImage = async (req, res) => {
                 { new: true },
             );
             const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
+            fs.unlink(file.tempFilePath, (err)=>{
+                if (err) throw err;
+            })
             res.status(201).json({ token, newUser });
         }
     } catch (error) {
