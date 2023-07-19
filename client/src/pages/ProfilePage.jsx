@@ -28,7 +28,7 @@ const ProfilePage = () => {
   const viewportSize = useSelector((state) => state.viewportSize);
 
   const getUserDetails = async () => {
-    const response = await fetch(`http://127.0.0.1:3300/users/${id}`, {
+    const response = await fetch(`https://vakya-app.onrender.com/users/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

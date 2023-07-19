@@ -6,7 +6,7 @@ import img4 from "../assets/ok4.webp"
 import img6 from "../assets/ok6.webp"
 import img8 from "../assets/ok8.webp"
 import SimpleImageSlider from "react-simple-image-slider";
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
@@ -23,13 +23,25 @@ export const Ad = () => {
     <>
       <Box
       width={"20vw"}
+      color={"white"}
+      textAlign={"left"}
       >
-        <Carousel>
+        <Carousel
+        autoPlay={true}
+        // interval={5000}
+        // infiniteLoop={true}
+        stopOnHover={true}
+        showIndicators={false}
+        showStatus={false}
+        showThumbs={false}
+        // showArrows={false}
+        transitionTime={400}
+        >
 
           <div>
             <img src={img1} />
-            <p className="">Rasen - our latest foundation colors, a diverse palette celebrating every skin tone. Achieve flawless radiance and embrace your unique beauty with confidence, inclusivity, and endless possibilities
-            </p>
+            <Text textAlign={"left"} className="" >Rasen - our latest foundation colors, a diverse palette celebrating every skin tone. Achieve flawless radiance and embrace your unique beauty with confidence, inclusivity, and endless possibilities
+            </Text>
           </div>
           <div>
             <img src={img4} />

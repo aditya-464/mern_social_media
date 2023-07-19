@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import MemoizedAdvertisement from 'components/Advertisement';
 import Advertisement from 'components/Advertisement';
 import { Ad } from './Ad';
+import ImageSlider from 'components/ImageSlider';
 
 const MemoizedNavbar = React.lazy(() => import('components/Navbar'));
 const MemoizedUserCard = React.lazy(() => import('components/UserCard'));
@@ -108,8 +109,8 @@ const HomePage = () => {
 
 
 
-
-          <Ad></Ad>
+          <ImageSlider></ImageSlider>
+          {/* <Ad></Ad> */}
         </Flex>
       </Box >
 
