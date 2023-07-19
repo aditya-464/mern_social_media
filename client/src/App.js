@@ -1,3 +1,4 @@
+import { Ad } from "pages/Ad";
 import HomePage from "pages/HomePage";
 import LoginPage from "pages/LoginPage";
 import ProfilePage from "pages/ProfilePage";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
         <Route path="/profile/:id" element={<ProfilePage></ProfilePage>}></Route>
         <Route path="/account" element={<UserAccountPage></UserAccountPage>}></Route>
+        <Route path="/ad" element={<Ad></Ad>}></Route>
       </Routes>
     </>
   );
