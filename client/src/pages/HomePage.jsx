@@ -98,7 +98,9 @@ const HomePage = () => {
           </Suspense>
 
           {/* <MemoizedAdvertisement></MemoizedAdvertisement> */}
-          {/* <Advertisement></Advertisement> */}
+          <Box>
+            <Advertisement></Advertisement>
+          </Box>
 
           {/* {viewportSize.width >= 992 && (<Box className='advertisement-component'>
             <Box className='advertisements'
@@ -109,7 +111,7 @@ const HomePage = () => {
 
 
 
-          <ImageSlider></ImageSlider>
+          {/* <ImageSlider></ImageSlider> */}
           {/* <Ad></Ad> */}
         </Flex>
       </Box >

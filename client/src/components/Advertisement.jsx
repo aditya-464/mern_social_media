@@ -1,8 +1,8 @@
 import { Flex, Box, Text } from '@chakra-ui/react'
 import { HiOutlineSparkles } from "react-icons/hi"
 import React from 'react'
-import MemoizedImageSlider from './ImageSlider'
 import { useSelector } from 'react-redux'
+import ImageSlider from './ImageSlider'
 
 
 
@@ -44,7 +44,7 @@ export const Advertisement = () => {
                     margin={"1rem 0"}
                 >
                     {/* Slider component */}
-                    <MemoizedImageSlider width="20vw"></MemoizedImageSlider>
+                    <ImageSlider width="20vw"></ImageSlider>
                 </Box>
             </Flex>
         </>
