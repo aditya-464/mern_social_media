@@ -63,7 +63,7 @@ const HomePage = () => {
           bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
           margin={"auto"}
         >
-          
+
           <Suspense>
             {viewportSize.width >= 992 && (<Box className='user-card-and-friends-list-component'>
               <Box className='user-card'
@@ -94,12 +94,14 @@ const HomePage = () => {
 
           </Suspense>
 
-          {viewportSize.width >= 992 && (<Box className='advertisement-component'>
+          <MemoizedAdvertisement></MemoizedAdvertisement>
+
+          {/* {viewportSize.width >= 992 && (<Box className='advertisement-component'>
             <Box className='advertisements'
             >
               <MemoizedAdvertisement></MemoizedAdvertisement>
             </Box>
-          </Box>)}
+          </Box>)} */}
         </Flex>
       </Box >
 
