@@ -13,7 +13,7 @@ export const Advertisement = () => {
     return (
         <>
             <Flex className='advertisement-container'
-                width={{ lg: "25vw", xl: "20vw", "3xl" : "15vw" }}
+                width={{ lg: "25vw", xl: "20vw", "3xl": "15vw" }}
                 bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 color={mode === "light" ? "primaryDark" : "primaryLight"}
                 padding={"1.5rem"}
@@ -44,13 +44,14 @@ export const Advertisement = () => {
                     margin={"1rem 0"}
                 >
                     {/* Slider component */}
-                    <ImageSlider width="20vw"></ImageSlider>
+                    <ImageSlider width={{ lg: "25vw", xl: "20vw", "3xl": "15vw" }}></ImageSlider>
                 </Box>
             </Flex>
         </>
     )
 }
 
-var MemoizedAdvertisement = null;
-export default MemoizedAdvertisement = React.memo(Advertisement);
+
+// var MemoizedAdvertisement = null;
+// export default MemoizedAdvertisement = React.memo(Advertisement);
 

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 // import MemoizedFriendsList from 'components/FriendsList'
 // import MemoizedCreatePost from "components/CreatePost"
 import MemoizedAdvertisement from 'components/Advertisement';
-import Advertisement from 'components/Advertisement';
+import {Advertisement} from 'components/Advertisement';
 import { Ad } from './Ad';
 import ImageSlider from 'components/ImageSlider';
 
