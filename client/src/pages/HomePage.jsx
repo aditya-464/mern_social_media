@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 // import MemoizedCreatePost from "components/CreatePost"
 import MemoizedAdvertisement from 'components/Advertisement';
 import Advertisement from 'components/Advertisement';
+import { Ad } from './Ad';
 
 const MemoizedNavbar = React.lazy(() => import('components/Navbar'));
 const MemoizedUserCard = React.lazy(() => import('components/UserCard'));
@@ -96,7 +97,7 @@ const HomePage = () => {
           </Suspense>
 
           {/* <MemoizedAdvertisement></MemoizedAdvertisement> */}
-          <Advertisement></Advertisement>
+          {/* <Advertisement></Advertisement> */}
 
           {/* {viewportSize.width >= 992 && (<Box className='advertisement-component'>
             <Box className='advertisements'
@@ -104,6 +105,11 @@ const HomePage = () => {
               <MemoizedAdvertisement></MemoizedAdvertisement>
             </Box>
           </Box>)} */}
+
+
+
+
+          <Ad></Ad>
         </Flex>
       </Box >
 
