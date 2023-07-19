@@ -6,14 +6,14 @@ import { useSelector } from 'react-redux';
 // import MemoizedAllPosts from 'components/AllPosts'
 // import MemoizedFriendsList from 'components/FriendsList'
 // import MemoizedCreatePost from "components/CreatePost"
-// import MemoizedAdvertisement from 'components/Advertisement';
+import MemoizedAdvertisement from 'components/Advertisement';
 
 const MemoizedNavbar = React.lazy(() => import('components/Navbar'));
 const MemoizedUserCard = React.lazy(() => import('components/UserCard'));
 const MemoizedAllPosts = React.lazy(() => import('components/AllPosts'));
 const MemoizedFriendsList = React.lazy(() => import('components/FriendsList'));
 const MemoizedCreatePost = React.lazy(() => import('components/CreatePost'));
-const MemoizedAdvertisement = React.lazy(() => import('components/Advertisement'));
+// const MemoizedAdvertisement = React.lazy(() => import('components/Advertisement'));
 
 
 
@@ -51,19 +51,20 @@ const HomePage = () => {
         </Suspense>
       </Box>
 
-      <Suspense>
-        <Box className='home-page-outer-container'
-          maxWidth={"100vw"}
-          paddingX={{ lg: "2vw", xl: "5vw", "3xl": "10vw" }}
+      <Box className='home-page-outer-container'
+        maxWidth={"100vw"}
+        paddingX={{ lg: "2vw", xl: "5vw", "3xl": "10vw" }}
+        bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
+        marginTop={{ base: `${(height + 20) / 10}` + "rem" }}
+      >
+        <Flex className='home-page-inner-container'
+          maxWidth={"100%"}
+          justify={"space-between"}
           bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
-          marginTop={{ base: `${(height + 20) / 10}` + "rem" }}
+          margin={"auto"}
         >
-          <Flex className='home-page-inner-container'
-            maxWidth={"100%"}
-            justify={"space-between"}
-            bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
-            margin={"auto"}
-          >
+          
+          <Suspense>
             {viewportSize.width >= 992 && (<Box className='user-card-and-friends-list-component'>
               <Box className='user-card'
               >
@@ -91,16 +92,16 @@ const HomePage = () => {
               </Box>
             </Box>
 
+          </Suspense>
 
-            {(<Box className='advertisement-component'>
-              <Box className='advertisements'
-              >
-                <MemoizedAdvertisement></MemoizedAdvertisement>
-              </Box>
-            </Box>)}
-          </Flex>
-        </Box >
-      </Suspense>
+          {viewportSize.width >= 992 && (<Box className='advertisement-component'>
+            <Box className='advertisements'
+            >
+              <MemoizedAdvertisement></MemoizedAdvertisement>
+            </Box>
+          </Box>)}
+        </Flex>
+      </Box >
 
     </>
   )
