@@ -12,7 +12,7 @@ export const AllPosts = (props) => {
     const token = useSelector((state) => state.token);
 
     const getPosts = async () => {
-        const response = await fetch("http://127.0.0.1:3300/posts", {
+        const response = await fetch("https://vakya-app.onrender.com/posts", {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
         });
@@ -23,7 +23,7 @@ export const AllPosts = (props) => {
     const getUserPosts = async () => {
         if (!userId) return null;
         const response = await fetch(
-            `http://127.0.0.1:3300/posts/${userId}/posts`,
+            `https://vakya-app.onrender.com/posts/${userId}/posts`,
             {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` },

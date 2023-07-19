@@ -25,7 +25,7 @@ export const SignupForm = (props) => {
     const [signupError, setSignupError] = useState("");
 
     const signup = async (values, onSubmitProps) => {
-        const signupResponse = await fetch("http://127.0.0.1:3300/auth/register", {
+        const signupResponse = await fetch("https://vakya-app.onrender.com/auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

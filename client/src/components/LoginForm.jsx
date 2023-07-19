@@ -23,7 +23,7 @@ export const LoginForm = (props) => {
     const [invalidCredentials, setInvalidCredentials] = useState(false);
 
     const login = async (values, onSubmitProps) => {
-        const loggedInResponse = await fetch("http://127.0.0.1:3300/auth/login", {
+        const loggedInResponse = await fetch("https://vakya-app.onrender.com/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

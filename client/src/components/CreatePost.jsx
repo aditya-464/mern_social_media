@@ -30,7 +30,7 @@ export const CreatePost = () => {
             formData.append("picture", image);
         }
 
-        const response = await fetch(`http://127.0.0.1:3300/posts`, {
+        const response = await fetch(`https://vakya-app.onrender.com/posts`, {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` },
             body: formData,

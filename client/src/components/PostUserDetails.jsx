@@ -18,7 +18,7 @@ export const PostUserDetails = (props) => {
 
     const patchFriend = async () => {
         const response = await fetch(
-            `http://127.0.0.1:3300/users/${_id}/${friendId}`,
+            `https://vakya-app.onrender.com/users/${_id}/${friendId}`,
             {
                 method: "PATCH",
                 headers: {

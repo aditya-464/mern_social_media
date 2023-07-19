@@ -15,7 +15,7 @@ export const FriendsList = (props) => {
     const viewProfileId = useSelector((state) => state.viewProfile);
 
     const getFriendsList = async () => {
-        const response = await fetch(`http://127.0.0.1:3300/users/${_id}/friends`, {
+        const response = await fetch(`https://vakya-app.onrender.com/users/${_id}/friends`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27,7 +27,7 @@ export const FriendsList = (props) => {
 
 
     const getUserFriendsList = async () => {
-        const response = await fetch(`http://127.0.0.1:3300/users/${viewProfileId}/friends`, {
+        const response = await fetch(`https://vakya-app.onrender.com/users/${viewProfileId}/friends`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`

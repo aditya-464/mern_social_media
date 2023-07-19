@@ -36,7 +36,7 @@ export const AccountPage = () => {
     }
 
     const updateUserImage = async () => {
-        const response = await fetch(`http://127.0.0.1:3300/users/updateUserImage`, {
+        const response = await fetch(`https://vakya-app.onrender.com/users/updateUserImage`, {
             method: "PATCH",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -56,7 +56,7 @@ export const AccountPage = () => {
 
 
     const updateUser = async () => {
-        const response = await fetch("http://127.0.0.1:3300/users/updateUser", {
+        const response = await fetch("https://vakya-app.onrender.com/users/updateUser", {
             method: "PATCH",
             headers: {
                 Authorization: `Bearer ${token}`,

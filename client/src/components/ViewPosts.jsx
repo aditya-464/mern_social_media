@@ -30,7 +30,7 @@ export const ViewPosts = (props) => {
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
   const patchLike = async () => {
-    const response = await fetch(`http://127.0.0.1:3300/posts/${postId}/like`, {
+    const response = await fetch(`https://vakya-app.onrender.com/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -43,7 +43,7 @@ export const ViewPosts = (props) => {
   };
 
   const patchComment = async () => {
-    const response = await fetch(`http://127.0.0.1:3300/posts/${postId}/comment`, {
+    const response = await fetch(`https://vakya-app.onrender.com/posts/${postId}/comment`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,

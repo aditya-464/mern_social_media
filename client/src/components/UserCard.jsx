@@ -21,7 +21,7 @@ export const UserCard = (props) => {
 
     const getUser = async () => {
         if (!userId) return null;
-        const response = await fetch(`http://127.0.0.1:3300/users/${userId}`, {
+        const response = await fetch(`https://vakya-app.onrender.com/users/${userId}`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` }
         });
