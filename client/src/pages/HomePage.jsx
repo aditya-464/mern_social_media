@@ -92,7 +92,7 @@ const HomePage = () => {
             </Box>
 
 
-            {viewportSize.width >= 992 && (<Box className='advertisement-component'>
+            {(<Box className='advertisement-component'>
               <Box className='advertisements'
               >
                 <MemoizedAdvertisement></MemoizedAdvertisement>
