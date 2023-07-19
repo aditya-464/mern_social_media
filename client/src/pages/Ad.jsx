@@ -7,6 +7,8 @@ import img6 from "../assets/ok6.webp"
 import img8 from "../assets/ok8.webp"
 import SimpleImageSlider from "react-simple-image-slider";
 import { Box } from '@chakra-ui/react'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 export const Ad = () => {
   const images = [
@@ -15,23 +17,30 @@ export const Ad = () => {
     { url: img4 },
     { url: img6 },
     { url: img8 },
-    // { url: img1 },
-    // { url: img1 },
   ];
 
   return (
     <>
-      <Box 
+      <Box
       width={"20vw"}
       >
-        <SimpleImageSlider
-          width={560}
-          height={500}
-          images={images}
-          showBullets={true}
-          showNavs={true}
-        />
-      </Box>
+        <Carousel>
+
+          <div>
+            <img src={img1} />
+            <p className="">Rasen - our latest foundation colors, a diverse palette celebrating every skin tone. Achieve flawless radiance and embrace your unique beauty with confidence, inclusivity, and endless possibilities
+            </p>
+          </div>
+          <div>
+            <img src={img4} />
+            <p className="">Rasen - our latest foundation colors, a diverse palette celebrating every skin tone. Achieve flawless radiance and embrace your unique beauty with confidence, inclusivity, and endless possibilities 2</p>
+          </div>
+          <div>
+            <img src={img3} />
+            <p className="">Rasen - our latest foundation colors, a diverse palette celebrating every skin tone. Achieve flawless radiance and embrace your unique beauty with confidence, inclusivity, and endless possibilities 3</p>
+          </div>
+        </Carousel>
+      </Box >
     </>
     // <ImageSlider></ImageSlider>
   )
