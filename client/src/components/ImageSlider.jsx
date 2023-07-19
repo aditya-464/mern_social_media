@@ -37,7 +37,7 @@ export const ImageSlider = (props) => {
                         border={"none"}
                         outline={"none"}
                     >
-                        <Img src={ok4} width={imgwidth} borderRadius={"10px"}></Img>
+                        <Img src={ok4} width={imgwidth} borderRadius={"10px"} alt='advertisement-image'></Img>
                         <Text
                             fontSize={{ base: "14px", "3xl": "18px" }}
                             marginTop={"1rem"}
@@ -47,7 +47,7 @@ export const ImageSlider = (props) => {
                         border={"none"}
                         outline={"none"}
                     >
-                        <Img src={ok3} width={imgwidth} borderRadius={"10px"}></Img>
+                        <Img src={ok3} width={imgwidth} borderRadius={"10px"} alt='advertisement-image'></Img>
                         <Text
                             fontSize={{ base: "14px", "3xl": "18px" }}
                             marginTop={"1rem"}
@@ -57,7 +57,7 @@ export const ImageSlider = (props) => {
                         border={"none"}
                         outline={"none"}
                     >
-                        <Img src={ok1} width={imgwidth} borderRadius={"10px"}></Img>
+                        <Img src={ok1} width={imgwidth} borderRadius={"10px"} alt='advertisement-image'></Img>
                         <Text
                             fontSize={{ base: "14px", "3xl": "18px" }}
                             marginTop={"1rem"}
@@ -67,7 +67,7 @@ export const ImageSlider = (props) => {
                         border={"none"}
                         outline={"none"}
                     >
-                        <Img src={ok8} width={imgwidth} borderRadius={"10px"}></Img>
+                        <Img src={ok8} width={imgwidth} borderRadius={"10px"} alt='advertisement-image'></Img>
                         <Text
                             fontSize={{ base: "14px", "3xl": "18px" }}
                             marginTop={"1rem"}
@@ -77,7 +77,7 @@ export const ImageSlider = (props) => {
                         border={"none"}
                         outline={"none"}
                     >
-                        <Img src={ok6} width={imgwidth} borderRadius={"10px"}></Img>
+                        <Img src={ok6} width={imgwidth} borderRadius={"10px"} alt='advertisement-image'></Img>
                         <Text
                             fontSize={{ base: "14px", "3xl": "18px" }}
                             marginTop={"1rem"}

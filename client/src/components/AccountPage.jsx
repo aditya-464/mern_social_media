@@ -2,10 +2,10 @@ import { Box, Flex, FormControl, FormLabel, Input, Text, Textarea } from '@chakr
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
-import { FillButton } from './FillButton'
+import FillButton from './FillButton'
 import Dropzone from "react-dropzone";
 import { MdDeleteOutline } from 'react-icons/md'
-import { EmptyButton } from './EmptyButton'
+import EmptyButton from './EmptyButton'
 import { setLogin, setLogout } from 'state'
 import Avatar from 'react-avatar';
 import { useNavigate } from 'react-router-dom'
@@ -22,6 +22,7 @@ export const AccountPage = () => {
         _id: user._id, fullname: user.fullname, username: user.username, occupation: user.occupation, location: user.location, bio: user.bio
     })
     const [option, setOption] = useState("user-image");
+    const [val, setVal] = useState(0);
     const [image, setImage] = useState(null);
     const [editBtnCLicked, setEditBtnCLicked] = useState(false);
     const [editBtnCLickedAcc, setEditBtnCLickedAcc] = useState(false);
@@ -373,6 +374,7 @@ export const AccountPage = () => {
 
                                             {!editBtnCLickedAcc && <Input
                                                 contentEditable={"false"}
+                                                onChange={()=>setVal(1)}
                                                 name={"fullname"}
                                                 value={user.fullname}
                                                 fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
@@ -426,6 +428,7 @@ export const AccountPage = () => {
                                                 contentEditable={"false"}
                                                 name={"location"}
                                                 fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
+                                                onChange={()=>setVal(1)}
                                                 value={user.username}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
@@ -483,6 +486,7 @@ export const AccountPage = () => {
                                             {!editBtnCLickedAcc && <Input
                                                 contentEditable={"false"}
                                                 name={"occupation"}
+                                                onChange={()=>setVal(1)}
                                                 value={user.occupation}
                                                 fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
                                                 padding={"2rem 1rem"}
@@ -535,6 +539,7 @@ export const AccountPage = () => {
                                                 contentEditable={"false"}
                                                 name={"location"}
                                                 fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
+                                                onChange={()=>setVal(1)}
                                                 value={user.location}
                                                 padding={"2rem 1rem"}
                                                 borderRadius={"5px"}
@@ -597,8 +602,10 @@ export const AccountPage = () => {
                                             {!editBtnCLickedAcc &&
                                                 <Textarea
                                                     contentEditable={"false"}
+                                                    suppressContentEditableWarning={true}
                                                     name={"bio"}
                                                     fontSize={{ base: "14px", lg: "h6", "3xl": "18px" }}
+                                                    onChange={()=>setVal(1)}
                                                     value={user.bio}
                                                     padding={"1rem 1rem"}
                                                     borderRadius={"5px"}

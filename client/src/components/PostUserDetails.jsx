@@ -58,6 +58,7 @@ export const PostUserDetails = (props) => {
                     <Avatar
                         // src={userPicturePath === "picturePath" || !userPicturePath ? profileDummyImg : `http://127.0.0.1:3300/assets/${userPicturePath}`}
                         src={userPicturePath === "" || !userPicturePath ? profileDummyImg : userPicturePath}
+                        alt={"user-image"}
                         size={50}
                         round={true}
                     />

@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import React from 'react'
 
-export const EmptyButton = (props) => {
+const EmptyButton = (props) => {
     const { fs, pd, name, width } = props;
 
     return (
@@ -30,3 +30,5 @@ export const EmptyButton = (props) => {
         </>
     )
 }
+
+export default EmptyButton;

@@ -1,7 +1,10 @@
-import React, { memo } from 'react'
+import React, { Suspense, memo } from 'react'
 import image1 from "../assets/login-signup-page.webp"
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
-import { LoginForm } from 'components/LoginForm'
+// import { LoginForm } from 'components/LoginForm'
+
+const LoginForm = React.lazy(() => import("components/LoginForm"));
+
 
 const LoginPage = () => {
   return (
@@ -38,7 +41,9 @@ const LoginPage = () => {
                 Log In
               </Text>
 
-              <LoginForm width={"100%"}></LoginForm>
+              <Suspense>
+                <LoginForm width={"100%"}></LoginForm>
+              </Suspense>
 
             </Box>
           </Box>
@@ -48,10 +53,13 @@ const LoginPage = () => {
           width={{ base: "0%", lg: "40%" }}
           height={"100%"}
         >
-          <Img src={image1}
+          <Img
+            loading={"eager"}
+            src={image1}
             width={"100%"}
             height={"100%"}
             objectFit={"cover"}
+            alt='login-page-image'
           >
           </Img>
         </Box>

@@ -1,6 +1,6 @@
 import { FormControl, FormErrorMessage, FormLabel, Input, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { FillButton } from './FillButton'
+import FillButton from './FillButton'
 import { Formik } from "formik";
 import * as yup from "yup";
 import { NavLink, useNavigate } from "react-router-dom";

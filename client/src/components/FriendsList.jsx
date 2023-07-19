@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { PostUserDetails } from './PostUserDetails';
 import { setFriends } from 'state';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 
 export const FriendsList = (props) => {
@@ -83,19 +84,23 @@ export const FriendsList = (props) => {
                             User has no friends...
                         </Text>)
                         : (Array.isArray(friends) && friends.length > 0 && friends.map((friend, ind) => (
-                            <Box
-                                margin={"1rem 0"}
-                                key={`${friend._id}+${friend.fullname}+${ind}`}
+                            <LazyLoadComponent
+                            key={`${friend._id}+${friend.fullname}+${ind}`} 
                             >
-                                <PostUserDetails
-                                    friendId={friend._id}
-                                    name={friend.fullname}
-                                    subtitle={friend.location}
-                                    userPicturePath={friend.picturePath}
-                                    self={self}
-                                    homepage={homepage}
-                                ></PostUserDetails>
-                            </Box>
+                                <Box
+                                    margin={"1rem 0"}
+                                    key={`${friend._id}+${friend.fullname}+${ind}`}
+                                >
+                                    <PostUserDetails
+                                        friendId={friend._id}
+                                        name={friend.fullname}
+                                        subtitle={friend.location}
+                                        userPicturePath={friend.picturePath}
+                                        self={self}
+                                        homepage={homepage}
+                                    ></PostUserDetails>
+                                </Box>
+                            </LazyLoadComponent>
                         )))
                     }
                 </Box>

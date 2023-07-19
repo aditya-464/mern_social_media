@@ -1,7 +1,10 @@
-import { SignupForm } from 'components/SignupForm'
-import React, { memo } from 'react'
+import React, { Suspense, memo } from 'react'
 import image1 from "../assets/login-signup-page.webp"
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
+// import { SignupForm } from 'components/SignupForm'
+
+const SignupForm = React.lazy(() => import("components/SignupForm"));
+
 
 const SignupPage = () => {
   return (
@@ -30,15 +33,17 @@ const SignupPage = () => {
               padding={"1rem 0"}
             >
               <Text
-                fontSize={{ base: "h3", sm: "h2", lg: "h2", "3xl" : "h1" }}
+                fontSize={{ base: "h3", sm: "h2", lg: "h2", "3xl": "h1" }}
                 fontWeight={600}
                 letterSpacing={{ base: "1px", lg: "3px" }}
-                marginBottom={{base:"3%", lg:"1%"}}
+                marginBottom={{ base: "3%", lg: "1%" }}
               >
                 Sign Up
               </Text>
 
-              <SignupForm width="100%"></SignupForm>
+              <Suspense>
+                <SignupForm width="100%"></SignupForm>
+              </Suspense>
 
             </Box>
           </Box>
@@ -48,10 +53,13 @@ const SignupPage = () => {
           width={{ base: "0", lg: "40%" }}
           height={"100%"}
         >
-          <Img src={image1}
+          <Img
+            loading={"eager"}
+            src={image1}
             width={"100%"}
             height={"100%"}
             objectFit={"cover"}
+            alt='signup-page-image'
           >
           </Img>
         </Box>

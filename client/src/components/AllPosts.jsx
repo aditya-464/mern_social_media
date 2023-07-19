@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import { ViewPosts } from './ViewPosts';
 import { Box, Text } from '@chakra-ui/react';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 export const AllPosts = (props) => {
     const { userId, isProfile, hideIcons, homepage } = props;
@@ -47,7 +48,7 @@ export const AllPosts = (props) => {
         <>
             <Box className='all-posts-container'
                 width={{ base: "90vw", sm: "60vw", md: "55vw", lg: "35vw", xl: "35vw", "3xl": "30vw" }}
-                margin={{base:"auto", lg:"0"}}
+                margin={{ base: "auto", lg: "0" }}
                 height={"auto"}
             >
                 {posts.length === 0 && isProfile &&
@@ -72,20 +73,24 @@ export const AllPosts = (props) => {
                         likes,
                         comments,
                     }) => (
-                        <ViewPosts
-                            key={_id}
-                            postId={_id}
-                            postUserId={userId}
-                            fullname={fullname}
-                            description={description}
-                            location={location}
-                            picturePath={picturePath}
-                            userPicturePath={userPicturePath}
-                            likes={likes}
-                            comments={comments}
-                            hideIcons={hideIcons}
-                            homepage={homepage}
-                        />
+                        <LazyLoadComponent
+                        key={_id}
+                        >
+                            <ViewPosts
+                                key={_id}
+                                postId={_id}
+                                postUserId={userId}
+                                fullname={fullname}
+                                description={description}
+                                location={location}
+                                picturePath={picturePath}
+                                userPicturePath={userPicturePath}
+                                likes={likes}
+                                comments={comments}
+                                hideIcons={hideIcons}
+                                homepage={homepage}
+                            />
+                        </LazyLoadComponent>
                     )
                 )}
             </Box>

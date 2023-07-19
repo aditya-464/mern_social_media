@@ -1,6 +1,6 @@
 import { FormControl, FormErrorMessage, FormLabel, Input, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { FillButton } from './FillButton'
+import FillButton from './FillButton'
 import { Formik } from "formik";
 import * as yup from "yup";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -18,7 +18,6 @@ const initialValuesLogin = {
 };
 
 export const LoginForm = (props) => {
-    console.log(props.width);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [invalidCredentials, setInvalidCredentials] = useState(false);
@@ -84,7 +83,7 @@ export const LoginForm = (props) => {
                             marginBottom={"1rem"}
                             isInvalid={errors.email && touched.email}>
                             <FormLabel
-                                fontSize={{base :"h6", sm:"h4", lg:"h5", "3xl" : "h3"}}
+                                fontSize={{ base: "h6", sm: "h4", lg: "h5", "3xl": "h3" }}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Email
@@ -94,7 +93,7 @@ export const LoginForm = (props) => {
                                 onChange={handleChange}
                                 value={values.email}
                                 name='email'
-                                fontSize={{base :"14px", sm:"h5", lg:"h6", "3xl" : "h4"}}
+                                fontSize={{ base: "14px", sm: "h5", lg: "h6", "3xl": "h4" }}
                                 padding={"1rem 0.5rem"}
                                 height={"5%"}
                                 outline={"1px solid #DB005B"}
@@ -107,7 +106,7 @@ export const LoginForm = (props) => {
                             marginBottom={"10%"}
                             isInvalid={errors.password && touched.password}>
                             <FormLabel
-                                fontSize={{base :"h6", sm:"h4", lg:"h5", "3xl" : "h3"}}
+                                fontSize={{ base: "h6", sm: "h4", lg: "h5", "3xl": "h3" }}
                                 letterSpacing={"1px"}
                                 marginBottom={"2%"}>
                                 Password
@@ -118,7 +117,7 @@ export const LoginForm = (props) => {
                                 value={values.password}
                                 type='password'
                                 name='password'
-                                fontSize={{base :"14px", sm:"h5", lg:"h6", "3xl" : "h4"}}
+                                fontSize={{ base: "14px", sm: "h5", lg: "h6", "3xl": "h4" }}
                                 padding={"1rem 0.5rem"}
                                 height={"5%"}
                                 outline={"1px solid #DB005B"}
@@ -127,11 +126,11 @@ export const LoginForm = (props) => {
                                 }}></Input>
                             <FormErrorMessage fontSize={"larger"}>{errors.password}</FormErrorMessage>
                         </FormControl>
-                        <FillButton name="log in" fs={{ base: "h6", sm: "h5", lg: "h5", "3xl" : "h4" }} pd={{base : "10% 0", sm : "8% 0"}} width="100%"></FillButton>
+                        <FillButton name="log in" fs={{ base: "h6", sm: "h5", lg: "h5", "3xl": "h4" }} pd={{ base: "10% 0", sm: "8% 0" }} width="100%"></FillButton>
                         {invalidCredentials
                             && <Text
                                 marginTop={"5%"}
-                                fontSize={{base :"h6", sm:"h5", lg:"h6", "3xl" : "h4"}}
+                                fontSize={{ base: "h6", sm: "h5", lg: "h6", "3xl": "h4" }}
                                 color={"red"} letterSpacing={"1px"}
                                 textAlign={"center"}>
                                 * Invalid Credentials *
@@ -139,7 +138,7 @@ export const LoginForm = (props) => {
                         }
                         <Text
                             color={"primaryDark"}
-                            fontSize={{base :"h6", sm:"h5", lg:"h6", "3xl" : "h4"}}
+                            fontSize={{ base: "h6", sm: "h5", lg: "h6", "3xl": "h4" }}
                             marginTop={"5%"}
                             display={"inline-block"}>
                             Don't have an account? <span className='signup-link'><NavLink to="/signup" > Sign Up</NavLink></span>

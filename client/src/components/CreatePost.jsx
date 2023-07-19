@@ -2,7 +2,7 @@ import { Box, Flex, Text, Input } from '@chakra-ui/react'
 import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import React, { useState } from 'react'
 import { MdOutlineImage, MdOutlineGifBox, MdOutlineMicNone, MdDeleteOutline } from "react-icons/md";
-import { FillButton } from './FillButton';
+import FillButton from './FillButton';
 import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts, setViewProfile } from "state";

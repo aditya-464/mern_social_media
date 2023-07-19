@@ -1,27 +1,43 @@
 import { Box, Flex } from '@chakra-ui/react'
-import MemoizedAccountPage from 'components/AccountPage'
-import MemoizedNavbar from 'components/Navbar'
-import React, { memo, useLayoutEffect, useRef, useState } from 'react'
+import React, { Suspense, memo, useLayoutEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
+// import MemoizedAccountPage from 'components/AccountPage'
+// import MemoizedNavbar from 'components/Navbar'
+
+const MemoizedAccountPage = React.lazy(() => import("components/AccountPage"));
+const MemoizedNavbar = React.lazy(() => import("components/Navbar"));
 
 const UserAccountPage = () => {
     const [height, setHeight] = useState(0);
+    const [pageLoad, setPageLoad] = useState(false);
     const navRef = useRef(null);
-    const mode = useSelector((state) => state.mode)
+    const mode = useSelector((state) => state.mode);
+
+    window.addEventListener("load", () => {
+        setPageLoad(true);
+    })
 
     useLayoutEffect(() => {
-        setHeight(navRef.current.offsetHeight);
-    }, [])
+        if (navRef != null) {
+            setHeight(navRef.current.offsetHeight);
+        }
+    }, [pageLoad])
 
     return (
         <>
             <Box className='navbar'
                 width={"100vw"}
                 position={"fixed"}
+                top={0}
                 ref={navRef}
+                zIndex={100}
             >
-                <MemoizedNavbar></MemoizedNavbar>
+                <Suspense>
+                    <MemoizedNavbar></MemoizedNavbar>
+                </Suspense>
             </Box>
+
+
             <Flex className='account-page-outer-container'
                 maxWidth={"100vw"}
                 height={"100vh"}
@@ -30,17 +46,21 @@ const UserAccountPage = () => {
                 justify={"center"}
                 align={"center"}
             >
-                <Box className='account-page-inner-container'
-                    bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
-                    margin={"auto"}
-                >
-                    <Box className='account-page'
-                        marginTop={{ base: `${(height + 20)/10}` + "rem", lg: "2rem" }}
+                <Suspense>
+                    <Box className='account-page-inner-container'
+                        bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
+                        margin={"auto"}
                     >
-                        <MemoizedAccountPage></MemoizedAccountPage>
+                        <Box className='account-page'
+                            marginTop={{ base: `${(height + 20) / 10}` + "rem", lg: "2rem" }}
+                        >
+                            <MemoizedAccountPage></MemoizedAccountPage>
+                        </Box>
                     </Box>
-                </Box>
+                </Suspense>
             </Flex>
+
+
         </>
     )
 }

@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react'
 import React from 'react'
 
-export const FillButton = (props) => {
+const FillButton = (props) => {
     const { fs, pd, name, width, br } = props;
     return (
         <>
@@ -31,3 +31,5 @@ export const FillButton = (props) => {
         </>
     )
 }
+
+export default FillButton;

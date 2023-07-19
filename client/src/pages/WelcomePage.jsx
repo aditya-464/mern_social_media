@@ -1,10 +1,13 @@
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
-import React, { useEffect, useState, memo } from 'react'
+import React, { useEffect, useState, memo, Suspense } from 'react'
 import welcomePageImage from "../assets/welcome-page.webp"
-import { FillButton } from 'components/FillButton'
-import { EmptyButton } from 'components/EmptyButton'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+// import { FillButton } from 'components/FillButton'
+// import { EmptyButton } from 'components/EmptyButton'
+
+const FillButton = React.lazy(() => import('components/FillButton'));
+const EmptyButton = React.lazy(() => import('components/EmptyButton'));
 
 const WelcomePage = () => {
   const [welcome, setWelcome] = useState(false);
@@ -85,12 +88,14 @@ const WelcomePage = () => {
                 marginTop={{ base: "10%", md: "5%", lg: "10%", "3xl": "7%" }}
                 justifyContent={"space-around"}
                 alignItems={"center"}>
-                <NavLink to="/login" style={{ display: "inline-block", width: "40%" }}>
-                  <EmptyButton name="log in" fs={{ base: "h6", lg: "h5", "3xl": "h4" }} pd={{ base: "2rem 0", md: "2.4rem", lg: "2.4rem 0", "3xl": "2.8rem 0" }} width="100%"></EmptyButton>
-                </NavLink>
-                <NavLink to="/signup" style={{ display: "inline-block", width: "40%" }}>
-                  <FillButton name="sign up" fs={{ base: "h6", lg: "h5", "3xl": "h4" }} pd={{ base: "2.2rem 0", md: "2.6rem", lg: "2.6rem 0", "3xl": "3rem 0" }} width="100%"></FillButton>
-                </NavLink>
+                <Suspense>
+                  <NavLink to="/login" style={{ display: "inline-block", width: "40%" }}>
+                    <EmptyButton name="log in" fs={{ base: "h6", lg: "h5", "3xl": "h4" }} pd={{ base: "2rem 0", md: "2.4rem", lg: "2.4rem 0", "3xl": "2.8rem 0" }} width="100%"></EmptyButton>
+                  </NavLink>
+                  <NavLink to="/signup" style={{ display: "inline-block", width: "40%" }}>
+                    <FillButton name="sign up" fs={{ base: "h6", lg: "h5", "3xl": "h4" }} pd={{ base: "2.2rem 0", md: "2.6rem", lg: "2.6rem 0", "3xl": "3rem 0" }} width="100%"></FillButton>
+                  </NavLink>
+                </Suspense>
               </Flex>
             </Box>
           </Box>
@@ -100,10 +105,13 @@ const WelcomePage = () => {
             width={{ base: "100%", lg: "40%" }}
             height={{ lg: "100%" }}
           >
-            <Img src={welcomePageImage}
+            <Img
+              loading={'eager'}
+              src={welcomePageImage}
               width={"100%"}
               height={"100%"}
               objectFit={"cover"}
+              alt='Welcome-page-image'
             >
             </Img>
           </Box>

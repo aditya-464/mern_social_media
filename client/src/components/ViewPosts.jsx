@@ -88,7 +88,7 @@ export const ViewPosts = (props) => {
             marginY={"1.5rem"}
           >
             <Text
-              fontSize={{base : "14px", "3xl":"18px"}}
+              fontSize={{ base: "14px", "3xl": "18px" }}
             >
               {description}
             </Text>
@@ -97,11 +97,14 @@ export const ViewPosts = (props) => {
             {picturePath &&
               <Img
                 // src={`http://127.0.0.1:3300/assets/${picturePath}`}
+                loading={"lazy"}
                 src={picturePath}
+                alt='post-image'
                 width={"100%"}
                 height={"auto"}
                 borderRadius={"10px"}
-              ></Img>}
+              ></Img>
+            }
           </Flex>
 
           <Flex className='post-action-box'
@@ -171,7 +174,7 @@ export const ViewPosts = (props) => {
             <>
 
               <Flex className='comments-section'
-                fontSize={{base :"13px", "3xl":"14px"}}
+                fontSize={{ base: "13px", "3xl": "14px" }}
                 marginTop={"1rem"}
                 maxHeight={{ base: "15vh", lg: "20vh" }}
                 overflowY={"auto"}
@@ -200,7 +203,7 @@ export const ViewPosts = (props) => {
               </Flex>
               <Flex className='add-comment'
                 padding={"1.5rem 0 1rem 0"}
-                height={{ base: (viewportSize.height <= 700) ? "10vh" : "8vh", md:"7vh", lg: "9vh", "3xl":"8vh" }}
+                height={{ base: (viewportSize.height <= 700) ? "10vh" : "8vh", md: "7vh", lg: "9vh", "3xl": "8vh" }}
               >
                 <Input
                   onChange={(e) => setComment(e.target.value)}
