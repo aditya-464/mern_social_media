@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 // import MemoizedAllPosts from 'components/AllPosts'
 // import MemoizedFriendsList from 'components/FriendsList'
 // import MemoizedCreatePost from "components/CreatePost"
-import MemoizedAdvertisement from 'components/Advertisement';
+// import MemoizedAdvertisement from 'components/Advertisement';
 import { Advertisement } from 'components/Advertisement';
 import { Ad } from './Ad';
 import ImageSlider from 'components/ImageSlider';
@@ -66,6 +66,10 @@ const HomePage = () => {
           bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
           margin={"auto"}
         >
+          <Box>
+            <Advertisement></Advertisement>
+          </Box>
+
 
           <Suspense>
             {viewportSize.width >= 992 && (<Box className='user-card-and-friends-list-component'>
@@ -110,10 +114,7 @@ const HomePage = () => {
 
           {/* <ImageSlider></ImageSlider> */}
           {/* <Ad></Ad> */}
-          <Box>
 
-            <Advertisement></Advertisement>
-          </Box>
 
         </Flex>
       </Box >
