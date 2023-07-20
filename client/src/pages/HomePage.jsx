@@ -66,8 +66,11 @@ const HomePage = () => {
           bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
           margin={"auto"}
         >
-          <Box>
-            <Advertisement></Advertisement>
+          <Box
+          width={"20%"}
+          >
+            {/* <Advertisement></Advertisement> */}
+            <ImageSlider width={"20%"}></ImageSlider>
           </Box>
 
 
