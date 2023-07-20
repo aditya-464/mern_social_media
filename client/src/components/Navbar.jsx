@@ -52,6 +52,8 @@ export const Navbar = () => {
             height: navRef.current.offsetHeight,
             width : navRef.current.offsetWidth
         }))
+
+        console.log(navRef.current.offsetHeight);
     }, []);
 
     return (
