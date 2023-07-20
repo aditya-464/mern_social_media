@@ -60,7 +60,7 @@ const HomePage = () => {
         maxWidth={"100vw"}
         paddingX={{ lg: "2vw", xl: "5vw", "3xl": "10vw" }}
         bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
-        marginTop={{ base: `${(navbarSize.height + 20) / 10}` + "rem" }}
+        // marginTop={{ base: `${(navbarSize.height + 20) / 10}` + "rem" }}
       >
         <Flex className='home-page-inner-container'
           maxWidth={"100%"}
