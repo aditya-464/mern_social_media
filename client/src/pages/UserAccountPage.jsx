@@ -8,20 +8,22 @@ const MemoizedAccountPage = React.lazy(() => import("components/AccountPage"));
 const MemoizedNavbar = React.lazy(() => import("components/Navbar"));
 
 const UserAccountPage = () => {
-    const [height, setHeight] = useState(0);
-    const [pageLoad, setPageLoad] = useState(false);
-    const navRef = useRef(null);
+    // const [height, setHeight] = useState(0);
+    // const [pageLoad, setPageLoad] = useState(false);
+    // const navRef = useRef(null);
     const mode = useSelector((state) => state.mode);
+    const navbarSize = useSelector((state) => state.navbarSize);
 
-    window.addEventListener("load", () => {
-        setPageLoad(true);
-    })
 
-    useLayoutEffect(() => {
-        if (navRef != null) {
-            setHeight(navRef.current.offsetHeight);
-        }
-    }, [pageLoad])
+    // window.addEventListener("load", () => {
+    //     setPageLoad(true);
+    // })
+
+    // useLayoutEffect(() => {
+    //     if (navRef != null) {
+    //         setHeight(navRef.current.offsetHeight);
+    //     }
+    // }, [pageLoad])
 
     return (
         <>
@@ -29,7 +31,7 @@ const UserAccountPage = () => {
                 width={"100vw"}
                 position={"fixed"}
                 top={0}
-                ref={navRef}
+                // ref={navRef}
                 zIndex={100}
             >
                 <Suspense>
@@ -52,7 +54,7 @@ const UserAccountPage = () => {
                         margin={"auto"}
                     >
                         <Box className='account-page'
-                            marginTop={{ base: `${(height + 20) / 10}` + "rem", lg: "2rem" }}
+                            marginTop={{ base: `${(navbarSize.height + 20) / 10}` + "rem", lg: "2rem" }}
                         >
                             <MemoizedAccountPage></MemoizedAccountPage>
                         </Box>

@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react'
-import React, { memo, useState, useEffect, useRef, useLayoutEffect, Suspense } from 'react'
+import React, { memo, useState, useEffect, Suspense } from 'react'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 // import MemoizedAllPosts from 'components/AllPosts'
@@ -13,7 +13,6 @@ const MemoizedNavbar = React.lazy(() => import("components/Navbar"));
 const MemoizedUserCard = React.lazy(() => import("components/UserCard"));
 
 const ProfilePage = () => {
-  // const navRef = useRef(null);
   const { id } = useParams();
   const [viewData, setViewData] = useState({
     id: "", picturePath: "",
@@ -50,19 +49,9 @@ const ProfilePage = () => {
     }
   };
 
-  // window.addEventListener("load", () => {
-  //   setPageLoad(!pageLoad);
-  // })
-
-  // useLayoutEffect(() => {
-  //   setHeight(navRef.current.offsetHeight);
-  // }, [pageLoad]);
-
-
   useEffect(() => {
     getUserDetails();
   }, [id])
-
 
   return (
     <>
@@ -70,7 +59,6 @@ const ProfilePage = () => {
         width={"100vw"}
         position={"fixed"}
         top={0}
-        // ref={navRef}
         zIndex={100}
       >
         <Suspense>
