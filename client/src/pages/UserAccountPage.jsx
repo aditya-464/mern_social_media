@@ -1,29 +1,13 @@
 import { Box, Flex } from '@chakra-ui/react'
-import React, { Suspense, memo, useLayoutEffect, useRef, useState } from 'react'
+import React, { Suspense, memo } from 'react'
 import { useSelector } from 'react-redux'
-// import MemoizedAccountPage from 'components/AccountPage'
-// import MemoizedNavbar from 'components/Navbar'
 
 const MemoizedAccountPage = React.lazy(() => import("components/AccountPage"));
 const MemoizedNavbar = React.lazy(() => import("components/Navbar"));
 
 const UserAccountPage = () => {
-    // const [height, setHeight] = useState(0);
-    // const [pageLoad, setPageLoad] = useState(false);
-    // const navRef = useRef(null);
     const mode = useSelector((state) => state.mode);
     const navbarSize = useSelector((state) => state.navbarSize);
-
-
-    // window.addEventListener("load", () => {
-    //     setPageLoad(true);
-    // })
-
-    // useLayoutEffect(() => {
-    //     if (navRef != null) {
-    //         setHeight(navRef.current.offsetHeight);
-    //     }
-    // }, [pageLoad])
 
     return (
         <>
@@ -31,7 +15,6 @@ const UserAccountPage = () => {
                 width={"100vw"}
                 position={"fixed"}
                 top={0}
-                // ref={navRef}
                 zIndex={100}
             >
                 <Suspense>

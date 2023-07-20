@@ -45,6 +45,7 @@ export const AccountPage = () => {
         });
 
         const data = await response.json();
+        console.log(data);
         dispatch(
             setLogin({
                 user: data.newUser,
