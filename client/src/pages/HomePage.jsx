@@ -24,22 +24,23 @@ const MemoizedCreatePost = React.lazy(() => import('components/CreatePost'));
 
 
 const HomePage = () => {
-  const [height, setHeight] = useState(0);
-  const [pageLoad, setPageLoad] = useState(false);
-  const navRef = useRef(null);
+  // const [height, setHeight] = useState(0);
+  // const [pageLoad, setPageLoad] = useState(false);
+  // const navRef = useRef(null);
   const user = useSelector((state) => state.user);
   const mode = useSelector((state) => state.mode);
   const viewportSize = useSelector((state) => state.viewportSize);
+  const navbarSize = useSelector((state) => state.navbarSize);
   const { _id, picturePath } = user;
 
-  window.addEventListener("load", () => {
-    setPageLoad(!pageLoad);
-  })
+  // window.addEventListener("load", () => {
+  //   setPageLoad(!pageLoad);
+  // })
 
 
-  useLayoutEffect(() => {
-    setHeight(navRef.current.offsetHeight);
-  }, [pageLoad]);
+  // useLayoutEffect(() => {
+  //   setHeight(navRef.current.offsetHeight);
+  // }, [pageLoad]);
 
   return (
     <>
@@ -47,7 +48,7 @@ const HomePage = () => {
         width={"100vw"}
         position={"fixed"}
         top={0}
-        ref={navRef}
+        // ref={navRef}
         zIndex={100}
       >
         <Suspense>
@@ -59,7 +60,7 @@ const HomePage = () => {
         maxWidth={"100vw"}
         paddingX={{ lg: "2vw", xl: "5vw", "3xl": "10vw" }}
         bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
-        marginTop={{ base: `${(height + 20) / 10}` + "rem" }}
+        marginTop={{ base: `${(navbarSize.height + 20) / 10}` + "rem" }}
       >
         <Flex className='home-page-inner-container'
           maxWidth={"100%"}
@@ -112,9 +113,7 @@ const HomePage = () => {
           {/* <ImageSlider></ImageSlider> */}
           {/* <Ad></Ad> */}
 
-          <Box>
-
-
+          <Box className='advt-component'>
             <Box className='advt-outer'
               width={{ lg: "25vw", xl: "20vw", "3xl": "15vw" }}
               bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}

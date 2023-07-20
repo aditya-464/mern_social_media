@@ -1,40 +1,58 @@
 import { Box, Flex, Input, Text } from '@chakra-ui/react'
 import { FaSearch, FaMoon, FaSun, FaBell, FaQuestionCircle } from "react-icons/fa";
 import { MdChat } from "react-icons/md";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setMode, setViewportSize } from 'state';
+import { setMode, setNavbarSize, setViewportSize } from 'state';
 import { VerticalNavIcons } from './VerticalNavIcons';
 import { IoSettingsSharp } from 'react-icons/io5';
 
 
 export const Navbar = () => {
-    const [screenSize, setScreenSize] = useState(getCurrentDimension());
+    const [screenSize, setScreenSize] = useState({
+        width: 0, height: 0
+    });
     const mode = useSelector((state) => state.mode);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const navRef = useRef(null);
 
     const toggleMode = () => {
         dispatch(setMode());
     }
 
-    function getCurrentDimension() {
-        return {
+    // function getCurrentDimension() {
+    //     return {
+    //         width: window.innerWidth,
+    //         height: window.innerHeight
+    //     }
+    // }
+    // useEffect(() => {
+    //     const updateDimension = () => {
+    //         setScreenSize(getCurrentDimension())
+    //     }
+    //     window.addEventListener('resize', updateDimension);
+    //     dispatch(setViewportSize(screenSize));
+    //     return (() => {
+    //         window.removeEventListener('resize', updateDimension);
+    //     })
+    // }, [screenSize])
+
+    useLayoutEffect(() => {
+        setScreenSize({
             width: window.innerWidth,
             height: window.innerHeight
-        }
-    }
-    useEffect(() => {
-        const updateDimension = () => {
-            setScreenSize(getCurrentDimension())
-        }
-        window.addEventListener('resize', updateDimension);
-        dispatch(setViewportSize(screenSize));
-        return (() => {
-            window.removeEventListener('resize', updateDimension);
         })
-    }, [screenSize])
+        dispatch(setViewportSize({
+            width: window.innerWidth,
+            height: window.innerHeight
+        }))
+        dispatch(setNavbarSize({
+            height: navRef.current.offsetHeight,
+            width : navRef.current.offsetWidth
+        }))
+    }, []);
 
     return (
         <>
@@ -44,6 +62,7 @@ export const Navbar = () => {
                 bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
                 color={mode === "light" ? "primaryDark" : "primaryLight"}
                 fontFamily={"Poppins, sans-serif"}
+                ref={navRef}
             >
                 <Flex className='navbar-left-container'
                     width={"50%"}>

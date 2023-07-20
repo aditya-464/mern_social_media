@@ -7,6 +7,7 @@ const initialState = {
     posts: [],
     viewProfile: null,
     viewportSize : null,
+    navbarSize : null,
 };
 
 export const authSlice = createSlice({
@@ -48,10 +49,13 @@ export const authSlice = createSlice({
         setViewportSize:(state, action)=>{
             state.viewportSize = action.payload;
         },
+        setNavbarSize : (state, action)=>{
+            state.navbarSize = action.payload;
+        },
     }
 });
 
-export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost, setViewProfile, setViewportSize } = authSlice.actions;
+export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost, setViewProfile, setViewportSize, setNavbarSize } = authSlice.actions;
 export default authSlice.reducer;
 
 

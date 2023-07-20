@@ -11,7 +11,7 @@ const FillButton = React.lazy(() => import('components/FillButton'));
 const EmptyButton = React.lazy(() => import('components/EmptyButton'));
 
 const WelcomePage = () => {
-  const [screenSize, setScreenSize] = useState(getCurrentDimension());
+  // const [screenSize, setScreenSize] = useState(getCurrentDimension());
   const [welcome, setWelcome] = useState(false);
   const [winHt, setWinHt] = useState({
     height: 0, width: 0
@@ -21,42 +21,53 @@ const WelcomePage = () => {
   const user = useSelector((state => state.user));
   const token = useSelector((state) => state.token);
 
-  const getWindowDimensions = () => {
-    let val = window.innerHeight;
-    let val2 = window.innerWidth;
-    setWinHt({
-      height: val, width: val2
-    });
-  }
+  // const getWindowDimensions = () => {
+  //   let val = window.innerHeight;
+  //   let val2 = window.innerWidth;
+  //   setWinHt({
+  //     height: val, width: val2
+  //   });
+  // }
 
 
-  function getCurrentDimension() {
-    return {
-      width: window.innerWidth,
-      height: window.innerHeight
-    }
-  }
+  // function getCurrentDimension() {
+  //   return {
+  //     width: window.innerWidth,
+  //     height: window.innerHeight
+  //   }
+  // }
 
-  useLayoutEffect(() => {
-    const updateDimension = () => {
-      setScreenSize(getCurrentDimension())
-    }
-    window.addEventListener('resize', updateDimension);
-    dispatch(setViewportSize(screenSize));
-    return (() => {
-      window.removeEventListener('resize', updateDimension);
-    })
-  }, [screenSize])
+  // useLayoutEffect(() => {
+  //   const updateDimension = () => {
+  //     setScreenSize(getCurrentDimension())
+  //   }
+  //   window.addEventListener('resize', updateDimension);
+  //   dispatch(setViewportSize(screenSize));
+  //   return (() => {
+  //     window.removeEventListener('resize', updateDimension);
+  //   })
+  // }, [screenSize])
 
   useEffect(() => {
     if (user && token) {
       navigate("/home");
     }
     else {
-      getWindowDimensions();
+      // getWindowDimensions();
       setWelcome(true);
     }
-  }, [])
+  }, []);
+
+  useLayoutEffect(() => {
+    setWinHt({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+    dispatch(setViewportSize({
+      width: window.innerWidth,
+      height: window.innerHeight
+    }))
+  }, []);
 
 
 
