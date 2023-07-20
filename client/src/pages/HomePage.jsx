@@ -1,5 +1,5 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import React, { Suspense, memo, useLayoutEffect, useRef, useState } from 'react'
+import React, { Suspense, memo } from 'react'
 import { useSelector } from 'react-redux';
 // import MemoizedNavbar from 'components/Navbar';
 // import MemoizedUserCard from 'components/UserCard'
@@ -24,23 +24,11 @@ const MemoizedCreatePost = React.lazy(() => import('components/CreatePost'));
 
 
 const HomePage = () => {
-  // const [height, setHeight] = useState(0);
-  // const [pageLoad, setPageLoad] = useState(false);
-  // const navRef = useRef(null);
   const user = useSelector((state) => state.user);
   const mode = useSelector((state) => state.mode);
   const viewportSize = useSelector((state) => state.viewportSize);
   const navbarSize = useSelector((state) => state.navbarSize);
   const { _id, picturePath } = user;
-
-  // window.addEventListener("load", () => {
-  //   setPageLoad(!pageLoad);
-  // })
-
-
-  // useLayoutEffect(() => {
-  //   setHeight(navRef.current.offsetHeight);
-  // }, [pageLoad]);
 
   return (
     <>

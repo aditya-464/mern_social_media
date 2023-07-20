@@ -13,9 +13,7 @@ const MemoizedNavbar = React.lazy(() => import("components/Navbar"));
 const MemoizedUserCard = React.lazy(() => import("components/UserCard"));
 
 const ProfilePage = () => {
-  const [height, setHeight] = useState(0);
-  const [pageLoad, setPageLoad] = useState(false);
-  const navRef = useRef(null);
+  // const navRef = useRef(null);
   const { id } = useParams();
   const [viewData, setViewData] = useState({
     id: "", picturePath: "",
@@ -25,7 +23,7 @@ const ProfilePage = () => {
   const { _id } = user;
   const token = useSelector((state) => state.token);
   const mode = useSelector((state) => state.mode);
-  const viewportSize = useSelector((state) => state.viewportSize);
+  const navbarSize = useSelector((state) => state.navbarSize);
 
   const getUserDetails = async () => {
     const response = await fetch(`https://vakya-app.onrender.com/users/${id}`, {
@@ -52,13 +50,13 @@ const ProfilePage = () => {
     }
   };
 
-  window.addEventListener("load", () => {
-    setPageLoad(!pageLoad);
-  })
+  // window.addEventListener("load", () => {
+  //   setPageLoad(!pageLoad);
+  // })
 
-  useLayoutEffect(() => {
-    setHeight(navRef.current.offsetHeight);
-  }, [pageLoad]);
+  // useLayoutEffect(() => {
+  //   setHeight(navRef.current.offsetHeight);
+  // }, [pageLoad]);
 
 
   useEffect(() => {
@@ -72,7 +70,7 @@ const ProfilePage = () => {
         width={"100vw"}
         position={"fixed"}
         top={0}
-        ref={navRef}
+        // ref={navRef}
         zIndex={100}
       >
         <Suspense>
@@ -84,7 +82,7 @@ const ProfilePage = () => {
         <Box className='profile-page-outer-container'
           maxWidth={"100vw"}
           bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
-          marginTop={{ base: `${(height + 20) / 10}` + "rem" }}
+          marginTop={{ base: `${(navbarSize.height + 20) / 10}` + "rem" }}
         >
           <Flex className='profile-page-inner-container'
             width={{ base: "100vw", lg: "70vw", xl: "62.5vw", "3xl": "55vw" }}
