@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import React, { Suspense, memo, useLayoutEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
 // import MemoizedNavbar from 'components/Navbar';
@@ -66,13 +66,6 @@ const HomePage = () => {
           bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
           margin={"auto"}
         >
-          <Box
-          width={"20%"}
-          >
-            {/* <Advertisement></Advertisement> */}
-            <ImageSlider width={"20%"}></ImageSlider>
-          </Box>
-
 
           <Suspense>
             {viewportSize.width >= 992 && (<Box className='user-card-and-friends-list-component'>
@@ -118,6 +111,29 @@ const HomePage = () => {
           {/* <ImageSlider></ImageSlider> */}
           {/* <Ad></Ad> */}
 
+          <Box className='advt-outer'
+            width={{ lg: "25vw", xl: "20vw", "3xl": "15vw" }}
+            height={"80vh"}
+            bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
+            color={mode === "light" ? "primaryDark" : "primaryLight"}
+            padding={"1.5rem"}
+            marginBottom={"2rem"}
+            borderRadius={"10px"}
+            fontFamily={"Poppins, sans-serif"}
+          >
+            <Box className='advt-inner'
+              width={"100%"}
+              height={"auto"}
+              // flexDir={"column"}
+            >
+              <Box>
+                <Text fontSize={"h6"}>What's New</Text>
+              </Box>
+              <Box>
+                <ImageSlider width={"20vw"}></ImageSlider>
+              </Box>
+            </Box>
+          </Box>
 
         </Flex>
       </Box >
