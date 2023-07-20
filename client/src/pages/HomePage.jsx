@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { Advertisement } from 'components/Advertisement';
 import { Ad } from './Ad';
 import ImageSlider from 'components/ImageSlider';
+import { HiOutlineSparkles } from 'react-icons/hi';
 
 const MemoizedNavbar = React.lazy(() => import('components/Navbar'));
 const MemoizedUserCard = React.lazy(() => import('components/UserCard'));
@@ -111,30 +112,41 @@ const HomePage = () => {
           {/* <ImageSlider></ImageSlider> */}
           {/* <Ad></Ad> */}
 
-          <Box className='advt-outer'
-            width={{ lg: "25vw", xl: "20vw", "3xl": "15vw" }}
-            height={"80vh"}
-            bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
-            color={mode === "light" ? "primaryDark" : "primaryLight"}
-            padding={"1.5rem"}
-            marginBottom={"2rem"}
-            borderRadius={"10px"}
-            fontFamily={"Poppins, sans-serif"}
-          >
-            <Box className='advt-inner'
-              width={"100%"}
-              height={"auto"}
-              // flexDir={"column"}
+          <Box>
+
+
+            <Box className='advt-outer'
+              width={{ lg: "25vw", xl: "20vw", "3xl": "15vw" }}
+              bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
+              color={mode === "light" ? "primaryDark" : "primaryLight"}
+              padding={"1.5rem"}
+              marginBottom={"2rem"}
+              borderRadius={"10px"}
+              fontFamily={"Poppins, sans-serif"}
             >
-              <Box>
-                <Text fontSize={"h6"}>What's New</Text>
-              </Box>
-              <Box>
-                <ImageSlider width={"20vw"}></ImageSlider>
+              <Box className='advt-inner'
+                width={"100%"}
+                height={"auto"}
+              >
+                <Flex 
+                alignItems={"center"}
+                marginBottom={"1rem"}
+                >
+                  <Text fontSize={"h6"}>What's New</Text>
+                  <Box 
+                  fontSize={"h6"}
+                  paddingLeft={"1rem"}
+                  color={"pinkish"}
+                  >
+                    <HiOutlineSparkles></HiOutlineSparkles>
+                  </Box>
+                </Flex>
+                <Box>
+                  <ImageSlider width={"20vw"}></ImageSlider>
+                </Box>
               </Box>
             </Box>
           </Box>
-
         </Flex>
       </Box >
 
