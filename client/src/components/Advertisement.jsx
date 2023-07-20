@@ -27,7 +27,7 @@ export const Advertisement = () => {
                 >
                     <Text
                         fontSize={{ base: "h6", "3xl": "24px" }}
-                        fontWeight={"500"}
+                        fontWeight={500}
                     >
                         What's New
                     </Text>
@@ -36,15 +36,21 @@ export const Advertisement = () => {
                         paddingLeft={"1rem"}
                         color={"pinkish"}
                     >
-                        <HiOutlineSparkles></HiOutlineSparkles>
+                        {/* <HiOutlineSparkles></HiOutlineSparkles> */}
                     </Box>
                 </Flex>
                 <Box className='slider-box'
                     width={"100%"}
                     margin={"1rem 0"}
+                    height={"25vh"}
+                    border={"2px solid red"}
                 >
                     {/* Slider component */}
-                    <ImageSlider width={{ lg: "25vw", xl: "20vw", "3xl": "15vw" }}></ImageSlider>
+                    {/* <ImageSlider width={"350px"}></ImageSlider> */}
+
+
+
+
                 </Box>
             </Flex>
         </>
