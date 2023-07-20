@@ -7,7 +7,10 @@ const initialState = {
     posts: [],
     viewProfile: null,
     viewportSize : null,
-    navbarSize : null,
+    navbarSize : {
+        width : 1536,
+        height : 50,
+    },
 };
 
 export const authSlice = createSlice({
