@@ -27,10 +27,12 @@ const cloudinaryV2 = cloudinary.v2;
 dotenv.config({ path: "./config.env" });
 cloudinaryV2.config({
     cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
+    api_key: process.env.API_KEY.toString(),
     api_secret: process.env.API_SECRET,
-    secure : true
 });
+
+console.log(cloudinaryV2.config().api_key);
+
 const app = express();
 app.use(express.json({
     limit: "30mb",
@@ -135,6 +137,7 @@ app.post("/posts", verifyToken, createNewPost);
 const updateNewUserImage = async (req, res) => {
     try {
         const { _id } = req.body;
+        console.log(cloudinaryV2.config().api_key);
         const prevUser = await User.findById(_id);
         const pictureId = prevUser.pictureId;
         if (pictureId !== "") {
