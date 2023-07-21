@@ -26,9 +26,12 @@ const __dirname = path.dirname(__filename);
 const cloudinaryV2 = cloudinary.v2;
 dotenv.config({ path: "./config.env" });
 cloudinaryV2.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: '643885532827244',
-    api_secret: process.env.API_SECRET,
+    // cloud_name: process.env.CLOUD_NAME,
+    // api_secret: process.env.API_SECRET,
+    
+    cloud_name: "dlwuelfjo",
+    api_key: "643885532827244",
+    api_secret: "_jfHIymWl3S_hDfygoW4V6SIlp0"
 });
 
 console.log(cloudinaryV2.config().api_key);
@@ -101,7 +104,7 @@ const createNewPost = async (req, res) => {
             })
             await newPost.save();
             const post = await Post.find();
-            fs.unlink(file.tempFilePath, (err)=>{
+            fs.unlink(file.tempFilePath, (err) => {
                 if (err) throw err;
             })
             res.status(201).json(post);
@@ -156,7 +159,7 @@ const updateNewUserImage = async (req, res) => {
                 { new: true },
             );
             const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
-            fs.unlink(file.tempFilePath, (err)=>{
+            fs.unlink(file.tempFilePath, (err) => {
                 if (err) throw err;
             })
             res.status(201).json({ token, newUser });
