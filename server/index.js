@@ -27,7 +27,7 @@ const cloudinaryV2 = cloudinary.v2;
 dotenv.config({ path: "./config.env" });
 cloudinaryV2.config({
     cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY.toString(),
+    api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET,
 });
 
