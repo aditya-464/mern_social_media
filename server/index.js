@@ -32,7 +32,8 @@ dotenv.config({ path: "./config.env" });
 
 // Firebase config
 const firebaseConfig = {
-    apiKey: "AIzaSyAcBplFz9ol6t35GxdHCJZJgYMkfZF3IJw",
+    // apiKey: "AIzaSyAcBplFz9ol6t35GxdHCJZJgYMkfZF3IJw",
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "vakya-mern.firebaseapp.com",
     projectId: "vakya-mern",
     storageBucket: "vakya-mern.appspot.com",
