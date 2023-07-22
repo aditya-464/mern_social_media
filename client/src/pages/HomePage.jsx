@@ -27,6 +27,7 @@ const HomePage = () => {
   const user = useSelector((state) => state.user);
   const mode = useSelector((state) => state.mode);
   const viewportSize = useSelector((state) => state.viewportSize);
+  console.log(viewportSize);
   const navbarSize = useSelector((state) => state.navbarSize);
   const { _id, picturePath } = user;
 
@@ -96,44 +97,42 @@ const HomePage = () => {
             </Box>
           </Box>)} */}
 
+          {viewportSize.width >= 992
+            && <Box className='advt-component'>
 
-
-          {/* <ImageSlider></ImageSlider> */}
-          {/* <Ad></Ad> */}
-
-          <Box className='advt-component'>
-            <Box className='advt-outer'
-              width={{ lg: "25vw", xl: "20vw", "3xl": "15vw" }}
-              bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
-              color={mode === "light" ? "primaryDark" : "primaryLight"}
-              padding={"1.5rem"}
-              marginBottom={"2rem"}
-              borderRadius={"10px"}
-              fontFamily={"Poppins, sans-serif"}
-            >
-              <Box className='advt-inner'
-                width={"100%"}
-                height={"auto"}
+              {viewportSize.width >= 992 && <Box className='advt-outer'
+                width={{ lg: "25vw", xl: "20vw", "3xl": "15vw" }}
+                bgColor={mode === "light" ? "secondaryLight" : "secondaryDark"}
+                color={mode === "light" ? "primaryDark" : "primaryLight"}
+                padding={"1.5rem"}
+                marginBottom={"2rem"}
+                borderRadius={"10px"}
+                fontFamily={"Poppins, sans-serif"}
               >
-                <Flex 
-                alignItems={"center"}
-                marginBottom={"1rem"}
+                <Box className='advt-inner'
+                  width={"100%"}
+                  height={"auto"}
                 >
-                  <Text fontSize={"h6"}>What's New</Text>
-                  <Box 
-                  fontSize={"h6"}
-                  paddingLeft={"1rem"}
-                  color={"pinkish"}
+                  <Flex
+                    alignItems={"center"}
+                    marginBottom={"1rem"}
                   >
-                    <HiOutlineSparkles></HiOutlineSparkles>
+                    <Text fontSize={"h6"} fontWeight={500}>What's New</Text>
+                    <Box
+                      fontSize={"h6"}
+                      paddingLeft={"1rem"}
+                      color={"pinkish"}
+                    >
+                      <HiOutlineSparkles></HiOutlineSparkles>
+                    </Box>
+                  </Flex>
+                  <Box>
+                    {viewportSize.width >= 992 && <ImageSlider width={"25vw"}></ImageSlider>}
                   </Box>
-                </Flex>
-                <Box>
-                  <ImageSlider width={"20vw"}></ImageSlider>
                 </Box>
-              </Box>
-            </Box>
-          </Box>
+              </Box>}
+            </Box>}
+
         </Flex>
       </Box >
 
