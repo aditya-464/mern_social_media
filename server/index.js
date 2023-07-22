@@ -14,11 +14,8 @@ import postRoutes from "./routes/post.js";
 import { verifyToken } from "./middlewares/auth.js";
 // import { createPost } from "./controllers/post.js";
 // import { updateUserImage } from "./controllers/users.js";
-import fileUpload from "express-fileupload";
-// import cloudinary from "cloudinary"
 import User from "./models/user.js";
 import Post from "./models/post.js";
-import * as fs from "fs";
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, getDownloadURL, uploadBytesResumable, deleteObject } from "firebase/storage";
 
@@ -26,7 +23,6 @@ import { getStorage, ref, getDownloadURL, uploadBytesResumable, deleteObject } f
 // Configurations
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-// const cloudinaryV2 = cloudinary.v2;
 dotenv.config({ path: "./config.env" });
 
 
@@ -44,20 +40,6 @@ const firebaseApp = initializeApp(firebaseConfig);
 const storage = getStorage();
 
 const upload = multer({ storage: multer.memoryStorage() });
-
-
-
-// let val1 = process.env.CLOUD_NAME;
-// let val2 = process.env.API_KEY;
-// let val3 = process.env.API_SECRET;
-
-// cloudinaryV2.config({
-//     cloud_name: val1,
-//     api_key: val2,
-//     api_secret: val3,
-
-// });
-// console.log(cloudinaryV2.config().api_key);
 
 const app = express();
 app.use(express.json({
@@ -112,8 +94,6 @@ const createNewPost = async (req, res) => {
     }
 }
 app.post("/posts", verifyToken, upload.single("picture"), createNewPost);
-
-
 const updateNewUserImage = async (req, res) => {
     try {
         const { _id } = req.body;
@@ -187,107 +167,11 @@ app.patch("/users/updateUserImage", verifyToken, upload.single("picture"), updat
 // app.patch("/users/updateUserImage", verifyToken, upload.single("picture"), updateUserImage);
 
 
-// fileUpload for cloudinary
-// app.use(fileUpload({
-//     useTempFiles: true
-// }))
-
-// Routes with files for Cloudinary
-// const createNewPost = async (req, res) => {
-//     try {
-//         const file = req.files.picture;
-//         const uploadImage = await cloudinaryV2.uploader.upload(file.tempFilePath);
-//         if (uploadImage.url) {
-//             const { userId, description } = req.body;
-//             const user = await User.findById(userId);
-//             const newPost = new Post({
-//                 userId,
-//                 fullname: user.fullname,
-//                 location: user.location,
-//                 description,
-//                 pictureId: uploadImage.public_id,
-//                 picturePath: uploadImage.url,
-//                 userPicturePath: user.picturePath,
-//                 likes: {},
-//                 comments: []
-//             })
-//             await newPost.save();
-//             const post = await Post.find();
-//             fs.unlink(file.tempFilePath, (err) => {
-//                 if (err) throw err;
-//             })
-//             res.status(201).json(post);
-//         }
-//     } catch (error) {
-//         console.log(error);
-//         res.status(409).json({ message: error });
-//     }
-
-//     // try {
-//     //     const { userId, description, picturePath } = req.body;
-//     //     let val = req.newFileName;
-//     //     const user = await User.findById(userId);
-//     //     const newPost = new Post({
-//     //         userId,
-//     //         fullname: user.fullname,
-//     //         location: user.location,
-//     //         description,
-//     //         picturePath: val,
-//     //         userPicturePath: user.picturePath,
-//     //         likes: {},
-//     //         comments: []
-//     //     })
-//     //     await newPost.save();
-//     //     const post = await Post.find();
-//     //     res.status(201).json(post);
-//     // } catch (error) {
-//     //     res.status(409).json({ message: error });
-//     // }
-// }
-// app.post("/posts", verifyToken, createNewPost);
-
-// const updateNewUserImage = async (req, res) => {
-//     try {
-//         const { _id } = req.body;
-//         console.log(cloudinaryV2.config().api_key);
-//         const prevUser = await User.findById(_id);
-//         const pictureId = prevUser.pictureId;
-//         if (pictureId !== "") {
-//             const deleteImageCloudinary = await cloudinaryV2.uploader.destroy(pictureId);
-//         }
-//         const file = req.files.picture;
-//         const uploadImage = await cloudinaryV2.uploader.upload(file.tempFilePath);
-//         if (uploadImage.url !== "" && uploadImage.public_id !== "") {
-//             const newUser = await User.findByIdAndUpdate(
-//                 _id,
-//                 {
-//                     pictureId: uploadImage.public_id,
-//                     picturePath: uploadImage.url
-//                 },
-
-//                 { new: true },
-//             );
-//             const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
-//             fs.unlink(file.tempFilePath, (err) => {
-//                 if (err) throw err;
-//             })
-//             res.status(201).json({ token, newUser });
-//         }
-//     } catch (error) {
-//         console.log(error.message);
-//         return res.status(404).json({ message: error });
-//     }
-// }
-// app.patch("/users/updateUserImage", verifyToken, updateNewUserImage);
-
 
 // Routes
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
-
-// Routes with files
-// app.use("/posts", verifyToken, upload.single("picture"), createPost);
 
 // Connection with Database
 const DB = process.env.MONGO_URL;
