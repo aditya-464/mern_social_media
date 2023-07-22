@@ -20,7 +20,7 @@ import User from "./models/user.js";
 import Post from "./models/post.js";
 import * as fs from "fs";
 import { initializeApp } from "firebase/app";
-import { getStorage, ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { getStorage, ref, getDownloadURL, uploadBytesResumable, deleteObject } from "firebase/storage";
 
 
 // Configurations
@@ -32,16 +32,6 @@ dotenv.config({ path: "./config.env" });
 
 // Firebase config
 const firebaseConfig = {
-    // apiKey: "AIzaSyAcBplFz9ol6t35GxdHCJZJgYMkfZF3IJw",
-
-    // apiKey: process.env.FIREBASE_API_KEY,
-    // authDomain: "vakya-mern.firebaseapp.com",
-    // projectId: "vakya-mern",
-    // storageBucket: "vakya-mern.appspot.com",
-    // messagingSenderId: "793614091966",
-    // appId: "1:793614091966:web:11f09da1b1937f08a400ef",
-    // measurementId: "G-T25SD2XPH3"
-
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
     projectId: process.env.FIREBASE_PROJECT_ID,
@@ -86,7 +76,8 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 const createNewPost = async (req, res) => {
     try {
-        const storageRef = ref(storage, `files/${req.file.originalname + "       " + Date.now()}`);
+        const imageName = req.file.originalname + "       " + Date.now();
+        const storageRef = ref(storage, `files/${imageName}`);
         // Create file metadata including the content type
         const metadata = {
             contentType: req.file.mimetype,
@@ -94,7 +85,6 @@ const createNewPost = async (req, res) => {
         // Upload the file in the bucket storage
         const snapshot = await uploadBytesResumable(storageRef, req.file.buffer, metadata);
         //by using uploadBytesResumable we can control the progress of uploading like pause, resume, cancel
-
         // Grab the public url
         const downloadURL = await getDownloadURL(snapshot.ref);
 
@@ -106,7 +96,7 @@ const createNewPost = async (req, res) => {
                 fullname: user.fullname,
                 location: user.location,
                 description,
-                pictureId: "firebase_img_id",
+                pictureId: imageName,
                 picturePath: downloadURL,
                 userPicturePath: user.picturePath,
                 likes: {},
@@ -121,9 +111,53 @@ const createNewPost = async (req, res) => {
         return res.status(404).json({ message: error });
     }
 }
-
 app.post("/posts", verifyToken, upload.single("picture"), createNewPost);
 
+
+const updateNewUserImage = async (req, res) => {
+    try {
+        const { _id } = req.body;
+        const prevUser = await User.findById(_id);
+        const imageName = prevUser.pictureId;
+        const storage = getStorage();
+        // Create a reference to the file to delete
+        if (imageName !== "") {
+            const delImgRef = ref(storage, `files/${imageName}`);
+            const delImg = await deleteObject(delImgRef);
+        }
+
+        const newImageName = req.file.originalname + "       " + Date.now();
+        const storageRef = ref(storage, `files/${newImageName}`);
+        // Create file metadata including the content type
+        const metadata = {
+            contentType: req.file.mimetype,
+        };
+        // Upload the file in the bucket storage
+        const snapshot = await uploadBytesResumable(storageRef, req.file.buffer, metadata);
+        //by using uploadBytesResumable we can control the progress of uploading like pause, resume, cancel
+        // Grab the public url
+        const downloadURL = await getDownloadURL(snapshot.ref);
+
+        if (downloadURL !== "") {
+            const newUser = await User.findByIdAndUpdate(
+                _id,
+                {
+                    pictureId: newImageName,
+                    picturePath: downloadURL
+                },
+                {
+                    new: true
+                }
+            );
+            const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY);
+            res.status(201).json({ token, newUser });
+        }
+    } catch (error) {
+        console.log(error.message);
+        return res.status(404).json({ message: error });
+    }
+}
+app.patch("/users/updateUserImage", verifyToken, upload.single("picture"), updateNewUserImage);
 
 
 // File Storage locally in pc
