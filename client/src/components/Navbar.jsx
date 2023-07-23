@@ -2,7 +2,7 @@ import { Box, Flex, Input, Text } from '@chakra-ui/react'
 import { FaSearch, FaMoon, FaSun, FaBell, FaQuestionCircle } from "react-icons/fa";
 import { MdChat } from "react-icons/md";
 import React, { useLayoutEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLoaderPage, setMode, setNavbarSize, setViewportSize } from 'state';
 import { VerticalNavIcons } from './VerticalNavIcons';
@@ -13,6 +13,7 @@ export const Navbar = () => {
     const [screenSize, setScreenSize] = useState({
         width: 0, height: 0
     });
+    const location = useLocation();
     const mode = useSelector((state) => state.mode);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ export const Navbar = () => {
         }))
         dispatch(setNavbarSize({
             height: navRef.current.offsetHeight,
-            width : navRef.current.offsetWidth
+            width: navRef.current.offsetWidth
         }))
     }, []);
 
@@ -64,7 +65,9 @@ export const Navbar = () => {
                                 cursor: "pointer",
                             }}
                             onClick={() => {
-                                dispatch(setLoaderPage(true));
+                                if (location.pathname !== "/home") {
+                                    dispatch(setLoaderPage(true));
+                                }
                                 navigate("/home");
                             }}
                         >
