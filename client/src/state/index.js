@@ -6,10 +6,10 @@ const initialState = {
     token: null,
     posts: [],
     viewProfile: null,
-    viewportSize : null,
-    navbarSize : {
-        width : 1536,
-        height : 50,
+    viewportSize: null,
+    navbarSize: {
+        width: 1536,
+        height: 50,
     },
 };
 
@@ -49,10 +49,10 @@ export const authSlice = createSlice({
         setViewProfile: (state, action) => {
             state.viewProfile = action.payload;
         },
-        setViewportSize:(state, action)=>{
+        setViewportSize: (state, action) => {
             state.viewportSize = action.payload;
         },
-        setNavbarSize : (state, action)=>{
+        setNavbarSize: (state, action) => {
             state.navbarSize = action.payload;
         },
     }

@@ -2,21 +2,19 @@ import { Box, Flex } from '@chakra-ui/react'
 import React, { memo, useState, useEffect, Suspense } from 'react'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-// import MemoizedAllPosts from 'components/AllPosts'
-// import MemoizedFriendsList from 'components/FriendsList';
-// import MemoizedNavbar from "components/Navbar"
-// import MemoizedUserCard from 'components/UserCard'
+import LoaderPage from './LoaderPage';
+import MemoizedFriendsList from 'components/FriendsList';
+import MemoizedNavbar from "components/Navbar"
+import MemoizedUserCard from 'components/UserCard'
 
 const MemoizedAllPosts = React.lazy(() => import("components/AllPosts"));
-const MemoizedFriendsList = React.lazy(() => import("components/FriendsList"));
-const MemoizedNavbar = React.lazy(() => import("components/Navbar"));
-const MemoizedUserCard = React.lazy(() => import("components/UserCard"));
 
 const ProfilePage = () => {
   const { id } = useParams();
   const [viewData, setViewData] = useState({
     id: "", picturePath: "",
   });
+  const [showLoader, setShowLoader] = useState(true);
   const [self, setSelf] = useState(null);
   const user = useSelector((state) => state.user);
   const { _id } = user;
@@ -51,10 +49,16 @@ const ProfilePage = () => {
 
   useEffect(() => {
     getUserDetails();
+    setTimeout(() => {
+      setShowLoader(false);
+    }, 2000);
   }, [id])
 
   return (
     <>
+
+      {showLoader && <LoaderPage></LoaderPage>}
+
       <Box className='navbar'
         width={"100vw"}
         position={"fixed"}
@@ -79,28 +83,28 @@ const ProfilePage = () => {
             justify={"space-between"}
             flexDir={{ base: 'column', lg: 'row' }}
           >
-            <Suspense>
 
-              <Box className='left-side'
-                marginTop={"2rem"}
-              >
-                <Box className='user-card-container'>
-                  <MemoizedUserCard userId={viewData.id} picturePath={viewData.picturePath} home={false}></MemoizedUserCard>
-                </Box>
-
-                <Box className='friends-list-container'
-                  marginTop={"2rem"}
-                >
-                  <MemoizedFriendsList self={self} homepage={false}></MemoizedFriendsList>
-                </Box>
+            <Box className='left-side'
+              marginTop={"2rem"}
+            >
+              <Box className='user-card-container'>
+                <MemoizedUserCard userId={viewData.id} picturePath={viewData.picturePath} home={false}></MemoizedUserCard>
               </Box>
 
-              <Box className='all-posts-container'
+              <Box className='friends-list-container'
                 marginTop={"2rem"}
               >
+                <MemoizedFriendsList self={self} homepage={false}></MemoizedFriendsList>
+              </Box>
+            </Box>
+
+            <Box className='all-posts-container'
+              marginTop={"2rem"}
+            >
+              <Suspense>
                 <MemoizedAllPosts isProfile={true} userId={viewData.id} hideIcons={true} self={self} homepage={false}></MemoizedAllPosts>
-              </Box>
-            </Suspense>
+              </Suspense>
+            </Box>
 
           </Flex>
         </Box>}

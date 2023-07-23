@@ -1,29 +1,18 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import React, { Suspense, memo } from 'react'
+import React, { Suspense, memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-// import MemoizedNavbar from 'components/Navbar';
-// import MemoizedUserCard from 'components/UserCard'
-// import MemoizedAllPosts from 'components/AllPosts'
-// import MemoizedFriendsList from 'components/FriendsList'
-// import MemoizedCreatePost from "components/CreatePost"
-// import MemoizedAdvertisement from 'components/Advertisement';
-import { Advertisement } from 'components/Advertisement';
-import { Ad } from './Ad';
+import MemoizedUserCard from 'components/UserCard'
+import MemoizedFriendsList from 'components/FriendsList'
+import MemoizedCreatePost from "components/CreatePost"
 import ImageSlider from 'components/ImageSlider';
 import { HiOutlineSparkles } from 'react-icons/hi';
+import LoaderPage from './LoaderPage';
 
 const MemoizedNavbar = React.lazy(() => import('components/Navbar'));
-const MemoizedUserCard = React.lazy(() => import('components/UserCard'));
 const MemoizedAllPosts = React.lazy(() => import('components/AllPosts'));
-const MemoizedFriendsList = React.lazy(() => import('components/FriendsList'));
-const MemoizedCreatePost = React.lazy(() => import('components/CreatePost'));
-// const MemoizedAdvertisement = React.lazy(() => import('components/Advertisement'));
-
-
-
-
 
 const HomePage = () => {
+  const [showLoader, setShowLoader] = useState(true);
   const user = useSelector((state) => state.user);
   const mode = useSelector((state) => state.mode);
   const viewportSize = useSelector((state) => state.viewportSize);
@@ -31,8 +20,17 @@ const HomePage = () => {
   const navbarSize = useSelector((state) => state.navbarSize);
   const { _id, picturePath } = user;
 
+  useEffect(()=>{
+    setTimeout(() => {
+      setShowLoader(false);
+    }, 2000);
+  }, [])
+
   return (
     <>
+
+      {showLoader && <LoaderPage></LoaderPage>}
+
       <Box className='navbar'
         width={"100vw"}
         position={"fixed"}
@@ -58,35 +56,36 @@ const HomePage = () => {
           margin={"auto"}
         >
 
-          <Suspense>
-            {viewportSize.width >= 992 && (<Box className='user-card-and-friends-list-component'>
-              <Box className='user-card'
-              >
-                <MemoizedUserCard userId={_id} picturePath={picturePath} home={true}></MemoizedUserCard>
-              </Box>
-              <Box className='friends-list'
-                marginTop={"2rem"}
-              >
-                <MemoizedFriendsList self={true} homepage={true}></MemoizedFriendsList>
-              </Box>
-            </Box>)}
 
-
-            <Box className='create-post-and-all-posts-component'
-              margin={{ base: "auto", lg: "0" }}
+          {viewportSize.width >= 992 && (<Box className='user-card-and-friends-list-component'>
+            <Box className='user-card'
             >
-              <Box className='create-post'
-              >
-                <MemoizedCreatePost></MemoizedCreatePost>
-              </Box>
-              <Box className='all-posts'
-                marginTop={"2rem"}
-              >
-                <MemoizedAllPosts userId={_id} isProfile={false} hideIcons={false} self={true} homepage={true}></MemoizedAllPosts>
-              </Box>
+              <MemoizedUserCard userId={_id} picturePath={picturePath} home={true}></MemoizedUserCard>
             </Box>
+            <Box className='friends-list'
+              marginTop={"2rem"}
+            >
+              <MemoizedFriendsList self={true} homepage={true}></MemoizedFriendsList>
+            </Box>
+          </Box>)}
 
-          </Suspense>
+
+          <Box className='create-post-and-all-posts-component'
+            margin={{ base: "auto", lg: "0" }}
+          >
+            <Box className='create-post'
+            >
+              <MemoizedCreatePost></MemoizedCreatePost>
+            </Box>
+            <Box className='all-posts'
+              marginTop={"2rem"}
+            >
+              <Suspense>
+                <MemoizedAllPosts userId={_id} isProfile={false} hideIcons={false} self={true} homepage={true}></MemoizedAllPosts>
+              </Suspense>
+            </Box>
+          </Box>
+
 
           {/* <MemoizedAdvertisement></MemoizedAdvertisement> */}
 
@@ -133,7 +132,7 @@ const HomePage = () => {
               </Box>}
             </Box>}
 
-        </Flex>
+        </Flex >
       </Box >
 
     </>
