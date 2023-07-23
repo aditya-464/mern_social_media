@@ -1,11 +1,11 @@
-import { FormControl, FormErrorMessage, FormLabel, Input, Text } from '@chakra-ui/react'
+import { Box, FormControl, FormErrorMessage, FormLabel, Input, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import FillButton from './FillButton'
 import { Formik } from "formik";
 import * as yup from "yup";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setLogin, setViewProfile } from "state";
+import { setLoaderPage, setLogin, setViewProfile } from "state";
 
 const loginSchema = yup.object().shape({
     email: yup.string().email("Invalid Email").required("Required"),
@@ -126,7 +126,13 @@ export const LoginForm = (props) => {
                                 }}></Input>
                             <FormErrorMessage fontSize={"larger"}>{errors.password}</FormErrorMessage>
                         </FormControl>
+                        <Box
+                        onClick={()=>{
+                            dispatch(setLoaderPage(true));
+                        }}
+                        >
                         <FillButton name="log in" fs={{ base: "h6", sm: "h5", lg: "h5", "3xl": "h4" }} pd={{ base: "10% 0", sm: "8% 0" }} width="100%"></FillButton>
+                        </Box>
                         {invalidCredentials
                             && <Text
                                 marginTop={"5%"}

@@ -15,8 +15,8 @@ const HomePage = () => {
   const [showLoader, setShowLoader] = useState(true);
   const user = useSelector((state) => state.user);
   const mode = useSelector((state) => state.mode);
+  const loaderPage = useSelector((state) => state.loaderPage);
   const viewportSize = useSelector((state) => state.viewportSize);
-  console.log(viewportSize);
   const navbarSize = useSelector((state) => state.navbarSize);
   const { _id, picturePath } = user;
 
@@ -29,7 +29,7 @@ const HomePage = () => {
   return (
     <>
 
-      {showLoader && <LoaderPage></LoaderPage>}
+      {(loaderPage || showLoader) && <LoaderPage></LoaderPage>}
 
       <Box className='navbar'
         width={"100vw"}

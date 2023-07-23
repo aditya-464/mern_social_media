@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import Avatar from 'react-avatar';
 import { useNavigate } from 'react-router-dom';
-import { setViewProfile } from 'state';
+import { setLoaderPage, setViewProfile } from 'state';
 
 
 
@@ -27,6 +27,9 @@ export const UserCard = (props) => {
         });
 
         const data = await response.json();
+        if (data!=="") {
+            dispatch(setLoaderPage(false));
+        }
         setUser(data);
 
     }

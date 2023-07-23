@@ -11,6 +11,7 @@ const initialState = {
         width: 1536,
         height: 50,
     },
+    loaderPage : true,
 };
 
 export const authSlice = createSlice({
@@ -55,10 +56,13 @@ export const authSlice = createSlice({
         setNavbarSize: (state, action) => {
             state.navbarSize = action.payload;
         },
+        setLoaderPage : (state, action) =>{
+            state.loaderPage = action.payload;
+        },
     }
 });
 
-export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost, setViewProfile, setViewportSize, setNavbarSize } = authSlice.actions;
+export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost, setViewProfile, setViewportSize, setNavbarSize, setLoaderPage } = authSlice.actions;
 export default authSlice.reducer;
 
 

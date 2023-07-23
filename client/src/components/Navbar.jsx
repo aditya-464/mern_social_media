@@ -1,10 +1,10 @@
 import { Box, Flex, Input, Text } from '@chakra-ui/react'
 import { FaSearch, FaMoon, FaSun, FaBell, FaQuestionCircle } from "react-icons/fa";
 import { MdChat } from "react-icons/md";
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setMode, setNavbarSize, setViewportSize } from 'state';
+import { setLoaderPage, setMode, setNavbarSize, setViewportSize } from 'state';
 import { VerticalNavIcons } from './VerticalNavIcons';
 import { IoSettingsSharp } from 'react-icons/io5';
 
@@ -22,23 +22,6 @@ export const Navbar = () => {
         dispatch(setMode());
     }
 
-    // function getCurrentDimension() {
-    //     return {
-    //         width: window.innerWidth,
-    //         height: window.innerHeight
-    //     }
-    // }
-    // useEffect(() => {
-    //     const updateDimension = () => {
-    //         setScreenSize(getCurrentDimension())
-    //     }
-    //     window.addEventListener('resize', updateDimension);
-    //     dispatch(setViewportSize(screenSize));
-    //     return (() => {
-    //         window.removeEventListener('resize', updateDimension);
-    //     })
-    // }, [screenSize])
-
     useLayoutEffect(() => {
         setScreenSize({
             width: window.innerWidth,
@@ -52,8 +35,6 @@ export const Navbar = () => {
             height: navRef.current.offsetHeight,
             width : navRef.current.offsetWidth
         }))
-
-        console.log(navRef.current.offsetHeight);
     }, []);
 
     return (
@@ -83,6 +64,7 @@ export const Navbar = () => {
                                 cursor: "pointer",
                             }}
                             onClick={() => {
+                                dispatch(setLoaderPage(true));
                                 navigate("/home");
                             }}
                         >

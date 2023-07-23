@@ -21,6 +21,7 @@ const ProfilePage = () => {
   const token = useSelector((state) => state.token);
   const mode = useSelector((state) => state.mode);
   const navbarSize = useSelector((state) => state.navbarSize);
+  const loaderPage = useSelector((state) => state.loaderPage);
 
   const getUserDetails = async () => {
     const response = await fetch(`https://vakya-app.onrender.com/users/${id}`, {
@@ -57,7 +58,7 @@ const ProfilePage = () => {
   return (
     <>
 
-      {showLoader && <LoaderPage></LoaderPage>}
+      {(loaderPage || showLoader) && <LoaderPage></LoaderPage>}
 
       <Box className='navbar'
         width={"100vw"}

@@ -3,7 +3,7 @@ import profileDummyImg from "../assets/profile-dummy-img.jpg"
 import { HiOutlineUserPlus, HiOutlineUserMinus } from 'react-icons/hi2'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setFriends, setViewProfile } from "state";
+import { setFriends, setLoaderPage, setViewProfile } from "state";
 import React from 'react'
 import Avatar from 'react-avatar';
 
@@ -79,6 +79,9 @@ export const PostUserDetails = (props) => {
                             fontSize={{ base: "16px", md: "16px", lg: "16px", "3xl": "21px" }}
                             fontWeight={"500"}
                             onClick={() => {
+                                if (homepage) {
+                                    dispatch(setLoaderPage(true));
+                                }
                                 dispatch(setViewProfile(friendId));
                                 navigate(`/profile/${friendId}`);
                             }}
@@ -90,7 +93,7 @@ export const PostUserDetails = (props) => {
                             {name}
                         </Text>
                         <Text className="location"
-                            fontSize={{base :"12px", lg:"14px", "3xl":"16px"}}
+                            fontSize={{ base: "12px", lg: "14px", "3xl": "16px" }}
                             opacity={"0.7"}
                         >
                             {subtitle}
