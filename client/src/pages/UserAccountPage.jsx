@@ -1,8 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react'
 import React, { Suspense, memo } from 'react'
 import { useSelector } from 'react-redux'
-
-const MemoizedAccountPage = React.lazy(() => import("components/AccountPage"));
+import MemoizedAccountPage from "components/AccountPage"
 const MemoizedNavbar = React.lazy(() => import("components/Navbar"));
 
 const UserAccountPage = () => {
@@ -31,7 +30,7 @@ const UserAccountPage = () => {
                 justify={"center"}
                 align={"center"}
             >
-                <Suspense>
+              
                     <Box className='account-page-inner-container'
                         bgColor={mode === "light" ? "primaryLight" : "primaryDark"}
                         margin={"auto"}
@@ -42,7 +41,7 @@ const UserAccountPage = () => {
                             <MemoizedAccountPage></MemoizedAccountPage>
                         </Box>
                     </Box>
-                </Suspense>
+                
             </Flex>
 
 

@@ -1,9 +1,7 @@
-import React, { Suspense, memo } from 'react'
+import React, { memo } from 'react'
 import image1 from "../assets/login-signup-page.webp"
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
-// import { SignupForm } from 'components/SignupForm'
-
-const SignupForm = React.lazy(() => import("components/SignupForm"));
+import { SignupForm } from 'components/SignupForm'
 
 
 const SignupPage = () => {
@@ -41,9 +39,7 @@ const SignupPage = () => {
                 Sign Up
               </Text>
 
-              <Suspense>
-                <SignupForm width="100%"></SignupForm>
-              </Suspense>
+              <SignupForm width="100%"></SignupForm>
 
             </Box>
           </Box>

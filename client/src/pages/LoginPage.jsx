@@ -1,9 +1,7 @@
-import React, { Suspense, memo } from 'react'
+import React, { memo } from 'react'
 import image1 from "../assets/login-signup-page.webp"
 import { Box, Flex, Img, Text } from '@chakra-ui/react'
-// import { LoginForm } from 'components/LoginForm'
-
-const LoginForm = React.lazy(() => import("components/LoginForm"));
+import { LoginForm } from 'components/LoginForm'
 
 
 const LoginPage = () => {
@@ -41,9 +39,7 @@ const LoginPage = () => {
                 Log In
               </Text>
 
-              <Suspense>
-                <LoginForm width={"100%"}></LoginForm>
-              </Suspense>
+              <LoginForm width={"100%"}></LoginForm>
 
             </Box>
           </Box>
