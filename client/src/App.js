@@ -1,6 +1,4 @@
-import { Ad } from "pages/Ad";
 import HomePage from "pages/HomePage";
-import LoaderPage from "pages/LoaderPage";
 import LoginPage from "pages/LoginPage";
 import ProfilePage from "pages/ProfilePage";
 import SignupPage from "pages/SignupPage";
