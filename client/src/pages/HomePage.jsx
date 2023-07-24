@@ -1,6 +1,7 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 import React, { Suspense, memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import MemoizedNavbar from "components/Navbar"
 import MemoizedUserCard from 'components/UserCard'
 import MemoizedFriendsList from 'components/FriendsList'
 import MemoizedCreatePost from "components/CreatePost"
@@ -8,7 +9,7 @@ import ImageSlider from 'components/ImageSlider';
 import { HiOutlineSparkles } from 'react-icons/hi';
 import LoaderPage from './LoaderPage';
 
-const MemoizedNavbar = React.lazy(() => import('components/Navbar'));
+// const MemoizedNavbar = React.lazy(() => import('components/Navbar'));
 const MemoizedAllPosts = React.lazy(() => import('components/AllPosts'));
 
 const HomePage = () => {
@@ -29,18 +30,15 @@ const HomePage = () => {
   return (
     <>
 
-      {(loaderPage || showLoader) && <LoaderPage></LoaderPage>}
+      {(loaderPage && showLoader) && <LoaderPage></LoaderPage>}
 
       <Box className='navbar'
         width={"100vw"}
         position={"fixed"}
         top={0}
-        // ref={navRef}
         zIndex={100}
       >
-        <Suspense>
           <MemoizedNavbar></MemoizedNavbar>
-        </Suspense>
       </Box>
 
       <Box className='home-page-outer-container'
@@ -85,16 +83,6 @@ const HomePage = () => {
               </Suspense>
             </Box>
           </Box>
-
-
-          {/* <MemoizedAdvertisement></MemoizedAdvertisement> */}
-
-          {/* {viewportSize.width >= 992 && (<Box className='advertisement-component'>
-            <Box className='advertisements'
-            >
-            <MemoizedAdvertisement></MemoizedAdvertisement>
-            </Box>
-          </Box>)} */}
 
           {viewportSize.width >= 992
             && <Box className='advt-component'>

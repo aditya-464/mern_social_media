@@ -4,14 +4,11 @@ import welcomePageImage from "../assets/welcome-page.webp"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setViewportSize } from 'state'
-// import { FillButton } from 'components/FillButton'
-// import { EmptyButton } from 'components/EmptyButton'
 
 const FillButton = React.lazy(() => import('components/FillButton'));
 const EmptyButton = React.lazy(() => import('components/EmptyButton'));
 
 const WelcomePage = () => {
-  // const [screenSize, setScreenSize] = useState(getCurrentDimension());
   const [welcome, setWelcome] = useState(false);
   const [winHt, setWinHt] = useState({
     height: 0, width: 0
@@ -21,39 +18,11 @@ const WelcomePage = () => {
   const user = useSelector((state => state.user));
   const token = useSelector((state) => state.token);
 
-  // const getWindowDimensions = () => {
-  //   let val = window.innerHeight;
-  //   let val2 = window.innerWidth;
-  //   setWinHt({
-  //     height: val, width: val2
-  //   });
-  // }
-
-
-  // function getCurrentDimension() {
-  //   return {
-  //     width: window.innerWidth,
-  //     height: window.innerHeight
-  //   }
-  // }
-
-  // useLayoutEffect(() => {
-  //   const updateDimension = () => {
-  //     setScreenSize(getCurrentDimension())
-  //   }
-  //   window.addEventListener('resize', updateDimension);
-  //   dispatch(setViewportSize(screenSize));
-  //   return (() => {
-  //     window.removeEventListener('resize', updateDimension);
-  //   })
-  // }, [screenSize])
-
   useEffect(() => {
     if (user && token) {
       navigate("/home");
     }
     else {
-      // getWindowDimensions();
       setWelcome(true);
     }
   }, []);

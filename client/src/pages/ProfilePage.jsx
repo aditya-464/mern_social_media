@@ -58,7 +58,7 @@ const ProfilePage = () => {
   return (
     <>
 
-      {(loaderPage || showLoader) && <LoaderPage></LoaderPage>}
+      {(loaderPage && showLoader) && <LoaderPage></LoaderPage>}
 
       <Box className='navbar'
         width={"100vw"}

@@ -55,7 +55,7 @@ export const UserCard = (props) => {
                 fontFamily={"Poppins, sans-serif"}
             >
                 <Flex className='user-name-image'
-                    marginBottom={"1rem"}
+                    marginBottom={"1.5rem"}
                 >
                     <Flex className='image-box'
                         justify={"center"}
@@ -107,11 +107,12 @@ export const UserCard = (props) => {
                     height={"1px"}
                     backgroundColor={"#c4c4c4"}
                     margin={"auto"}
+                    marginY={"1rem"}
                 ></Box>
 
                 <Box className='user-location-occupation'
-                    marginTop={"0.5rem"}
-                    marginBottom={"1rem"}
+                    // marginTop={"0.5rem"}
+                    // marginBottom={"1rem"}
                 >
                     <Flex className='location'
                         fontSize={"h5"}
@@ -146,11 +147,13 @@ export const UserCard = (props) => {
                     height={"1px"}
                     backgroundColor={"#c4c4c4"}
                     margin={"auto"}
+                    marginY={"1rem"}
                 ></Box>
 
                 <Box className='user-profile-post-detail'
                     fontSize={{ base: "14px", md: "16px", lg: "14px", "3xl": "18px" }}
                     padding={"0.5rem 2rem"}
+                    paddingTop={"0"}
                     marginBottom={"1rem"}
                 >
                     <Flex className='profile-views'

@@ -28,7 +28,6 @@ function App() {
         <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
         <Route path="/profile/:id" element={<ProfilePage></ProfilePage>}></Route>
         <Route path="/account" element={<UserAccountPage></UserAccountPage>}></Route>
-        <Route path="/loader" element={<LoaderPage></LoaderPage>}></Route>
       </Routes>
     </>
   );
